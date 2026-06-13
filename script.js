@@ -4,7 +4,6 @@ const hero = document.querySelector(".hero");
 const audio = document.querySelector("[data-hero-audio]");
 const audioToggle = document.querySelector("[data-audio-toggle]");
 const audioLabel = document.querySelector("[data-audio-label]");
-const audioStatus = document.querySelector("[data-audio-status]");
 
 const guestName = new URLSearchParams(window.location.search).get("name");
 if (guestName) {
@@ -17,16 +16,17 @@ const form = document.querySelector("#rsvp-form");
 const statusNode = document.querySelector("#form-status");
 
 function setAudioState(isPlaying) {
-  if (!hero || !audioToggle || !audioLabel || !audioStatus) {
+  if (!hero || !audioToggle || !audioLabel) {
     return;
+  }
+
+  if (isPlaying) {
+    hero.classList.add("is-midi-active");
   }
 
   hero.classList.toggle("is-playing", isPlaying);
   audioToggle.setAttribute("aria-pressed", String(isPlaying));
   audioLabel.textContent = isPlaying ? "Pause" : "Play";
-  audioStatus.textContent = isPlaying
-    ? "трек играет, дорожка едет"
-    : "включи трек, и дорожка поедет";
 }
 
 if (audio && audioToggle) {
@@ -41,8 +41,8 @@ if (audio && audioToggle) {
       await audio.play();
       setAudioState(true);
     } catch (error) {
-      if (audioStatus) {
-        audioStatus.textContent = "браузер не дал включить звук, нажми еще раз";
+      if (audioLabel) {
+        audioLabel.textContent = "Play";
       }
     }
   });
@@ -54,6 +54,9 @@ if (audio && audioToggle) {
   audio.addEventListener("ended", () => {
     audio.currentTime = 0;
     setAudioState(false);
+    if (hero) {
+      hero.classList.remove("is-midi-active");
+    }
   });
 }
 
@@ -86,9 +89,8 @@ function buildAnswerText(formData) {
     "Анкета свадьбы Миши и Полины",
     `Имя: ${formData.get("name") || ""}`,
     `Участие: ${formData.get("attendance") || ""}`,
-    `Формат: ${formData.get("plusOne") || ""}`,
     `Еда: ${formData.get("food") || ""}`,
-    `Алкоголь: ${formData.get("alcohol") || ""}`,
+    `Напитки: ${formData.get("alcohol") || ""}`,
     `Комментарий: ${formData.get("comment") || ""}`,
   ].join("\n");
 }
