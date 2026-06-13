@@ -1,5 +1,10 @@
 const RSVP_ENDPOINT = "";
 const EXTERNAL_FORM_URL = "";
+const hero = document.querySelector(".hero");
+const audio = document.querySelector("[data-hero-audio]");
+const audioToggle = document.querySelector("[data-audio-toggle]");
+const audioLabel = document.querySelector("[data-audio-label]");
+const audioStatus = document.querySelector("[data-audio-status]");
 
 const guestName = new URLSearchParams(window.location.search).get("name");
 if (guestName) {
@@ -10,6 +15,47 @@ if (guestName) {
 
 const form = document.querySelector("#rsvp-form");
 const statusNode = document.querySelector("#form-status");
+
+function setAudioState(isPlaying) {
+  if (!hero || !audioToggle || !audioLabel || !audioStatus) {
+    return;
+  }
+
+  hero.classList.toggle("is-playing", isPlaying);
+  audioToggle.setAttribute("aria-pressed", String(isPlaying));
+  audioLabel.textContent = isPlaying ? "Pause" : "Play";
+  audioStatus.textContent = isPlaying
+    ? "трек играет, дорожка едет"
+    : "включи трек, и дорожка поедет";
+}
+
+if (audio && audioToggle) {
+  audioToggle.addEventListener("click", async () => {
+    if (!audio.paused) {
+      audio.pause();
+      setAudioState(false);
+      return;
+    }
+
+    try {
+      await audio.play();
+      setAudioState(true);
+    } catch (error) {
+      if (audioStatus) {
+        audioStatus.textContent = "браузер не дал включить звук, нажми еще раз";
+      }
+    }
+  });
+
+  audio.addEventListener("pause", () => {
+    setAudioState(false);
+  });
+
+  audio.addEventListener("ended", () => {
+    audio.currentTime = 0;
+    setAudioState(false);
+  });
+}
 
 function updateCountdown() {
   const target = new Date("2026-08-19T15:00:00+05:00");

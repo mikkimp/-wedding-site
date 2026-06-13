@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" role="img" aria-label="Серебряная спираль">
+  <defs>
+    <linearGradient id="orbitChrome" x1="18" x2="200" y1="20" y2="130" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2b2f34"/>
+      <stop offset=".2" stop-color="#ffffff"/>
+      <stop offset=".42" stop-color="#7d838a"/>
+      <stop offset=".62" stop-color="#f7f8fa"/>
+      <stop offset=".82" stop-color="#343941"/>
+      <stop offset="1" stop-color="#cdd2d7"/>
+    </linearGradient>
+  </defs>
+  <path fill="none" stroke="#171a1f" stroke-width="16" stroke-linecap="round" d="M196 48c-18-30-69-43-117-32C35 26 8 54 16 81c8 26 47 42 91 36 36-5 61-24 57-42-4-16-31-25-61-20-25 4-43 16-42 29"/>
+  <path fill="none" stroke="url(#orbitChrome)" stroke-width="10" stroke-linecap="round" d="M196 48c-18-30-69-43-117-32C35 26 8 54 16 81c8 26 47 42 91 36 36-5 61-24 57-42-4-16-31-25-61-20-25 4-43 16-42 29"/>
+</svg>
