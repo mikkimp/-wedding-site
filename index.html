@@ -23,6 +23,7 @@
         <a href="#time">Время</a>
         <a href="#place">Место</a>
         <a href="#notes">Важно</a>
+        <a href="#game">Игра</a>
         <a href="#rsvp">Анкета</a>
       </nav>
     </header>
@@ -171,9 +172,16 @@
       </section>
 
       <section class="intro section screen--lime" id="invite" aria-labelledby="invite-title">
-        <img class="silver-decor silver-decor--intro-orbit silver-decor--intro-orbit-a" src="assets/silver-orbit.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--intro-orbit silver-decor--intro-orbit-b" src="assets/silver-orbit.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--intro-orbit silver-decor--intro-orbit-c" src="assets/silver-orbit.svg" alt="" aria-hidden="true">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
         <div class="intro__text">
           <h2 id="invite-title">Дорогой <span data-guest-name>гость</span>!</h2>
           <div class="intro__body">
@@ -196,11 +204,26 @@
       </section>
 
       <section class="section section--grid screen--violet" id="time" aria-labelledby="time-title">
-        <img class="silver-decor silver-decor--time-star silver-decor--time-star-a" src="assets/silver-spark.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--time-star silver-decor--time-star-b" src="assets/silver-spark.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--time-star silver-decor--time-star-c" src="assets/silver-heart.svg" alt="" aria-hidden="true">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
         <div>
           <h2 id="time-title">Время</h2>
+          <div class="countdown" aria-label="Сколько осталось до свадьбы">
+            <p>до свадьбы</p>
+            <div class="countdown__grid">
+              <span><strong id="cd-days">0</strong>дней</span>
+              <span><strong id="cd-hours">00</strong>часов</span>
+              <span><strong id="cd-minutes">00</strong>минут</span>
+            </div>
+          </div>
         </div>
         <ol class="timeline" aria-label="Время">
           <li>
@@ -227,8 +250,16 @@
       </section>
 
       <section class="place section screen--orange" id="place" aria-labelledby="place-title">
-        <img class="silver-decor silver-decor--place-heart silver-decor--place-heart-a" src="assets/silver-heart.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--place-heart silver-decor--place-heart-b" src="assets/silver-heart.svg" alt="" aria-hidden="true">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
         <div class="place__copy">
           <p class="eyebrow">место</p>
           <h2 id="place-title">ГЛК «Гора Лиственная»</h2>
@@ -247,22 +278,28 @@
             <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <div class="map-poster" aria-hidden="true">
-          <span class="map-poster__road"></span>
-          <span class="map-poster__road map-poster__road--glamping"></span>
-          <span class="map-poster__ring map-poster__ring--one"></span>
-          <span class="map-poster__ring map-poster__ring--two"></span>
-          <span class="map-poster__label map-poster__label--entry">въезд</span>
-          <span class="map-poster__label map-poster__label--parking">P</span>
-          <span class="map-poster__label map-poster__label--taxi">taxi</span>
-          <span class="map-poster__pin">ГЛК</span>
-          <span class="map-poster__pin map-poster__pin--glamping">глэмпинг<br>домики</span>
+        <div class="route-card" aria-label="Как проехать">
+          <p class="route-card__kicker">как найти</p>
+          <ol>
+            <li><span>1</span>Основной въезд в ГЛК</li>
+            <li><span>2</span>Дальше по внутренней дороге</li>
+            <li><span>3</span>До глэмпинга с домиками</li>
+          </ol>
+          <p class="route-card__note">На месте будут указатели. Если потеряетесь, напишите нам.</p>
         </div>
       </section>
 
       <section class="notes section screen--blue" id="notes" aria-labelledby="notes-title">
-        <img class="silver-decor silver-decor--notes-star silver-decor--notes-star-a" src="assets/silver-spark.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--notes-star silver-decor--notes-star-b" src="assets/silver-spark.svg" alt="" aria-hidden="true">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
         <div>
           <p class="eyebrow">важное</p>
           <h2 id="notes-title">Для гостей</h2>
@@ -310,9 +347,40 @@
         </div>
       </section>
 
+      <section class="game section screen--lime" id="game" aria-labelledby="game-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div class="game__copy">
+          <p class="eyebrow">игра</p>
+          <h2 id="game-title">Небольшая игра</h2>
+          <p>Здесь появится интерактивный блок для гостей.</p>
+        </div>
+        <div class="game__stage" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+
       <section class="rsvp section screen--paper" id="rsvp" aria-labelledby="rsvp-title">
-        <img class="silver-decor silver-decor--rsvp-orbit silver-decor--rsvp-orbit-a" src="assets/silver-orbit.svg" alt="" aria-hidden="true">
-        <img class="silver-decor silver-decor--rsvp-orbit silver-decor--rsvp-orbit-b" src="assets/silver-orbit.svg" alt="" aria-hidden="true">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
         <div class="rsvp__head">
           <p class="eyebrow">подтверждение участия</p>
           <h2 id="rsvp-title">Пожалуйста, ответьте до 15.07</h2>
