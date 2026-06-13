@@ -1,92 +1,273 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Миша и Полина — 19.08.2026</title>
-  <meta name="description" content="Сайт-приглашение на свадьбу Миши и Полины">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <a class="logo" href="#top">Миша × Полина</a>
-    <button class="menu-button" id="menuButton" aria-label="Открыть меню" aria-expanded="false">Меню</button>
-    <nav class="nav" id="nav">
-      <a href="#date">Дата</a>
-      <a href="#place">Место</a>
-      <a href="#timing">Тайминг</a>
-      <a href="#dresscode">Дресс-код</a>
-      <a href="#rsvp">RSVP</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Приглашение на свадьбу Миши и Полины 19 августа 2026 года на Горе Лиственной."
+    >
+    <title>Миша и Полина — 19 августа 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#invite">К содержанию</a>
 
-  <main id="top">
-    <section class="hero">
-      <p class="eyebrow">сайт-приглашение</p>
-      <h1>Миша<br>и Полина</h1>
-      <p class="hero-date" id="date">19 августа 2026</p>
-      <p class="hero-text">
-        Мы женимся и будем рады видеть тебя рядом в этот день.
-      </p>
-      <a class="button" href="#rsvp">Подтвердить участие</a>
-    </section>
+    <header class="site-bar" aria-label="Навигация">
+      <a class="site-mark" href="#top" aria-label="Миша и Полина">M+P</a>
+      <nav class="site-nav" aria-label="Разделы приглашения">
+        <a href="#time">Время</a>
+        <a href="#place">Место</a>
+        <a href="#notes">Важно</a>
+        <a href="#rsvp">Анкета</a>
+      </nav>
+    </header>
 
-    <section class="card grid-card" id="place">
-      <div>
-        <p class="section-label">место</p>
-        <h2>ГЛК «Гора Лиственная»</h2>
-      </div>
-      <div>
-        <p>Екатеринбург, КАД, 23-й км, 1</p>
-        <p class="muted">Здесь позже будет ссылка на карту и точную метку.</p>
-      </div>
-    </section>
+    <main id="top">
+      <section class="hero hero--pink" aria-labelledby="hero-title">
+        <div class="hero__grain" aria-hidden="true"></div>
 
-    <section class="card" id="timing">
-      <p class="section-label">тайминг</p>
-      <div class="timeline">
-        <div><span>15:00</span><p>Сбор гостей</p></div>
-        <div><span>16:00</span><p>Церемония</p></div>
-        <div><span>17:00</span><p>Ужин, тосты и танцы</p></div>
-        <div><span>23:00</span><p>Завершение вечера</p></div>
-      </div>
-    </section>
+        <div class="hero__poster">
+          <div class="hero__topline" aria-label="Главная информация">
+            <span>19.08</span>
+            <span>15:00</span>
+            <span>2026</span>
+          </div>
 
-    <section class="card color-block" id="dresscode">
-      <p class="section-label">дресс-код</p>
-      <h2>Палитра вечера</h2>
-      <p>
-        Этот блок пока можно заменить на описание цветов, примеры образов
-        или короткую просьбу к гостям.
-      </p>
-    </section>
+          <div class="hero__marks" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
 
-    <section class="card" id="wishes">
-      <p class="section-label">пожелания</p>
-      <h2>Пока заглушка</h2>
-      <p>
-        Здесь можно написать про цветы, подарки, трансфер, детей,
-        фотографии или другие важные детали.
-      </p>
-    </section>
+          <div class="hero__copy">
+            <h1 id="hero-title" class="hero__title">
+              <span class="hero__name hero__name--misha">Misha</span>
+              <span class="hero__name hero__name--polina">Polina</span>
+            </h1>
+            <p class="hero__subtitle">свадебное приглашение</p>
+          </div>
 
-    <section class="card rsvp" id="rsvp">
-      <p class="section-label">rsvp</p>
-      <h2>Подтвердить участие</h2>
-      <p>
-        Позже эта кнопка будет вести на Google Form, Яндекс Форму
-        или другую анкету для гостей.
-      </p>
-      <a class="button secondary" href="https://forms.gle/" target="_blank" rel="noopener">
-        Кнопка-заглушка
-      </a>
-    </section>
-  </main>
+          <div class="hero__midi-road midi-road" aria-hidden="true">
+            <div class="midi-road__track">
+              <div class="midi-road__lane">
+                <span style="--w: 34px"></span>
+                <span style="--w: 18px"></span>
+                <span style="--w: 44px"></span>
+                <span style="--w: 26px"></span>
+                <span style="--w: 56px"></span>
+                <span style="--w: 22px"></span>
+              </div>
+              <div class="midi-road__lane">
+                <span style="--w: 18px"></span>
+                <span style="--w: 62px"></span>
+                <span style="--w: 28px"></span>
+                <span style="--w: 36px"></span>
+                <span style="--w: 20px"></span>
+                <span style="--w: 50px"></span>
+              </div>
+              <div class="midi-road__lane">
+                <span style="--w: 48px"></span>
+                <span style="--w: 24px"></span>
+                <span style="--w: 20px"></span>
+                <span style="--w: 58px"></span>
+                <span style="--w: 30px"></span>
+                <span style="--w: 40px"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <footer class="footer">
-    <p>Миша и Полина · 19.08.2026</p>
-  </footer>
+      <section class="intro section screen--lime" id="invite" aria-labelledby="invite-title">
+        <div class="intro__text">
+          <h2 id="invite-title">Дорогой <span data-guest-name>гость</span>!</h2>
+          <div class="intro__body">
+            <p>
+              Это — Миша и Полина.
+            </p>
+            <p>
+              Мы приглашаем тебя на нашу свадьбу!
+            </p>
+            <p>
+              Нас ждёт тёплый летний вечер: встреча с близкими, вкусная еда,
+              весёлые танцы, разговоры на свежем воздухе и много радостных
+              моментов.
+            </p>
+          </div>
+        </div>
+        <figure class="intro__photo">
+          <img src="assets/misha-polina-walk.jpg" alt="Миша и Полина идут вместе и держатся за руки">
+        </figure>
+      </section>
 
-  <script src="script.js"></script>
-</body>
+      <section class="section section--grid screen--violet" id="time" aria-labelledby="time-title">
+        <div>
+          <h2 id="time-title">Время</h2>
+        </div>
+        <ol class="timeline" aria-label="Время">
+          <li>
+            <span>Сбор гостей</span>
+            <time datetime="2026-08-19T15:00">15:00</time>
+          </li>
+          <li>
+            <span>Церемония</span>
+            <time datetime="2026-08-19T16:00">16:00</time>
+          </li>
+          <li>
+            <span>Банкет</span>
+            <time datetime="2026-08-19T17:00">17:00</time>
+          </li>
+        </ol>
+      </section>
+
+      <section class="place section screen--orange" id="place" aria-labelledby="place-title">
+        <div class="place__copy">
+          <p class="eyebrow">место</p>
+          <h2 id="place-title">ГЛК «Гора Лиственная»</h2>
+          <p>Екатеринбург, Кольцевая автодорога, 23-й километр</p>
+          <a
+            class="button-link"
+            href="https://yandex.ru/maps/?ll=60.738538%2C56.939468&z=15&pt=60.738538%2C56.939468,pm2rdm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Открыть карту
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="map-poster" aria-hidden="true">
+          <span class="map-poster__road"></span>
+          <span class="map-poster__ring map-poster__ring--one"></span>
+          <span class="map-poster__ring map-poster__ring--two"></span>
+          <span class="map-poster__label map-poster__label--parking">P</span>
+          <span class="map-poster__label map-poster__label--taxi">taxi</span>
+          <span class="map-poster__pin">Гора<br>Лиственная</span>
+        </div>
+      </section>
+
+      <section class="notes section screen--blue" id="notes" aria-labelledby="notes-title">
+        <div>
+          <p class="eyebrow">важное</p>
+          <h2 id="notes-title">Для гостей</h2>
+        </div>
+        <div class="notes__list">
+          <article class="note note--dress">
+            <h3>Одежда</h3>
+            <p>
+              Дресс-кода нет. Приходите в том, в чем красиво и удобно. Если
+              хочется попасть в настроение дня: теплый белый, черный, хвойный
+              зеленый, мутная сирень, хурма или бирюзовый акцент.
+            </p>
+            <div class="swatches" aria-label="Цвета настроения">
+              <span style="--swatch: #f7f0dd"></span>
+              <span style="--swatch: #111111"></span>
+              <span style="--swatch: #2f5f48"></span>
+              <span style="--swatch: #ad8ab8"></span>
+              <span style="--swatch: #e86c1a"></span>
+              <span style="--swatch: #37bcc7"></span>
+            </div>
+          </article>
+          <article class="note note--road">
+            <h3>Дорога</h3>
+            <p>
+              На площадке есть парковка. Такси до места приезжает, а обратный
+              путь поможем организовать ближе к дате.
+            </p>
+          </article>
+          <article class="note note--weather">
+            <h3>Погода</h3>
+            <p>
+              Мы подготовим зонты и постараемся закрыть бытовые мелочи. На
+              вечер за городом лучше взять легкий слой потеплее.
+            </p>
+          </article>
+          <article class="note note--gifts">
+            <h3>Цветы и подарки</h3>
+            <p>
+              Цветы только если совсем без этого никак; лучше не цветы.
+              Бутылочки тоже не нужны. Подарок удобнее в формате конверта.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="rsvp section screen--paper" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="rsvp__head">
+          <p class="eyebrow">подтверждение участия</p>
+          <h2 id="rsvp-title">Пожалуйста, ответьте до 15.07</h2>
+          <p>
+            Анкета короткая: имя, участие, +1, еда, алкоголь и комментарий.
+          </p>
+        </div>
+
+        <form class="rsvp-form" id="rsvp-form">
+          <label>
+            <span>Имя и фамилия</span>
+            <input name="name" autocomplete="name" required>
+          </label>
+
+          <fieldset>
+            <legend>Приду / не приду</legend>
+            <label><input type="radio" name="attendance" value="Приду" required> Приду</label>
+            <label><input type="radio" name="attendance" value="Не приду"> Не приду</label>
+          </fieldset>
+
+          <label>
+            <span>Буду</span>
+            <select name="plusOne" required>
+              <option value="">Выберите вариант</option>
+              <option>Один / одна</option>
+              <option>С +1</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Предпочтения по еде</span>
+            <input name="food" placeholder="Например: без мяса, аллергия, все ем">
+          </label>
+
+          <fieldset>
+            <legend>Алкоголь</legend>
+            <label><input type="radio" name="alcohol" value="Алкоголь" required> Алкоголь</label>
+            <label><input type="radio" name="alcohol" value="Без алкоголя"> Без алкоголя</label>
+          </fieldset>
+
+          <label class="rsvp-form__wide">
+            <span>Комментарий</span>
+            <textarea name="comment" rows="4"></textarea>
+          </label>
+
+          <button class="submit-button" type="submit">
+            Отправить ответ
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="qr-block" aria-label="QR-код анкеты">
+          <img src="assets/qr-placeholder.svg" alt="Место для QR-кода анкеты">
+          <p>QR для бумажного приглашения</p>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Будем ждать вас на Лиственной.</p>
+      <p>Обнимем на месте.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

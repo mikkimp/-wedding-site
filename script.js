@@ -1,14 +1,100 @@
-const button = document.querySelector('#menuButton');
-const nav = document.querySelector('#nav');
+const RSVP_ENDPOINT = "";
+const EXTERNAL_FORM_URL = "";
 
-button?.addEventListener('click', () => {
-  const isOpen = nav.classList.toggle('is-open');
-  button.setAttribute('aria-expanded', String(isOpen));
-});
-
-nav?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('is-open');
-    button?.setAttribute('aria-expanded', 'false');
+const guestName = new URLSearchParams(window.location.search).get("name");
+if (guestName) {
+  document.querySelectorAll("[data-guest-name]").forEach((node) => {
+    node.textContent = guestName.trim();
   });
-});
+}
+
+const form = document.querySelector("#rsvp-form");
+const statusNode = document.querySelector("#form-status");
+
+function updateCountdown() {
+  const target = new Date("2026-08-19T15:00:00+05:00");
+  const diff = target.getTime() - Date.now();
+  const safeDiff = Math.max(0, diff);
+  const days = Math.floor(safeDiff / 86400000);
+  const hours = Math.floor((safeDiff % 86400000) / 3600000);
+  const minutes = Math.floor((safeDiff % 3600000) / 60000);
+
+  const dayNode = document.querySelector("#cd-days");
+  const hourNode = document.querySelector("#cd-hours");
+  const minuteNode = document.querySelector("#cd-minutes");
+
+  if (!dayNode || !hourNode || !minuteNode) {
+    return;
+  }
+
+  dayNode.textContent = String(days);
+  hourNode.textContent = String(hours).padStart(2, "0");
+  minuteNode.textContent = String(minutes).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+function buildAnswerText(formData) {
+  return [
+    "Анкета свадьбы Миши и Полины",
+    `Имя: ${formData.get("name") || ""}`,
+    `Участие: ${formData.get("attendance") || ""}`,
+    `Формат: ${formData.get("plusOne") || ""}`,
+    `Еда: ${formData.get("food") || ""}`,
+    `Алкоголь: ${formData.get("alcohol") || ""}`,
+    `Комментарий: ${formData.get("comment") || ""}`,
+  ].join("\n");
+}
+
+async function copyAnswer(text) {
+  if (!navigator.clipboard) {
+    return false;
+  }
+
+  await navigator.clipboard.writeText(text);
+  return true;
+}
+
+if (form && statusNode) {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    statusNode.textContent = "Собираем ответ...";
+
+    try {
+      if (RSVP_ENDPOINT) {
+        const response = await fetch(RSVP_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(Object.fromEntries(formData)),
+        });
+
+        if (!response.ok) {
+          throw new Error("Bad response");
+        }
+
+        form.reset();
+        statusNode.textContent = "Спасибо, ответ отправлен.";
+        return;
+      }
+
+      if (EXTERNAL_FORM_URL) {
+        window.location.href = EXTERNAL_FORM_URL;
+        return;
+      }
+
+      const answerText = buildAnswerText(formData);
+      const copied = await copyAnswer(answerText);
+      statusNode.textContent = copied
+        ? "Ответ пока скопирован в буфер. Когда подключим анкету, эта кнопка будет отправлять его напрямую."
+        : "Ответ собран. Подключите ссылку анкеты в script.js перед публикацией.";
+    } catch (error) {
+      statusNode.textContent = "Не получилось отправить. Попробуйте еще раз или напишите нам напрямую.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
