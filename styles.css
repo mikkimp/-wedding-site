@@ -1425,6 +1425,174 @@ img {
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.12);
 }
 
+.game__inventory {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 52px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  pointer-events: none;
+}
+
+.game__inventory-item {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid currentColor;
+  background: rgba(247, 240, 221, 0.68);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0.38;
+  filter: grayscale(0.8);
+  transform: translateY(0);
+  transition: opacity 180ms ease, filter 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.game__inventory-item.is-collected {
+  background: rgba(255, 53, 188, 0.86);
+  opacity: 1;
+  filter: grayscale(0);
+  transform: translateY(-2px);
+}
+
+.game__icon {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.game__icon::before,
+.game__icon::after {
+  position: absolute;
+  content: "";
+}
+
+.game__icon--bouquet {
+  background:
+    radial-gradient(circle at 28% 32%, #ff35bc 0 3px, transparent 3.5px),
+    radial-gradient(circle at 52% 20%, #f7f0dd 0 3px, transparent 3.5px),
+    radial-gradient(circle at 72% 38%, #ffea00 0 3px, transparent 3.5px),
+    radial-gradient(circle at 46% 48%, #7fc8ff 0 3px, transparent 3.5px);
+}
+
+.game__icon--bouquet::after {
+  left: 8px;
+  top: 8px;
+  width: 4px;
+  height: 12px;
+  background: #111111;
+  transform: rotate(-18deg);
+}
+
+.game__icon--vows {
+  width: 22px;
+  height: 15px;
+  border: 2px solid #111111;
+  background: #f7f0dd;
+}
+
+.game__icon--vows::before {
+  left: 2px;
+  top: 1px;
+  width: 14px;
+  height: 10px;
+  border-left: 2px solid #111111;
+  border-bottom: 2px solid #111111;
+  transform: rotate(-45deg);
+}
+
+.game__icon--vows::after {
+  right: 3px;
+  bottom: 3px;
+  width: 6px;
+  height: 2px;
+  background: #ff35bc;
+}
+
+.game__icon--rings::before,
+.game__icon--rings::after {
+  top: 5px;
+  width: 11px;
+  height: 11px;
+  border: 3px solid #ffea00;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px #111111, 0 0 0 1px #111111;
+}
+
+.game__icon--rings::before {
+  left: 1px;
+}
+
+.game__icon--rings::after {
+  right: 1px;
+}
+
+.game__icon--glass::before {
+  left: 4px;
+  top: 1px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #111111;
+  border-top-width: 3px;
+  background: #7fc8ff;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+}
+
+.game__icon--glass::after {
+  left: 9px;
+  top: 13px;
+  width: 3px;
+  height: 7px;
+  background: #111111;
+  box-shadow: -5px 6px 0 0 #111111, 5px 6px 0 0 #111111;
+}
+
+.game__icon--playlist {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #111111;
+  background: #6654b8;
+}
+
+.game__icon--playlist::before {
+  left: 4px;
+  top: 5px;
+  width: 12px;
+  height: 2px;
+  background: #f7f0dd;
+  box-shadow: 0 5px 0 #f7f0dd, 0 10px 0 #f7f0dd;
+}
+
+.game__icon--heart {
+  width: 15px;
+  height: 15px;
+  margin-top: 3px;
+  background: linear-gradient(135deg, #ffffff, #c7ccd2 55%, #6c727c);
+  transform: rotate(45deg);
+}
+
+.game__icon--heart::before,
+.game__icon--heart::after {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.game__icon--heart::before {
+  left: -8px;
+  top: 0;
+}
+
+.game__icon--heart::after {
+  left: 0;
+  top: -8px;
+}
+
 .game__overlay {
   position: absolute;
   inset: 0;
@@ -1976,6 +2144,24 @@ img {
   .game__hud {
     top: 8px;
     font-size: 0.58rem;
+  }
+
+  .game__inventory {
+    top: 46px;
+    gap: 5px;
+  }
+
+  .game__inventory-item {
+    width: 28px;
+    height: 28px;
+  }
+
+  .game__icon:not(.game__icon--heart) {
+    transform: scale(0.88);
+  }
+
+  .game__icon--heart {
+    transform: rotate(45deg) scale(0.88);
   }
 
   .map-poster__pin {
