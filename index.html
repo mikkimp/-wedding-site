@@ -380,13 +380,38 @@
         </div>
         <div class="game__copy">
           <p class="eyebrow">игра</p>
-          <h2 id="game-title">Небольшая игра</h2>
-          <p>Здесь появится интерактивный блок для гостей.</p>
+          <h2 id="game-title">Миша бежит к Полине</h2>
+          <p>
+            Соберите свадебные штуки, перепрыгните музыкальные препятствия и
+            добегите до невесты.
+          </p>
         </div>
-        <div class="game__stage" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="game__stage" data-wedding-game>
+          <div class="game__hud" aria-hidden="true">
+            <span data-game-items>0/5 собрано</span>
+            <span data-game-distance>экран 1/3</span>
+          </div>
+          <canvas
+            class="game__canvas"
+            data-game-canvas
+            width="960"
+            height="520"
+            aria-label="Мини-игра: жених бежит к невесте"
+          ></canvas>
+          <div class="game__overlay" data-game-overlay>
+            <p class="eyebrow">мини-игра</p>
+            <h3 data-game-overlay-title>Добежать до невесты</h3>
+            <p data-game-overlay-text>
+              Управление: пробел или тап — прыжок, стрелки — чуть ускориться
+              или отойти назад.
+            </p>
+            <button class="game__button" type="button" data-game-start>Play</button>
+          </div>
+          <div class="game__controls" aria-label="Управление игрой">
+            <button type="button" data-game-left aria-label="Назад">←</button>
+            <button type="button" data-game-jump aria-label="Прыжок">↑</button>
+            <button type="button" data-game-right aria-label="Вперед">→</button>
+          </div>
         </div>
       </section>
 
