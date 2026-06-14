@@ -479,16 +479,18 @@ img {
   justify-content: flex-start;
   width: max-content;
   --midi-gap: clamp(8px, 1.5vw, 20px);
+  --midi-cycle-width: clamp(720px, 104vw, 1120px);
   --lane-offset: 0px;
-  transform: translateX(var(--lane-offset));
+  transform: translateX(calc(-50% + var(--lane-offset)));
   will-change: transform;
 }
 
 .midi-road__phrase {
+  flex: 0 0 var(--midi-cycle-width);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--midi-gap);
-  padding-right: var(--midi-gap);
 }
 
 .midi-road__lane:nth-child(2) {
@@ -516,12 +518,8 @@ img {
 }
 
 .hero.is-midi-active .midi-road__lane {
-  animation: midi-scroll 16s linear infinite;
+  animation: midi-scroll 18s linear infinite;
   animation-play-state: paused;
-}
-
-.hero.is-midi-active .midi-road__lane:nth-child(even) {
-  animation-delay: -8s;
 }
 
 .hero.is-playing .midi-road__lane {
@@ -530,11 +528,11 @@ img {
 
 @keyframes midi-scroll {
   from {
-    transform: translateX(var(--lane-offset));
+    transform: translateX(calc(-50% + var(--lane-offset)));
   }
 
   to {
-    transform: translateX(calc(-50% + var(--lane-offset)));
+    transform: translateX(var(--lane-offset));
   }
 }
 
@@ -784,7 +782,7 @@ img {
 .place {
   display: grid;
   grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
-  gap: clamp(28px, 6vw, 86px);
+  gap: clamp(24px, 4.5vw, 70px);
   align-items: center;
 }
 
@@ -794,12 +792,12 @@ img {
 }
 
 .place {
-  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.62fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.56fr);
 }
 
 .section--grid h2 {
   margin-bottom: 0;
-  font-size: clamp(4rem, 10vw, 8.6rem);
+  font-size: clamp(2.6rem, 4.8vw, 4.8rem);
 }
 
 .timeline {
@@ -885,7 +883,7 @@ img {
 
 .place__copy h2 {
   font-family: var(--font-narrow);
-  font-size: clamp(1.9rem, 4.2vw, 4.4rem);
+  font-size: clamp(1.65rem, 3.55vw, 3.85rem);
   line-height: 1.04;
   font-style: normal;
   text-transform: none;
@@ -1196,7 +1194,7 @@ img {
 }
 
 .rsvp__head p:not(.eyebrow) {
-  max-width: 520px;
+  max-width: 620px;
   margin: 0;
   font-size: clamp(0.95rem, 1.4vw, 1.08rem);
   line-height: 1.45;
@@ -1204,9 +1202,9 @@ img {
 
 .rsvp__head {
   grid-column: 1;
-  justify-self: center;
-  max-width: 660px;
-  text-align: center;
+  justify-self: stretch;
+  max-width: 100%;
+  text-align: left;
 }
 
 .rsvp__head h2 {
