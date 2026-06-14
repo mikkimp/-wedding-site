@@ -105,21 +105,21 @@ function initWeddingGame() {
   const input = { jumpBuffer: 0 };
   const LEVEL_SCREENS = 7;
   const physics = {
-    gravity: 1680,
+    gravity: 1540,
     accel: 2300,
     friction: 1900,
     maxSpeed: 292,
-    jump: 670,
+    jump: 790,
     coyote: 0.12,
     jumpBuffer: 0.15,
   };
   const itemPlan = [
-    { key: "bouquet", label: "букет", x: 0.13, y: 104, color: "#ff35bc" },
-    { key: "vows", label: "клятвы", x: 0.25, y: 172, color: "#f7f0dd" },
-    { key: "ring", label: "кольца", x: 0.39, y: 106, color: "#ffea00" },
-    { key: "glass", label: "бокал", x: 0.55, y: 184, color: "#7fc8ff" },
-    { key: "playlist", label: "плейлист", x: 0.72, y: 114, color: "#6654b8" },
-    { key: "heart", label: "сердце", x: 0.86, y: 160, color: "#c7ccd2" },
+    { key: "bouquet", label: "букет", x: 0.13, y: 168, color: "#ff35bc" },
+    { key: "vows", label: "клятвы", x: 0.25, y: 214, color: "#f7f0dd" },
+    { key: "ring", label: "кольца", x: 0.39, y: 152, color: "#ffea00" },
+    { key: "glass", label: "бокал", x: 0.55, y: 214, color: "#7fc8ff" },
+    { key: "playlist", label: "плейлист", x: 0.72, y: 152, color: "#6654b8" },
+    { key: "heart", label: "сердце", x: 0.86, y: 206, color: "#c7ccd2" },
   ];
 
   const game = {
@@ -189,12 +189,18 @@ function initWeddingGame() {
       { key: "g3", x: w * 0.37, y: floor, w: w * 0.19, h: 52, color: "#ff6b00", label: "BRIDGE" },
       { key: "g4", x: w * 0.58, y: floor, w: w * 0.17, h: 52, color: "#6654b8", label: "DROP" },
       { key: "g5", x: w * 0.77, y: floor, w: w * 0.23, h: 52, color: "#37bcc7", label: "OUTRO" },
-      { key: "p1", x: w * 0.115, y: floor - 112, w: 240, h: 26, color: "#f7f0dd", label: "MIDI" },
-      { key: "p2", x: w * 0.255, y: floor - 172, w: 230, h: 26, color: "#c8e000", label: "HI-HAT" },
-      { key: "p3", x: w * 0.43, y: floor - 124, w: 280, h: 26, color: "#7fc8ff", label: "PAD" },
-      { key: "p4", x: w * 0.6, y: floor - 198, w: 235, h: 26, color: "#f7f0dd", label: "VOCAL" },
-      { key: "p5", x: w * 0.715, y: floor - 128, w: 280, h: 26, color: "#ffea00", label: "CHORUS" },
-      { key: "p6", x: w * 0.84, y: floor - 166, w: 240, h: 26, color: "#ff35bc", label: "FINAL" },
+      { key: "p0", x: w * 0.075, y: floor - 82, w: 170, h: 26, color: "#7fc8ff", label: "STEP" },
+      { key: "p1", x: w * 0.125, y: floor - 150, w: 226, h: 26, color: "#f7f0dd", label: "MIDI" },
+      { key: "p1b", x: w * 0.205, y: floor - 94, w: 168, h: 26, color: "#ffea00", label: "KICK" },
+      { key: "p2", x: w * 0.265, y: floor - 216, w: 228, h: 26, color: "#c8e000", label: "HI-HAT" },
+      { key: "p2b", x: w * 0.352, y: floor - 140, w: 178, h: 26, color: "#ff35bc", label: "SNARE" },
+      { key: "p3", x: w * 0.43, y: floor - 164, w: 280, h: 26, color: "#7fc8ff", label: "PAD" },
+      { key: "p3b", x: w * 0.525, y: floor - 104, w: 198, h: 26, color: "#37bcc7", label: "BASS" },
+      { key: "p4", x: w * 0.6, y: floor - 236, w: 235, h: 26, color: "#f7f0dd", label: "VOCAL" },
+      { key: "p4b", x: w * 0.66, y: floor - 132, w: 198, h: 26, color: "#c8e000", label: "JUMP" },
+      { key: "p5", x: w * 0.725, y: floor - 174, w: 274, h: 26, color: "#ffea00", label: "CHORUS" },
+      { key: "p6", x: w * 0.84, y: floor - 206, w: 240, h: 26, color: "#ff35bc", label: "FINAL" },
+      { key: "p6b", x: w * 0.905, y: floor - 118, w: 176, h: 26, color: "#7fc8ff", label: "HOME" },
     ].map((platform) => ({
       ...platform,
       touched: platformState.get(platform.key)?.touched || false,
@@ -211,8 +217,8 @@ function initWeddingGame() {
     game.obstacles = [
       { type: "sync", x: w * 0.225, y: floor - 48, w: 98, h: 48, color: "#c3452b", label: "SYNC\nERROR" },
       { type: "spikes", x: w * 0.325, y: floor - 34, w: 118, h: 34, color: "#111111", label: "FEEDBACK" },
-      { type: "mute", x: w * 0.49, y: floor - 72, w: 88, h: 72, color: "#ff35bc", label: "MUTE" },
-      { type: "clip", x: w * 0.645, y: floor - 50, w: 132, h: 50, color: "#c3452b", label: "RED CLIP" },
+      { type: "mute", x: w * 0.49, y: floor - 66, w: 82, h: 66, color: "#ff35bc", label: "MUTE" },
+      { type: "clip", x: w * 0.645, y: floor - 42, w: 108, h: 42, color: "#c3452b", label: "RED CLIP" },
       { type: "spikes", x: w * 0.81, y: floor - 34, w: 126, h: 34, color: "#111111", label: "LOUD" },
       { type: "sync", x: w * 0.91, y: floor - 48, w: 98, h: 48, color: "#c3452b", label: "SYNC\nERROR" },
     ];
@@ -536,6 +542,67 @@ function initWeddingGame() {
     }
   }
 
+  function createSilverGradient(x, y, size) {
+    const gradient = ctx.createLinearGradient(x - size, y - size, x + size, y + size);
+    gradient.addColorStop(0, "#ffffff");
+    gradient.addColorStop(0.34, "#c7ccd2");
+    gradient.addColorStop(0.62, "#6c727c");
+    gradient.addColorStop(1, "#f7f0dd");
+    return gradient;
+  }
+
+  function drawSilverStar(x, y, size, rotation = 0) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+    ctx.fillStyle = createSilverGradient(0, 0, size);
+    ctx.strokeStyle = "rgba(17, 17, 17, 0.62)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, -size);
+    ctx.quadraticCurveTo(size * 0.24, -size * 0.2, size, 0);
+    ctx.quadraticCurveTo(size * 0.24, size * 0.2, 0, size);
+    ctx.quadraticCurveTo(-size * 0.24, size * 0.2, -size, 0);
+    ctx.quadraticCurveTo(-size * 0.24, -size * 0.2, 0, -size);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawSilverHeart(x, y, size, rotation = 0) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+    ctx.fillStyle = createSilverGradient(0, 0, size);
+    ctx.strokeStyle = "rgba(17, 17, 17, 0.58)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, size * 0.72);
+    ctx.bezierCurveTo(-size * 1.35, -size * 0.08, -size * 0.54, -size * 1.1, 0, -size * 0.48);
+    ctx.bezierCurveTo(size * 0.54, -size * 1.1, size * 1.35, -size * 0.08, 0, size * 0.72);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawSilverBlob(x, y, size, rotation = 0) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+    ctx.fillStyle = createSilverGradient(0, 0, size);
+    ctx.strokeStyle = "rgba(17, 17, 17, 0.46)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-size * 0.8, -size * 0.1);
+    ctx.bezierCurveTo(-size * 0.9, -size * 0.9, size * 0.15, -size * 0.95, size * 0.25, -size * 0.25);
+    ctx.bezierCurveTo(size * 1.15, -size * 0.38, size * 0.95, size * 0.82, size * 0.1, size * 0.58);
+    ctx.bezierCurveTo(-size * 0.4, size * 1.05, -size * 1.15, size * 0.55, -size * 0.8, -size * 0.1);
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
   function drawBackground() {
     ctx.fillStyle = "#d5ed2b";
     ctx.fillRect(0, 0, game.viewW, game.viewH);
@@ -611,15 +678,49 @@ function initWeddingGame() {
       if (x > game.levelW - 180) {
         continue;
       }
+      ctx.save();
+      ctx.globalAlpha = 0.28;
       ctx.fillStyle = color;
       ctx.fillRect(x, y, w, h);
-      ctx.strokeStyle = "#111111";
+      ctx.fillStyle = "rgba(17, 17, 17, 0.24)";
+      ctx.fillRect(x, y, w, h);
+      ctx.setLineDash([7, 6]);
+      ctx.strokeStyle = "rgba(17, 17, 17, 0.62)";
       ctx.strokeRect(x, y, w, h);
-      ctx.fillStyle = "rgba(17, 17, 17, 0.22)";
+      ctx.setLineDash([]);
+      ctx.fillStyle = "rgba(247, 240, 221, 0.42)";
       for (let n = x + 12; n < x + w - 10; n += 30) {
         ctx.fillRect(n, y + 8, 15, 4);
       }
+      ctx.restore();
     }
+
+    const decor = [
+      ["star", 440, 94, 12, -0.2],
+      ["heart", 780, 256, 13, 0.18],
+      ["blob", 1180, 146, 18, -0.28],
+      ["star", 1540, 312, 11, 0.3],
+      ["heart", 2050, 116, 12, -0.2],
+      ["blob", 2440, 246, 17, 0.24],
+      ["star", 2920, 332, 13, -0.14],
+      ["heart", 3400, 164, 12, 0.22],
+      ["blob", 3860, 290, 18, -0.18],
+      ["star", 4260, 106, 12, 0.28],
+    ];
+    ctx.globalAlpha = 0.82;
+    decor.forEach(([type, x, y, size, rotation]) => {
+      if (x < game.cameraX - 100 || x > game.cameraX + game.viewW + 100) {
+        return;
+      }
+      if (type === "heart") {
+        drawSilverHeart(x, y, size, rotation);
+      } else if (type === "blob") {
+        drawSilverBlob(x, y, size, rotation);
+      } else {
+        drawSilverStar(x, y, size, rotation);
+      }
+    });
+    ctx.globalAlpha = 1;
 
     const playheadX = game.player.x + game.player.w / 2;
     ctx.strokeStyle = "#ff35bc";
@@ -647,8 +748,10 @@ function initWeddingGame() {
     ctx.lineWidth = 2;
     ctx.fillRect(x, platform.y, platform.w, platform.h);
     ctx.strokeRect(x, platform.y, platform.w, platform.h);
-    ctx.fillStyle = "rgba(247, 240, 221, 0.28)";
-    ctx.fillRect(x + 4, platform.y + 4, platform.w - 8, 5);
+    ctx.fillStyle = "#f7f0dd";
+    ctx.fillRect(x + 4, platform.y + 4, platform.w - 8, 6);
+    ctx.fillStyle = "rgba(17, 17, 17, 0.12)";
+    ctx.fillRect(x + 4, platform.y + platform.h - 7, platform.w - 8, 3);
     ctx.fillStyle = "rgba(17, 17, 17, 0.2)";
     for (let noteX = x + 14; noteX < x + platform.w - 12; noteX += 34) {
       ctx.fillRect(noteX, platform.y + 8, 18, 5);
@@ -656,6 +759,8 @@ function initWeddingGame() {
     ctx.fillStyle = "#111111";
     ctx.font = "900 11px Arial";
     ctx.fillText(platform.label || "CLIP", x + 10, platform.y + Math.min(18, platform.h - 8));
+    ctx.font = "900 8px Arial";
+    ctx.fillText("ACTIVE", x + platform.w - 48, platform.y + platform.h - 7);
   }
 
   function drawItem(item) {
@@ -678,13 +783,37 @@ function initWeddingGame() {
     ctx.fillStyle = item.color;
 
     if (item.key === "bouquet") {
-      ctx.fillRect(-4, 4, 8, 24);
-      [-12, 0, 12].forEach((cx) => {
+      ctx.strokeStyle = "#2d6f34";
+      ctx.lineWidth = 3;
+      [-10, 0, 10].forEach((cx) => {
         ctx.beginPath();
-        ctx.arc(cx, -4, 9, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.moveTo(0, 22);
+        ctx.lineTo(cx * 0.7, -2);
         ctx.stroke();
       });
+      ctx.fillStyle = "#37bcc7";
+      ctx.beginPath();
+      ctx.ellipse(-9, 12, 9, 4, -0.65, 0, Math.PI * 2);
+      ctx.ellipse(9, 12, 9, 4, 0.65, 0, Math.PI * 2);
+      ctx.fill();
+      [
+        [-14, -4, "#ff35bc"],
+        [-4, -12, "#f7f0dd"],
+        [8, -9, "#ffea00"],
+        [15, -1, "#7fc8ff"],
+        [0, 0, "#ff6b00"],
+      ].forEach(([cx, cy, color]) => {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 8, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = "#111111";
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      });
+      ctx.fillStyle = "#f7f0dd";
+      ctx.fillRect(-8, 18, 16, 9);
+      ctx.strokeRect(-8, 18, 16, 9);
     } else if (item.key === "vows") {
       ctx.fillRect(-18, -12, 36, 24);
       ctx.beginPath();
@@ -693,9 +822,30 @@ function initWeddingGame() {
       ctx.lineTo(18, -12);
       ctx.stroke();
     } else if (item.key === "ring") {
+      [[-8, 1], [9, 1]].forEach(([cx, cy]) => {
+        const ringGradient = ctx.createLinearGradient(cx - 12, cy - 12, cx + 12, cy + 12);
+        ringGradient.addColorStop(0, "#fff6a5");
+        ringGradient.addColorStop(0.46, "#ffea00");
+        ringGradient.addColorStop(1, "#b98700");
+        ctx.fillStyle = ringGradient;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 13, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "#d5ed2b";
+        ctx.beginPath();
+        ctx.arc(cx, cy, 7, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      });
+      ctx.fillStyle = "#ffffff";
       ctx.beginPath();
-      ctx.arc(-8, 0, 10, 0, Math.PI * 2);
-      ctx.arc(8, 0, 10, 0, Math.PI * 2);
+      ctx.moveTo(0, -18);
+      ctx.lineTo(6, -10);
+      ctx.lineTo(0, -5);
+      ctx.lineTo(-6, -10);
+      ctx.closePath();
+      ctx.fill();
       ctx.stroke();
     } else if (item.key === "glass") {
       ctx.beginPath();
@@ -882,6 +1032,9 @@ function initWeddingGame() {
       ctx.fillStyle = "#111111";
       ctx.fillRect(person.w / 2 - 11, 11, 3, 2);
       ctx.fillRect(person.w / 2 + 8, 11, 3, 2);
+      ctx.beginPath();
+      ctx.arc(person.w / 2, 16, 4, 0.15, Math.PI - 0.15);
+      ctx.stroke();
     } else {
       ctx.fillStyle = "rgba(17, 17, 17, 0.2)";
       ctx.beginPath();
@@ -898,7 +1051,11 @@ function initWeddingGame() {
       ctx.fill();
       ctx.stroke();
       ctx.fillStyle = "#2d211a";
-      ctx.fillRect(person.w / 2 - 13, 0, 26, 10);
+      ctx.beginPath();
+      ctx.moveTo(person.w / 2 - 14, 8);
+      ctx.bezierCurveTo(person.w / 2 - 13, -4, person.w / 2 + 8, -5, person.w / 2 + 15, 7);
+      ctx.bezierCurveTo(person.w / 2 + 7, 3, person.w / 2 - 2, 7, person.w / 2 - 14, 8);
+      ctx.fill();
       ctx.fillStyle = "#111111";
       ctx.fillRect(3, 22, person.w - 6, 30);
       ctx.strokeRect(3, 22, person.w - 6, 30);
@@ -909,6 +1066,9 @@ function initWeddingGame() {
       ctx.fillStyle = "#111111";
       ctx.fillRect(person.w / 2 - 11, 10, 3, 2);
       ctx.fillRect(person.w / 2 + 8, 10, 3, 2);
+      ctx.beginPath();
+      ctx.arc(person.w / 2, 16, 4, 0.15, Math.PI - 0.15);
+      ctx.stroke();
     }
 
     ctx.restore();

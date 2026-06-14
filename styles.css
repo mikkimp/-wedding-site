@@ -167,7 +167,16 @@ img {
 
 .hero::after,
 .section::after {
-  content: none;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 6;
+  height: 18px;
+  pointer-events: none;
+  opacity: 0.34;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--screen-next));
 }
 
 .hero--pink {
@@ -259,7 +268,7 @@ img {
   font-family: var(--font-scorpius);
   font-size: clamp(5rem, 14vw, 13rem);
   font-style: normal;
-  line-height: 0.74;
+  line-height: 0.78;
   font-weight: 400;
   text-transform: none;
 }
@@ -273,13 +282,14 @@ img {
 
 .hero__name--misha {
   justify-self: start;
-  margin-left: clamp(0px, 2vw, 28px);
+  margin-left: clamp(20px, 5.2vw, 82px);
+  transform: translateY(clamp(-18px, -1.4vw, -8px));
 }
 
 .hero__name--polina {
   justify-self: end;
-  margin-top: clamp(-30px, -3vw, -14px);
-  margin-right: clamp(0px, 2.2vw, 34px);
+  margin-top: clamp(-18px, -1.5vw, -8px);
+  margin-right: clamp(16px, 5.4vw, 86px);
 }
 
 .hero__subtitle {
@@ -789,21 +799,23 @@ img {
 .section--grid {
   grid-template-columns: 1fr;
   align-content: center;
+  justify-items: start;
+  text-align: left;
 }
 
 .place {
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.56fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.68fr);
 }
 
 .section--grid h2 {
   margin-bottom: 0;
-  font-size: clamp(2.6rem, 4.8vw, 4.8rem);
+  font-size: clamp(2.2rem, 4vw, 4.1rem);
 }
 
 .timeline {
   list-style: none;
-  width: min(100%, 900px);
-  justify-self: end;
+  width: min(100%, 820px);
+  justify-self: start;
   margin: 0;
   padding: 0;
   border-top: 2px solid currentColor;
@@ -814,27 +826,27 @@ img {
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 20px;
   align-items: center;
-  min-height: clamp(56px, 9vh, 88px);
+  min-height: clamp(54px, 8vh, 76px);
   border-bottom: 2px solid currentColor;
 }
 
 .timeline time {
   color: currentColor;
   font-family: var(--font-narrow);
-  font-size: clamp(1.55rem, 3.4vw, 3rem);
+  font-size: clamp(1.45rem, 2.6vw, 2.45rem);
   font-weight: 900;
   line-height: 1;
 }
 
 .timeline span {
   font-family: var(--font-narrow);
-  font-size: clamp(1.05rem, 2.45vw, 2.15rem);
+  font-size: clamp(0.98rem, 1.9vw, 1.75rem);
   font-weight: 900;
   line-height: 1.05;
 }
 
 .countdown {
-  width: min(100%, 760px);
+  width: min(100%, 680px);
   margin: 16px 0 24px;
   border: 2px solid currentColor;
   padding: 12px;
@@ -897,10 +909,10 @@ img {
   min-height: min(58svh, 470px);
   border: 2px solid currentColor;
   background: var(--screen-paper-soft);
-  padding: clamp(18px, 3vw, 34px);
+  padding: clamp(14px, 2.2vw, 24px);
   display: grid;
   align-content: center;
-  gap: clamp(18px, 3vw, 28px);
+  gap: clamp(10px, 2vw, 16px);
 }
 
 .route-card__kicker {
@@ -950,6 +962,142 @@ img {
   font-size: clamp(0.86rem, 1.2vw, 1rem);
   line-height: 1.45;
   font-weight: 600;
+}
+
+.route-map {
+  margin: 0;
+}
+
+.route-map svg {
+  width: 100%;
+  aspect-ratio: 1.1;
+  border: 2px solid currentColor;
+  background: #d6ec35;
+}
+
+.route-map figcaption {
+  margin: 8px 0 0;
+  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.route-map__river {
+  fill: none;
+  stroke: #7fc8ff;
+  stroke-width: 26;
+  stroke-linecap: round;
+  opacity: 0.82;
+}
+
+.route-map__ekad {
+  fill: none;
+  stroke: #7c8a99;
+  stroke-width: 54;
+  stroke-linecap: round;
+}
+
+.route-map__ekad-label,
+.route-map text {
+  fill: #111111;
+  font-family: var(--font-block);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.route-map__ekad-label {
+  fill: rgba(17, 17, 17, 0.58);
+  font-size: 24px;
+}
+
+.route-map__road {
+  fill: none;
+  stroke: #f7f0dd;
+  stroke-width: 42;
+  stroke-linecap: round;
+}
+
+.route-map__path-shadow {
+  fill: none;
+  stroke: rgba(17, 17, 17, 0.18);
+  stroke-width: 22;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+}
+
+.route-map__path {
+  fill: none;
+  stroke: #ff35bc;
+  stroke-width: 16;
+  stroke-linecap: round;
+  marker-end: url("#route-arrow");
+}
+
+.route-map__trees circle {
+  fill: #6fba38;
+}
+
+.route-map__trees rect {
+  fill: #8b5a2b;
+}
+
+.route-map__gate rect {
+  fill: #ff6b00;
+  stroke: #f7f0dd;
+  stroke-width: 4;
+}
+
+.route-map__gate text {
+  fill: #f7f0dd;
+  font-size: 22px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.route-map__parking rect {
+  fill: #6654b8;
+  stroke: #f7f0dd;
+  stroke-width: 4;
+}
+
+.route-map__parking circle {
+  fill: #f7f0dd;
+  stroke: #6654b8;
+  stroke-width: 6;
+}
+
+.route-map__parking text {
+  fill: #ffffff;
+  font-size: 18px;
+}
+
+.route-map__parking text:first-of-type {
+  fill: #6654b8;
+  font-size: 30px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.route-map__glamping rect,
+.route-map__glamping circle {
+  fill: #f7f0dd;
+  stroke: #ff35bc;
+  stroke-width: 4;
+}
+
+.route-map__glamping text {
+  fill: #ff35bc;
+  font-size: 19px;
+}
+
+.route-map__glamping text:last-child {
+  font-size: 13px;
+}
+
+.route-map__tents path {
+  fill: #f7f0dd;
+  stroke: #9b3600;
+  stroke-width: 3;
 }
 
 .map-poster {
@@ -1627,12 +1775,13 @@ img {
   }
 
   .hero__name--misha {
-    margin-left: 0;
+    margin-left: 6px;
+    transform: translateY(-8px);
   }
 
   .hero__name--polina {
-    margin-top: -8px;
-    margin-right: 0;
+    margin-top: -2px;
+    margin-right: 6px;
   }
 
   .hero__topline {

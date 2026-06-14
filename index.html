@@ -298,13 +298,62 @@
             <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <div class="route-card" aria-label="Как проехать">
-          <p class="route-card__kicker">как найти</p>
-          <ol>
-            <li><span>1</span>Основной въезд в ГЛК</li>
-            <li><span>2</span>Дальше по внутренней дороге</li>
-            <li><span>3</span>До глэмпинга с домиками</li>
-          </ol>
+        <div class="route-card" aria-label="Схема проезда к глэмпингу">
+          <p class="route-card__kicker">схема проезда</p>
+          <figure class="route-map">
+            <svg viewBox="0 0 620 560" role="img" aria-labelledby="route-map-title route-map-desc">
+              <title id="route-map-title">Схема проезда до глэмпинга на Горе Лиственной</title>
+              <desc id="route-map-desc">
+                От ЕКАД заехать через КПП, ехать по внутренней дороге мимо парковки до глэмпинга.
+              </desc>
+              <defs>
+                <marker id="route-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff35bc"></path>
+                </marker>
+              </defs>
+              <rect width="620" height="560" rx="22" fill="#d6ec35"></rect>
+              <path class="route-map__river" d="M44 68 C138 24 178 108 260 70 C336 36 374 48 440 94 C504 138 562 78 620 96"></path>
+              <path class="route-map__ekad" d="M-18 500 C122 468 226 488 338 526 C440 562 520 552 650 526"></path>
+              <text class="route-map__ekad-label" x="122" y="520" transform="rotate(12 122 520)">ЕКАД</text>
+              <path class="route-map__road" d="M306 488 C314 428 284 390 316 336 C350 280 418 270 414 212 C410 164 452 148 508 118"></path>
+              <path class="route-map__path-shadow" d="M306 488 C314 428 284 390 316 336 C350 280 418 270 414 212 C410 164 452 148 508 118"></path>
+              <path class="route-map__path" d="M306 488 C314 428 284 390 316 336 C350 280 418 270 414 212 C410 164 452 148 508 118"></path>
+              <g class="route-map__trees">
+                <circle cx="86" cy="196" r="16"></circle><rect x="82" y="208" width="8" height="18"></rect>
+                <circle cx="154" cy="164" r="14"></circle><rect x="151" y="175" width="7" height="16"></rect>
+                <circle cx="210" cy="292" r="18"></circle><rect x="206" y="306" width="8" height="18"></rect>
+                <circle cx="116" cy="394" r="17"></circle><rect x="112" y="407" width="8" height="18"></rect>
+                <circle cx="494" cy="272" r="16"></circle><rect x="490" y="284" width="8" height="18"></rect>
+                <circle cx="540" cy="378" r="18"></circle><rect x="536" y="392" width="8" height="18"></rect>
+                <circle cx="468" cy="444" r="15"></circle><rect x="465" y="456" width="7" height="16"></rect>
+                <circle cx="246" cy="104" r="15"></circle><rect x="242" y="116" width="8" height="17"></rect>
+              </g>
+              <g class="route-map__gate">
+                <rect x="236" y="430" width="64" height="38" rx="8"></rect>
+                <text x="268" y="454">КПП</text>
+              </g>
+              <g class="route-map__parking">
+                <rect x="336" y="152" width="112" height="44" rx="10"></rect>
+                <circle cx="352" cy="174" r="24"></circle>
+                <text x="352" y="182">P</text>
+                <text x="402" y="181">парковка</text>
+              </g>
+              <g class="route-map__glamping">
+                <rect x="420" y="54" width="164" height="70" rx="14"></rect>
+                <circle cx="426" cy="88" r="34"></circle>
+                <text x="486" y="85">Глэмпинг</text>
+                <text x="486" y="108">свадьба здесь</text>
+              </g>
+              <g class="route-map__tents">
+                <path d="M324 98 L350 52 L376 98 Z"></path>
+                <path d="M382 116 L408 70 L434 116 Z"></path>
+                <path d="M444 126 L470 82 L496 126 Z"></path>
+              </g>
+            </svg>
+            <figcaption>
+              Схема условная: после основного въезда держимся внутренней дороги до глэмпинга с домиками.
+            </figcaption>
+          </figure>
           <p class="route-card__note">На месте будут указатели. Если потеряетесь, напишите нам.</p>
         </div>
       </section>
