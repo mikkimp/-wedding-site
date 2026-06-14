@@ -1,5 +1,6 @@
 const RSVP_ENDPOINT = "";
 const EXTERNAL_FORM_URL = "";
+const LOCAL_RSVP_STORAGE_KEY = "misha-polina-rsvp-test-submissions";
 const hero = document.querySelector(".hero");
 const audio = document.querySelector("[data-hero-audio]");
 const audioToggle = document.querySelector("[data-audio-toggle]");
@@ -95,6 +96,24 @@ function buildAnswerText(formData) {
   ].join("\n");
 }
 
+function buildAnswerPayload(formData) {
+  return {
+    name: formData.get("name") || "",
+    attendance: formData.get("attendance") || "",
+    food: formData.get("food") || "",
+    alcohol: formData.get("alcohol") || "",
+    comment: formData.get("comment") || "",
+    submittedAt: new Date().toISOString(),
+  };
+}
+
+function saveLocalTestAnswer(payload) {
+  const previous = JSON.parse(localStorage.getItem(LOCAL_RSVP_STORAGE_KEY) || "[]");
+  previous.push(payload);
+  localStorage.setItem(LOCAL_RSVP_STORAGE_KEY, JSON.stringify(previous));
+  return previous.length;
+}
+
 async function copyAnswer(text) {
   if (!navigator.clipboard) {
     return false;
@@ -134,11 +153,13 @@ if (form && statusNode) {
         return;
       }
 
+      const payload = buildAnswerPayload(formData);
       const answerText = buildAnswerText(formData);
+      const testNumber = saveLocalTestAnswer(payload);
       const copied = await copyAnswer(answerText);
       statusNode.textContent = copied
-        ? "Ответ пока скопирован в буфер. Когда подключим анкету, эта кнопка будет отправлять его напрямую."
-        : "Ответ собран. Подключите ссылку анкеты в script.js перед публикацией.";
+        ? `Тестовый ответ #${testNumber} сохранен в браузере и скопирован в буфер.`
+        : `Тестовый ответ #${testNumber} сохранен в браузере.`;
     } catch (error) {
       statusNode.textContent = "Не получилось отправить. Попробуйте еще раз или напишите нам напрямую.";
     } finally {

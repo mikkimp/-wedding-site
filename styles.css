@@ -477,30 +477,37 @@ img {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: clamp(8px, 1.5vw, 20px);
   width: max-content;
+  --midi-gap: clamp(8px, 1.5vw, 20px);
   --lane-offset: 0px;
-  transform: translateX(calc(-50% + var(--lane-offset)));
+  transform: translateX(var(--lane-offset));
   will-change: transform;
 }
 
+.midi-road__phrase {
+  display: flex;
+  align-items: center;
+  gap: var(--midi-gap);
+  padding-right: var(--midi-gap);
+}
+
 .midi-road__lane:nth-child(2) {
-  --lane-offset: clamp(20px, 5vw, 58px);
+  --lane-offset: clamp(-58px, -4vw, -20px);
 }
 
 .midi-road__lane:nth-child(3) {
-  --lane-offset: clamp(-48px, -4vw, -10px);
+  --lane-offset: clamp(-18px, -2vw, -8px);
 }
 
 .midi-road__lane:nth-child(4) {
-  --lane-offset: clamp(54px, 8vw, 92px);
+  --lane-offset: clamp(-92px, -6vw, -54px);
 }
 
 .midi-road__lane:nth-child(5) {
-  --lane-offset: clamp(-16px, -2vw, -8px);
+  --lane-offset: clamp(-42px, -3vw, -16px);
 }
 
-.midi-road__lane span {
+.midi-road__phrase span {
   display: block;
   width: var(--w);
   height: clamp(4px, 0.58vw, 7px);
@@ -509,24 +516,12 @@ img {
 }
 
 .hero.is-midi-active .midi-road__lane {
-  animation: midi-scroll 13s linear infinite;
+  animation: midi-scroll 16s linear infinite;
   animation-play-state: paused;
 }
 
-.hero.is-midi-active .midi-road__lane:nth-child(2) {
-  animation-duration: 11.5s;
-}
-
-.hero.is-midi-active .midi-road__lane:nth-child(3) {
-  animation-duration: 14.5s;
-}
-
-.hero.is-midi-active .midi-road__lane:nth-child(4) {
-  animation-duration: 12s;
-}
-
-.hero.is-midi-active .midi-road__lane:nth-child(5) {
-  animation-duration: 15s;
+.hero.is-midi-active .midi-road__lane:nth-child(even) {
+  animation-delay: -8s;
 }
 
 .hero.is-playing .midi-road__lane {
@@ -535,11 +530,11 @@ img {
 
 @keyframes midi-scroll {
   from {
-    transform: translateX(calc(-50% + var(--lane-offset)));
+    transform: translateX(var(--lane-offset));
   }
 
   to {
-    transform: translateX(var(--lane-offset));
+    transform: translateX(calc(-50% + var(--lane-offset)));
   }
 }
 
@@ -786,8 +781,7 @@ img {
 }
 
 .section--grid,
-.place,
-.rsvp {
+.place {
   display: grid;
   grid-template-columns: minmax(220px, 0.38fr) minmax(0, 1fr);
   gap: clamp(28px, 6vw, 86px);
@@ -797,6 +791,10 @@ img {
 .section--grid {
   grid-template-columns: 1fr;
   align-content: center;
+}
+
+.place {
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.62fr);
 }
 
 .section--grid h2 {
@@ -891,6 +889,7 @@ img {
   line-height: 1.04;
   font-style: normal;
   text-transform: none;
+  white-space: nowrap;
 }
 
 .route-card {
@@ -1105,6 +1104,7 @@ img {
   grid-template-columns: 250px minmax(0, 1fr);
   gap: clamp(28px, 5vw, 64px);
   align-items: center;
+  align-content: center;
 }
 
 .notes h2 {
@@ -1118,6 +1118,7 @@ img {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
+  transform: translateY(-18px);
 }
 
 .note {
@@ -1186,7 +1187,12 @@ img {
 }
 
 .rsvp {
+  display: grid;
+  grid-template-columns: minmax(0, 860px);
+  justify-content: center;
+  align-content: center;
   align-items: start;
+  gap: 18px;
 }
 
 .rsvp__head p:not(.eyebrow) {
@@ -1197,8 +1203,10 @@ img {
 }
 
 .rsvp__head {
-  grid-column: 2;
+  grid-column: 1;
+  justify-self: center;
   max-width: 660px;
+  text-align: center;
 }
 
 .rsvp__head h2 {
@@ -1263,7 +1271,7 @@ img {
 }
 
 .rsvp-form {
-  grid-column: 1 / -1;
+  grid-column: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
@@ -1341,7 +1349,8 @@ img {
   position: relative;
   z-index: 2;
   grid-column: 1;
-  align-self: end;
+  justify-self: center;
+  align-self: start;
   width: 164px;
   border: var(--line);
   background: var(--green);
@@ -1585,7 +1594,7 @@ img {
     gap: 10px;
   }
 
-  .midi-road__lane span {
+  .midi-road__phrase span {
     height: 5px;
   }
 
@@ -1616,6 +1625,7 @@ img {
   .place__copy h2 {
     font-size: clamp(1.45rem, 7vw, 2.45rem);
     line-height: 1.04;
+    white-space: normal;
   }
 
   .notes h2 {
@@ -1709,6 +1719,7 @@ img {
 
   .notes__list {
     grid-template-columns: 1fr;
+    transform: none;
   }
 
   .note {
