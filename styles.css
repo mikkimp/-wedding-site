@@ -1398,7 +1398,6 @@ img {
   min-height: 430px;
   background: #d5ed2b;
   image-rendering: auto;
-  touch-action: none;
 }
 
 .game__hud {
@@ -1677,14 +1676,13 @@ img {
   min-width: 116px;
   min-height: 44px;
   padding: 10px 16px;
-  touch-action: manipulation;
 }
 
 .game__controls {
   position: absolute;
   left: 50%;
   bottom: 14px;
-  z-index: 4;
+  z-index: 6;
   display: none;
   grid-template-columns: repeat(3, 54px);
   gap: 8px;
@@ -1696,9 +1694,6 @@ img {
   height: 44px;
   background: rgba(247, 240, 221, 0.86);
   font-size: 1.15rem;
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 .game__stage.is-running:not(.is-finished) .game__controls {
@@ -2149,6 +2144,10 @@ img {
   .game__canvas {
     height: 360px;
     min-height: 360px;
+  }
+
+  .game__controls {
+    display: grid;
   }
 
   .game__stage.is-finished .game__controls {
