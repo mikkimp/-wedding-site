@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Печатное приглашение — Миша и Полина</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="print-body">
+    <main class="print-sheet" aria-label="Бумажное приглашение">
+      <section class="print-card print-card--front" aria-label="Лицевая сторона">
+        <div class="print-card__meta">
+          <span>19.08</span>
+          <span>15:00</span>
+          <span>2026</span>
+        </div>
+        <h1>Misha<br>Polina</h1>
+        <div class="print-dots" aria-hidden="true"></div>
+      </section>
+
+      <section class="print-card print-card--back" aria-label="Оборотная сторона">
+        <div class="print-letter">
+          <p class="print-plus" aria-hidden="true">+</p>
+          <h2>Дорогой <span data-guest-name>гость</span>!</h2>
+          <p>
+            Это — Миша и Полина. Мы будем очень рады видеть тебя на нашей
+            свадьбе.
+          </p>
+          <p>
+            Будет немного волнения, много объятий, вкусная еда, веселые танцы,
+            разговоры на свежем воздухе и тот самый летний вечер, который
+            хочется запомнить надолго.
+          </p>
+
+          <div class="print-columns">
+            <div>
+              <h3>Время</h3>
+              <p>Сбор гостей — 15:00</p>
+              <p>Церемония — 16:00</p>
+              <p>Банкет — 17:00</p>
+            </div>
+            <div>
+              <h3>Место</h3>
+              <p>ГЛК «Гора Лиственная»</p>
+              <p>Екатеринбург, Кольцевая автодорога, 23-й километр</p>
+            </div>
+          </div>
+
+          <div class="print-rsvp">
+            <p>Пожалуйста, подтверди участие до 15.07.2026.</p>
+            <img src="assets/qr-placeholder.svg" alt="Место для QR-кода анкеты">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

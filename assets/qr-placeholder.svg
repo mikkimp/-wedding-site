@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Место для QR-кода">
+  <rect width="96" height="96" fill="#f7f0dd"/>
+  <rect x="4" y="4" width="24" height="24" fill="#111"/>
+  <rect x="10" y="10" width="12" height="12" fill="#f7f0dd"/>
+  <rect x="68" y="4" width="24" height="24" fill="#111"/>
+  <rect x="74" y="10" width="12" height="12" fill="#f7f0dd"/>
+  <rect x="4" y="68" width="24" height="24" fill="#111"/>
+  <rect x="10" y="74" width="12" height="12" fill="#f7f0dd"/>
+  <path fill="#111" d="M36 6h8v8h-8zM50 6h6v6h-6zM36 20h18v6H36zM62 34h8v8h-8zM76 34h8v6h-8zM34 34h18v8H34zM38 50h8v8h-8zM52 48h10v6H52zM68 50h8v14h-8zM84 50h6v8h-6zM34 64h8v8h-8zM48 64h16v8H48zM78 70h12v8H78zM36 80h8v8h-8zM52 80h8v10h-8zM66 82h8v8h-8z"/>
+  <rect x="35" y="35" width="26" height="26" fill="#ff35bc"/>
+  <text x="48" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#111">QR</text>
+</svg>

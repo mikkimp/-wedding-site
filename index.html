@@ -1,92 +1,545 @@
 <!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Миша и Полина — 19.08.2026</title>
-  <meta name="description" content="Сайт-приглашение на свадьбу Миши и Полины">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="site-header">
-    <a class="logo" href="#top">Миша × Полина</a>
-    <button class="menu-button" id="menuButton" aria-label="Открыть меню" aria-expanded="false">Меню</button>
-    <nav class="nav" id="nav">
-      <a href="#date">Дата</a>
-      <a href="#place">Место</a>
-      <a href="#timing">Тайминг</a>
-      <a href="#dresscode">Дресс-код</a>
-      <a href="#rsvp">RSVP</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Приглашение на свадьбу Миши и Полины 19 августа 2026 года на Горе Лиственной."
+    >
+    <title>Миша и Полина — 19 августа 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#invite">К содержанию</a>
 
-  <main id="top">
-    <section class="hero">
-      <p class="eyebrow">сайт-приглашение</p>
-      <h1>Миша<br>и Полина</h1>
-      <p class="hero-date" id="date">19 августа 2026</p>
-      <p class="hero-text">
-        Мы женимся и будем рады видеть тебя рядом в этот день.
-      </p>
-      <a class="button" href="#rsvp">Подтвердить участие</a>
-    </section>
+    <header class="site-bar" aria-label="Навигация">
+      <a class="site-mark" href="#top" aria-label="Миша и Полина">M+P</a>
+      <nav class="site-nav" aria-label="Разделы приглашения">
+        <a href="#time">Время</a>
+        <a href="#place">Место</a>
+        <a href="#notes">Важно</a>
+        <a href="#game">Игра</a>
+        <a href="#rsvp">Анкета</a>
+      </nav>
+    </header>
 
-    <section class="card grid-card" id="place">
-      <div>
-        <p class="section-label">место</p>
-        <h2>ГЛК «Гора Лиственная»</h2>
-      </div>
-      <div>
-        <p>Екатеринбург, КАД, 23-й км, 1</p>
-        <p class="muted">Здесь позже будет ссылка на карту и точную метку.</p>
-      </div>
-    </section>
+    <main id="top">
+      <section class="hero hero--pink" aria-labelledby="hero-title">
+        <div class="hero__grain" aria-hidden="true"></div>
 
-    <section class="card" id="timing">
-      <p class="section-label">тайминг</p>
-      <div class="timeline">
-        <div><span>15:00</span><p>Сбор гостей</p></div>
-        <div><span>16:00</span><p>Церемония</p></div>
-        <div><span>17:00</span><p>Ужин, тосты и танцы</p></div>
-        <div><span>23:00</span><p>Завершение вечера</p></div>
-      </div>
-    </section>
+        <div class="hero__poster">
+          <div class="hero__topline" aria-label="Главная информация">
+            <span>19.08</span>
+            <span>15:00</span>
+            <span>2026</span>
+          </div>
 
-    <section class="card color-block" id="dresscode">
-      <p class="section-label">дресс-код</p>
-      <h2>Палитра вечера</h2>
-      <p>
-        Этот блок пока можно заменить на описание цветов, примеры образов
-        или короткую просьбу к гостям.
-      </p>
-    </section>
+          <div class="hero__silver-marks" aria-hidden="true">
+            <img src="assets/silver-spark.svg" alt="">
+            <img src="assets/silver-heart.svg" alt="">
+            <img src="assets/silver-spark.svg" alt="">
+            <img src="assets/silver-heart.svg" alt="">
+            <img src="assets/silver-spark.svg" alt="">
+            <img src="assets/silver-heart.svg" alt="">
+            <img src="assets/silver-spark.svg" alt="">
+            <img src="assets/silver-heart.svg" alt="">
+            <img src="assets/silver-spark.svg" alt="">
+            <img src="assets/silver-heart.svg" alt="">
+          </div>
 
-    <section class="card" id="wishes">
-      <p class="section-label">пожелания</p>
-      <h2>Пока заглушка</h2>
-      <p>
-        Здесь можно написать про цветы, подарки, трансфер, детей,
-        фотографии или другие важные детали.
-      </p>
-    </section>
+          <div class="hero__copy">
+            <h1 id="hero-title" class="hero__title">
+              <span class="hero__name hero__name--misha">Misha</span>
+              <span class="hero__name hero__name--polina">Polina</span>
+            </h1>
+            <p class="hero__subtitle">свадебное приглашение</p>
+          </div>
 
-    <section class="card rsvp" id="rsvp">
-      <p class="section-label">rsvp</p>
-      <h2>Подтвердить участие</h2>
-      <p>
-        Позже эта кнопка будет вести на Google Form, Яндекс Форму
-        или другую анкету для гостей.
-      </p>
-      <a class="button secondary" href="https://forms.gle/" target="_blank" rel="noopener">
-        Кнопка-заглушка
-      </a>
-    </section>
-  </main>
+          <div class="audio-plugin" aria-label="Музыкальный плеер">
+            <button class="audio-plugin__button" type="button" data-audio-toggle aria-pressed="false">
+              <span class="audio-plugin__icon" aria-hidden="true"></span>
+              <span data-audio-label>Play</span>
+            </button>
+            <audio data-hero-audio src="assets/zuki.mp3" preload="metadata"></audio>
+          </div>
 
-  <footer class="footer">
-    <p>Миша и Полина · 19.08.2026</p>
-  </footer>
+          <div class="hero__midi-road midi-road" aria-hidden="true">
+            <div class="midi-road__track">
+              <div class="midi-road__lane">
+                <div class="midi-road__phrase">
+                  <span style="--w: 34px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 44px"></span>
+                  <span style="--w: 26px"></span>
+                  <span style="--w: 56px"></span>
+                  <span style="--w: 22px"></span>
+                  <span style="--w: 72px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 42px"></span>
+                </div>
+                <div class="midi-road__phrase" aria-hidden="true">
+                  <span style="--w: 34px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 44px"></span>
+                  <span style="--w: 26px"></span>
+                  <span style="--w: 56px"></span>
+                  <span style="--w: 22px"></span>
+                  <span style="--w: 72px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 42px"></span>
+                </div>
+              </div>
+              <div class="midi-road__lane">
+                <div class="midi-road__phrase">
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 62px"></span>
+                  <span style="--w: 28px"></span>
+                  <span style="--w: 36px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 50px"></span>
+                  <span style="--w: 24px"></span>
+                  <span style="--w: 68px"></span>
+                  <span style="--w: 30px"></span>
+                </div>
+                <div class="midi-road__phrase" aria-hidden="true">
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 62px"></span>
+                  <span style="--w: 28px"></span>
+                  <span style="--w: 36px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 50px"></span>
+                  <span style="--w: 24px"></span>
+                  <span style="--w: 68px"></span>
+                  <span style="--w: 30px"></span>
+                </div>
+              </div>
+              <div class="midi-road__lane">
+                <div class="midi-road__phrase">
+                  <span style="--w: 48px"></span>
+                  <span style="--w: 24px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 58px"></span>
+                  <span style="--w: 30px"></span>
+                  <span style="--w: 40px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 78px"></span>
+                  <span style="--w: 26px"></span>
+                </div>
+                <div class="midi-road__phrase" aria-hidden="true">
+                  <span style="--w: 48px"></span>
+                  <span style="--w: 24px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 58px"></span>
+                  <span style="--w: 30px"></span>
+                  <span style="--w: 40px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 78px"></span>
+                  <span style="--w: 26px"></span>
+                </div>
+              </div>
+              <div class="midi-road__lane">
+                <div class="midi-road__phrase">
+                  <span style="--w: 26px"></span>
+                  <span style="--w: 54px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 32px"></span>
+                  <span style="--w: 74px"></span>
+                  <span style="--w: 22px"></span>
+                  <span style="--w: 46px"></span>
+                  <span style="--w: 28px"></span>
+                </div>
+                <div class="midi-road__phrase" aria-hidden="true">
+                  <span style="--w: 26px"></span>
+                  <span style="--w: 54px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 32px"></span>
+                  <span style="--w: 74px"></span>
+                  <span style="--w: 22px"></span>
+                  <span style="--w: 46px"></span>
+                  <span style="--w: 28px"></span>
+                </div>
+              </div>
+              <div class="midi-road__lane">
+                <div class="midi-road__phrase">
+                  <span style="--w: 64px"></span>
+                  <span style="--w: 22px"></span>
+                  <span style="--w: 34px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 52px"></span>
+                  <span style="--w: 38px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 84px"></span>
+                </div>
+                <div class="midi-road__phrase" aria-hidden="true">
+                  <span style="--w: 64px"></span>
+                  <span style="--w: 22px"></span>
+                  <span style="--w: 34px"></span>
+                  <span style="--w: 18px"></span>
+                  <span style="--w: 52px"></span>
+                  <span style="--w: 38px"></span>
+                  <span style="--w: 20px"></span>
+                  <span style="--w: 84px"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <script src="script.js"></script>
-</body>
+      <section class="intro section screen--lime" id="invite" aria-labelledby="invite-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div class="intro__text">
+          <h2 id="invite-title">Дорогой <span data-guest-name>гость</span>!</h2>
+          <div class="intro__body">
+            <p>
+              Это — Миша и Полина.
+            </p>
+            <p>
+              Мы приглашаем тебя на нашу свадьбу!
+            </p>
+            <p>
+              Нас ждёт тёплый летний вечер: встреча с близкими, вкусная еда,
+              весёлые танцы, разговоры на свежем воздухе и много радостных
+              моментов.
+            </p>
+          </div>
+        </div>
+        <figure class="intro__photo">
+          <img src="assets/misha-polina-walk.jpg" alt="Миша и Полина идут вместе и держатся за руки">
+        </figure>
+      </section>
+
+      <section class="section section--grid screen--violet" id="time" aria-labelledby="time-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div>
+          <h2 id="time-title">Время</h2>
+          <div class="countdown" aria-label="Сколько осталось до свадьбы">
+            <p>до свадьбы</p>
+            <div class="countdown__grid">
+              <span><strong id="cd-days">0</strong>дней</span>
+              <span><strong id="cd-hours">00</strong>часов</span>
+              <span><strong id="cd-minutes">00</strong>минут</span>
+            </div>
+          </div>
+        </div>
+        <ol class="timeline" aria-label="Время">
+          <li>
+            <span>Сбор гостей</span>
+            <time datetime="2026-08-19T15:00">15:00</time>
+          </li>
+          <li>
+            <span>Церемония</span>
+            <time datetime="2026-08-19T16:00">16:00</time>
+          </li>
+          <li>
+            <span>Банкет</span>
+            <time datetime="2026-08-19T17:00">17:00</time>
+          </li>
+          <li>
+            <span>Концерт</span>
+            <time datetime="2026-08-19T20:00">20:00</time>
+          </li>
+          <li>
+            <span>Танцы</span>
+            <time datetime="2026-08-19T22:00">22:00</time>
+          </li>
+        </ol>
+      </section>
+
+      <section class="place section screen--orange" id="place" aria-labelledby="place-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div class="place__copy">
+          <p class="eyebrow">место</p>
+          <h2 id="place-title">ГЛК «Гора Лиственная»</h2>
+          <p>
+            Екатеринбург, Кольцевая автодорога, 23-й километр. Заезжаем через
+            основной въезд комплекса и едем дальше по дороге до глэмпинга с
+            домиками.
+          </p>
+          <a
+            class="button-link"
+            href="https://yandex.ru/maps/?ll=60.738538%2C56.939468&z=15&pt=60.738538%2C56.939468,pm2rdm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Открыть карту
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="route-card" aria-label="Схема проезда к глэмпингу">
+          <p class="route-card__kicker">схема проезда</p>
+          <figure class="route-map">
+            <svg viewBox="0 0 620 560" role="img" aria-labelledby="route-map-title route-map-desc">
+              <title id="route-map-title">Схема проезда до глэмпинга на Горе Лиственной</title>
+              <desc id="route-map-desc">
+                От ЕКАД заехать через КПП, ехать по внутренней дороге мимо парковки до глэмпинга.
+              </desc>
+              <defs>
+                <marker id="route-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff35bc"></path>
+                </marker>
+              </defs>
+              <rect width="620" height="560" rx="22" fill="#d6ec35"></rect>
+              <path class="route-map__river" d="M44 68 C138 24 178 108 260 70 C336 36 374 48 440 94 C504 138 562 78 620 96"></path>
+              <path class="route-map__ekad" d="M-18 500 C122 468 226 488 338 526 C440 562 520 552 650 526"></path>
+              <text class="route-map__ekad-label" x="122" y="520" transform="rotate(12 122 520)">ЕКАД</text>
+              <path class="route-map__road" d="M306 488 C314 428 284 390 316 336 C350 280 418 270 414 212 C410 164 452 148 508 118"></path>
+              <path class="route-map__path-shadow" d="M306 488 C314 428 284 390 316 336 C350 280 418 270 414 212 C410 164 452 148 508 118"></path>
+              <path class="route-map__path" d="M306 488 C314 428 284 390 316 336 C350 280 418 270 414 212 C410 164 452 148 508 118"></path>
+              <g class="route-map__trees">
+                <circle cx="86" cy="196" r="16"></circle><rect x="82" y="208" width="8" height="18"></rect>
+                <circle cx="154" cy="164" r="14"></circle><rect x="151" y="175" width="7" height="16"></rect>
+                <circle cx="210" cy="292" r="18"></circle><rect x="206" y="306" width="8" height="18"></rect>
+                <circle cx="116" cy="394" r="17"></circle><rect x="112" y="407" width="8" height="18"></rect>
+                <circle cx="494" cy="272" r="16"></circle><rect x="490" y="284" width="8" height="18"></rect>
+                <circle cx="540" cy="378" r="18"></circle><rect x="536" y="392" width="8" height="18"></rect>
+                <circle cx="468" cy="444" r="15"></circle><rect x="465" y="456" width="7" height="16"></rect>
+                <circle cx="246" cy="104" r="15"></circle><rect x="242" y="116" width="8" height="17"></rect>
+              </g>
+              <g class="route-map__gate">
+                <rect x="236" y="430" width="64" height="38" rx="8"></rect>
+                <text x="268" y="454">КПП</text>
+              </g>
+              <g class="route-map__parking">
+                <rect x="336" y="152" width="112" height="44" rx="10"></rect>
+                <circle cx="352" cy="174" r="24"></circle>
+                <text x="352" y="182">P</text>
+                <text x="402" y="181">парковка</text>
+              </g>
+              <g class="route-map__glamping">
+                <rect x="420" y="54" width="164" height="70" rx="14"></rect>
+                <circle cx="426" cy="88" r="34"></circle>
+                <text x="486" y="85">Глэмпинг</text>
+                <text x="486" y="108">свадьба здесь</text>
+              </g>
+              <g class="route-map__tents">
+                <path d="M324 98 L350 52 L376 98 Z"></path>
+                <path d="M382 116 L408 70 L434 116 Z"></path>
+                <path d="M444 126 L470 82 L496 126 Z"></path>
+              </g>
+            </svg>
+            <figcaption>
+              Схема условная: после основного въезда держимся внутренней дороги до глэмпинга с домиками.
+            </figcaption>
+          </figure>
+          <p class="route-card__note">На месте будут указатели. Если потеряетесь, напишите нам.</p>
+        </div>
+      </section>
+
+      <section class="notes section screen--blue" id="notes" aria-labelledby="notes-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div>
+          <p class="eyebrow">важное</p>
+          <h2 id="notes-title">Для гостей</h2>
+        </div>
+        <div class="notes__list">
+          <article class="note note--dress">
+            <h3>Одежда</h3>
+            <p>
+              Дресс-кода нет. Приходите в том, в чем красиво и удобно. Если
+              хочется попасть в настроение дня: лайм, фуксия, апельсин,
+              голубой, фиолетовый, бирюза или серебристый акцент.
+            </p>
+            <div class="swatches" aria-label="Цвета настроения">
+              <span style="--swatch: #c8e000"></span>
+              <span style="--swatch: #ff35bc"></span>
+              <span style="--swatch: #ff7a24"></span>
+              <span style="--swatch: #7fc8ff"></span>
+              <span style="--swatch: #6654b8"></span>
+              <span style="--swatch: #37bcc7"></span>
+              <span style="--swatch: #ffea00"></span>
+              <span style="--swatch: #c7ccd2"></span>
+            </div>
+          </article>
+          <article class="note note--road">
+            <h3>Дорога</h3>
+            <p>
+              На площадке есть парковка. Такси до места приезжает, а обратный
+              путь поможем организовать ближе к дате.
+            </p>
+          </article>
+          <article class="note note--weather">
+            <h3>Погода</h3>
+            <p>
+              Мы подготовим зонты и постараемся закрыть бытовые мелочи. На
+              вечер за городом лучше взять легкий слой потеплее.
+            </p>
+          </article>
+          <article class="note note--gifts">
+            <h3>Цветы и подарки</h3>
+            <p>
+              Цветы только если совсем без этого никак; лучше не цветы.
+              Бутылочки тоже не нужны. Подарок удобнее в формате конверта.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="game section screen--lime" id="game" aria-labelledby="game-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div class="game__copy">
+          <p class="eyebrow">игра</p>
+          <h2 id="game-title">Миша идёт к Полине</h2>
+          <p>
+            Пройдите через музыкальные препятствия, соберите свадебные предметы и
+            доберитесь до Полины и Юми.
+          </p>
+        </div>
+        <div class="game__stage" data-wedding-game>
+          <div class="game__hud" aria-hidden="true">
+            <span data-game-lives>♥ ♥ ♥</span>
+            <span data-game-items>0/6 собрано</span>
+            <span data-game-distance>экран 1/8</span>
+          </div>
+          <div class="game__inventory" data-game-inventory aria-label="Собранные предметы">
+            <span class="game__inventory-item" data-game-item="bouquet" title="Букет"><i class="game__icon game__icon--bouquet"></i></span>
+            <span class="game__inventory-item" data-game-item="vows" title="Клятвы"><i class="game__icon game__icon--vows"></i></span>
+            <span class="game__inventory-item" data-game-item="ring" title="Кольца"><i class="game__icon game__icon--rings"></i></span>
+            <span class="game__inventory-item" data-game-item="glass" title="Бокалы"><i class="game__icon game__icon--glass"></i></span>
+            <span class="game__inventory-item" data-game-item="playlist" title="Плейлист"><i class="game__icon game__icon--playlist"></i></span>
+            <span class="game__inventory-item" data-game-item="photo" title="Фото"><i class="game__icon game__icon--photo"></i></span>
+          </div>
+          <canvas
+            class="game__canvas"
+            data-game-canvas
+            width="960"
+            height="520"
+            aria-label="Мини-игра: жених бежит к невесте"
+          ></canvas>
+          <div class="game__overlay" data-game-overlay>
+            <p class="eyebrow">мини-игра</p>
+            <h3 data-game-overlay-title>Добраться до невесты</h3>
+            <p data-game-overlay-text>
+              Нажмите «Начать игру». Потом: стрелки — идти, пробел или ↑ —
+              прыгать. Три жизни, препятствия можно перепрыгнуть.
+            </p>
+            <button class="game__button" type="button" data-game-start>Начать игру</button>
+          </div>
+          <div class="game__controls" aria-label="Управление игрой">
+            <button type="button" data-game-left aria-label="Назад">←</button>
+            <button type="button" data-game-jump aria-label="Прыжок">↑</button>
+            <button type="button" data-game-right aria-label="Вперед">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="rsvp section screen--paper" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="section__silver-marks" aria-hidden="true">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+          <img src="assets/silver-spark.svg" alt="">
+          <img src="assets/silver-heart.svg" alt="">
+        </div>
+        <div class="rsvp__head">
+          <p class="eyebrow">подтверждение участия</p>
+          <h2 id="rsvp-title">Пожалуйста, ответьте до 15.07</h2>
+          <p>
+            Анкета короткая: имя, участие, еда, напитки и комментарий.
+          </p>
+        </div>
+
+        <form class="rsvp-form" id="rsvp-form">
+          <label>
+            <span>Имя и фамилия</span>
+            <input name="name" autocomplete="name" required>
+          </label>
+
+          <fieldset>
+            <legend>Приду / не приду</legend>
+            <label><input type="radio" name="attendance" value="Приду" required> Приду</label>
+            <label><input type="radio" name="attendance" value="Не приду"> Не приду</label>
+          </fieldset>
+
+          <label>
+            <span>Предпочтения по еде</span>
+            <input name="food" placeholder="Например: без мяса, аллергия, все ем">
+          </label>
+
+          <fieldset>
+            <legend>Напитки</legend>
+            <label><input type="radio" name="alcohol" value="Буду пить" required> Буду пить</label>
+            <label><input type="radio" name="alcohol" value="1-2 бокала шампанского"> 1-2 бокала шампанского</label>
+            <label><input type="radio" name="alcohol" value="Без алкоголя"> Без алкоголя</label>
+          </fieldset>
+
+          <label class="rsvp-form__wide">
+            <span>Комментарий</span>
+            <textarea name="comment" rows="4"></textarea>
+          </label>
+
+          <button class="submit-button" type="submit">
+            Отправить ответ
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="qr-block" aria-label="QR-код анкеты">
+          <img src="assets/qr-placeholder.svg" alt="Место для QR-кода анкеты">
+          <p>QR для бумажного приглашения</p>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Будем ждать вас на Лиственной.</p>
+      <p>Обнимем на месте.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
