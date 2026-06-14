@@ -1398,6 +1398,7 @@ img {
   min-height: 430px;
   background: #d5ed2b;
   image-rendering: auto;
+  touch-action: none;
 }
 
 .game__hud {
@@ -1676,6 +1677,7 @@ img {
   min-width: 116px;
   min-height: 44px;
   padding: 10px 16px;
+  touch-action: manipulation;
 }
 
 .game__controls {
@@ -1694,6 +1696,9 @@ img {
   height: 44px;
   background: rgba(247, 240, 221, 0.86);
   font-size: 1.15rem;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .game__stage.is-running:not(.is-finished) .game__controls {

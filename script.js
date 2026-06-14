@@ -1763,19 +1763,45 @@ function initWeddingGame() {
       return;
     }
 
+    const release = () => {
+      if (key !== "jump") {
+        keys[key] = false;
+      }
+    };
+
+    const tapMove = () => {
+      if (!game.running || key === "jump") {
+        return;
+      }
+
+      const direction = key === "right" ? 1 : -1;
+      game.player.facing = direction;
+      game.player.vx = direction * Math.max(Math.abs(game.player.vx), physics.maxSpeed * 0.62);
+    };
+
     button.addEventListener("pointerdown", (event) => {
       event.preventDefault();
+      button.setPointerCapture?.(event.pointerId);
       if (key === "jump") {
         jump();
       } else {
         keys[key] = true;
+        tapMove();
       }
     });
-    ["pointerup", "pointercancel", "pointerleave"].forEach((eventName) => {
+
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (key === "jump") {
+        jump();
+      } else {
+        tapMove();
+      }
+    });
+
+    ["pointerup", "pointercancel", "pointerleave", "lostpointercapture"].forEach((eventName) => {
       button.addEventListener(eventName, () => {
-        if (key !== "jump") {
-          keys[key] = false;
-        }
+        release();
       });
     });
   }
