@@ -1403,33 +1403,42 @@ img {
 .game__hud {
   position: absolute;
   left: 14px;
-  right: 14px;
-  top: 12px;
+  right: auto;
+  top: 46px;
   z-index: 4;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  gap: 10px;
+  gap: 7px;
   pointer-events: none;
   font-family: var(--font-mono);
-  font-size: clamp(0.62rem, 1vw, 0.8rem);
+  font-size: clamp(0.58rem, 0.82vw, 0.72rem);
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .game__hud span {
   border: 2px solid currentColor;
-  background: rgba(247, 240, 221, 0.82);
-  padding: 6px 9px;
+  background: rgba(247, 240, 221, 0.9);
+  padding: 5px 8px;
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.game__hud [data-game-lives] {
+  color: #ff35bc;
+  background: rgba(247, 240, 221, 0.96);
+}
+
+.game__hud [data-game-distance] {
+  display: none;
 }
 
 .game__inventory {
   position: absolute;
   left: 14px;
   right: 14px;
-  top: 52px;
+  top: 84px;
   z-index: 4;
   display: flex;
   justify-content: center;
@@ -1456,6 +1465,11 @@ img {
   opacity: 1;
   filter: grayscale(0);
   transform: translateY(-2px);
+}
+
+.game__stage.is-finished .game__hud,
+.game__stage.is-finished .game__inventory {
+  display: none;
 }
 
 .game__icon {
@@ -2155,12 +2169,12 @@ img {
   }
 
   .game__hud {
-    top: 8px;
+    top: 42px;
     font-size: 0.58rem;
   }
 
   .game__inventory {
-    top: 46px;
+    top: 78px;
     gap: 5px;
   }
 
