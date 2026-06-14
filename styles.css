@@ -1567,30 +1567,32 @@ img {
   box-shadow: 0 5px 0 #f7f0dd, 0 10px 0 #f7f0dd;
 }
 
-.game__icon--heart {
-  width: 15px;
-  height: 15px;
-  margin-top: 3px;
-  background: linear-gradient(135deg, #ffffff, #c7ccd2 55%, #6c727c);
-  transform: rotate(45deg);
+.game__icon--photo {
+  width: 21px;
+  height: 17px;
+  margin-top: 1px;
+  border: 2px solid #111111;
+  background: linear-gradient(135deg, #ffffff, #c7ccd2 62%, #6c727c);
 }
 
-.game__icon--heart::before,
-.game__icon--heart::after {
-  width: 15px;
-  height: 15px;
+.game__icon--photo::before {
+  left: 5px;
+  top: 4px;
+  width: 7px;
+  height: 7px;
+  border: 2px solid #111111;
   border-radius: 50%;
-  background: inherit;
+  background: #f7f0dd;
 }
 
-.game__icon--heart::before {
-  left: -8px;
-  top: 0;
-}
-
-.game__icon--heart::after {
-  left: 0;
-  top: -8px;
+.game__icon--photo::after {
+  left: 2px;
+  top: -5px;
+  width: 9px;
+  height: 5px;
+  border: 2px solid #111111;
+  border-bottom: 0;
+  background: #c7ccd2;
 }
 
 .game__overlay {
@@ -2156,12 +2158,8 @@ img {
     height: 28px;
   }
 
-  .game__icon:not(.game__icon--heart) {
+  .game__icon {
     transform: scale(0.88);
-  }
-
-  .game__icon--heart {
-    transform: rotate(45deg) scale(0.88);
   }
 
   .map-poster__pin {

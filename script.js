@@ -141,11 +141,11 @@ function initWeddingGame() {
     },
     {
       key: "glass",
-      label: "бокал",
+      label: "бокалы",
       x: 0.555,
       y: 150,
       color: "#7fc8ff",
-      story: "Бокал взят: будет первый тост.",
+      story: "Бокалы взяты: будет первый тост за двоих.",
     },
     {
       key: "playlist",
@@ -156,12 +156,12 @@ function initWeddingGame() {
       story: "Плейлист включен: танцы точно начнутся.",
     },
     {
-      key: "heart",
-      label: "сердце",
+      key: "photo",
+      label: "кадр",
       x: 0.865,
       y: 258,
       color: "#c7ccd2",
-      story: "Сердце собрано: теперь можно идти к Полине.",
+      story: "Кадр сохранен: эту сцену точно хочется запомнить.",
     },
   ];
 
@@ -193,8 +193,8 @@ function initWeddingGame() {
       invulnerable: 0,
       facing: 1,
     },
-    bride: { x: 2860, y: 0, w: 42, h: 68 },
-    dog: { x: 2910, y: 0, w: 36, h: 28 },
+    bride: { x: 2860, y: 0, w: 38, h: 72 },
+    dog: { x: 2910, y: 0, w: 34, h: 24 },
     items: [],
     platforms: [],
     obstacles: [],
@@ -212,9 +212,9 @@ function initWeddingGame() {
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     game.floorY = game.viewH - 72;
     game.levelW = Math.max(5000, game.viewW * 7.35);
-    game.bride.x = game.levelW - 190;
+    game.bride.x = game.levelW - 150;
     game.bride.y = game.floorY - game.bride.h;
-    game.dog.x = game.bride.x + 52;
+    game.dog.x = game.bride.x + 46;
     game.dog.y = game.floorY - game.dog.h;
     game.player.y = Math.min(game.player.y || game.floorY - game.player.h, game.floorY - game.player.h);
     buildLevel();
@@ -245,8 +245,8 @@ function initWeddingGame() {
       { key: "p5", x: w * 0.7, y: floor - 188, w: 274, h: 26, color: "#ffea00", label: "CHORUS" },
       { key: "p5b", x: w * 0.758, y: floor - 270, w: 196, h: 26, color: "#6654b8", label: "LEAD" },
       { key: "p6", x: w * 0.812, y: floor - 154, w: 238, h: 26, color: "#ff35bc", label: "FINAL" },
-      { key: "p7", x: w * 0.862, y: floor - 226, w: 230, h: 26, color: "#7fc8ff", label: "VOWS" },
-      { key: "p7b", x: w * 0.925, y: floor - 118, w: 176, h: 26, color: "#37bcc7", label: "HOME" },
+      { key: "p7", x: w * 0.842, y: floor - 226, w: 230, h: 26, color: "#7fc8ff", label: "VOWS" },
+      { key: "p7b", x: w * 0.888, y: floor - 118, w: 182, h: 26, color: "#37bcc7", label: "HOME" },
     ].map((platform) => ({
       ...platform,
       touched: platformState.get(platform.key)?.touched || false,
@@ -266,15 +266,15 @@ function initWeddingGame() {
       { type: "mute", x: w * 0.465, y: floor - 60, w: 82, h: 60, color: "#ff35bc", label: "MUTE" },
       { type: "clip", x: w * 0.61, y: floor - 36, w: 98, h: 36, color: "#c3452b", label: "RED CLIP" },
       { type: "spikes", x: w * 0.745, y: floor - 34, w: 112, h: 34, color: "#111111", label: "LOUD" },
-      { type: "clip", x: w * 0.805, y: floor - 36, w: 92, h: 36, color: "#c3452b", label: "RED CLIP" },
-      { type: "sync", x: w * 0.902, y: floor - 48, w: 98, h: 48, color: "#c3452b", label: "SYNC\nERROR" },
+      { type: "clip", x: w * 0.792, y: floor - 36, w: 92, h: 36, color: "#c3452b", label: "RED CLIP" },
+      { type: "sync", x: w * 0.835, y: floor - 48, w: 98, h: 48, color: "#c3452b", label: "SYNC\nERROR" },
     ];
 
     game.enemies = [
       { key: "wave1", type: "wave", x: w * 0.275, y: floor - 48, w: 76, h: 38, minX: w * 0.238, maxX: w * 0.345, vx: 86, color: "#6654b8" },
       { key: "wave2", type: "wave", x: w * 0.575, y: floor - 48, w: 86, h: 38, minX: w * 0.545, maxX: w * 0.645, vx: -96, color: "#ff6b00" },
       { key: "wave3", type: "wave", x: w * 0.705, y: floor - 48, w: 80, h: 38, minX: w * 0.69, maxX: w * 0.805, vx: 88, color: "#ff35bc" },
-      { key: "wave4", type: "wave", x: w * 0.865, y: floor - 48, w: 78, h: 38, minX: w * 0.85, maxX: w * 0.94, vx: -78, color: "#37bcc7" },
+      { key: "wave4", type: "wave", x: w * 0.82, y: floor - 48, w: 78, h: 38, minX: w * 0.8, maxX: w * 0.88, vx: -78, color: "#37bcc7" },
     ].map((enemy) => ({
       ...enemy,
       x: enemyState.get(enemy.key)?.x || enemy.x,
@@ -417,7 +417,7 @@ function initWeddingGame() {
     }
 
     game.player.invulnerable = 1.15;
-    game.player.x = Math.max(58, game.checkpointX - 120);
+    game.player.x = Math.max(58, game.checkpointX);
     game.player.y = game.floorY - game.player.h;
     game.player.vx = 0;
     game.player.vy = 0;
@@ -494,7 +494,8 @@ function initWeddingGame() {
           player.grounded = true;
           platform.touched = true;
           if (platform.key?.startsWith("g")) {
-            game.checkpointX = Math.max(game.checkpointX, platform.x + 80);
+            const safeX = Math.min(platform.x + platform.w - player.w - 34, platform.x + 104);
+            game.checkpointX = Math.max(game.checkpointX, safeX);
           }
         }
       });
@@ -952,29 +953,47 @@ function initWeddingGame() {
       ctx.fill();
       ctx.stroke();
     } else if (item.key === "glass") {
-      ctx.beginPath();
-      ctx.moveTo(-12, -14);
-      ctx.lineTo(12, -14);
-      ctx.lineTo(6, 4);
-      ctx.lineTo(-6, 4);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-      ctx.fillRect(-2, 4, 4, 20);
-      ctx.fillRect(-12, 24, 24, 4);
+      [[-8, 0], [9, -2]].forEach(([gx, gy]) => {
+        ctx.beginPath();
+        ctx.moveTo(gx - 8, gy - 14);
+        ctx.lineTo(gx + 8, gy - 14);
+        ctx.lineTo(gx + 5, gy + 2);
+        ctx.lineTo(gx - 5, gy + 2);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = "rgba(247, 240, 221, 0.62)";
+        ctx.fillRect(gx - 5, gy - 10, 10, 4);
+        ctx.fillStyle = item.color;
+        ctx.fillRect(gx - 1.5, gy + 2, 3, 18);
+        ctx.fillRect(gx - 8, gy + 20, 16, 4);
+      });
     } else if (item.key === "playlist") {
       ctx.fillRect(-16, -15, 32, 30);
       ctx.fillStyle = "#f7f0dd";
       ctx.fillRect(-8, -8, 16, 4);
       ctx.fillRect(-8, 0, 22, 4);
       ctx.fillRect(-8, 8, 12, 4);
-    } else {
-      ctx.beginPath();
-      ctx.moveTo(0, 16);
-      ctx.bezierCurveTo(-30, -4, -10, -24, 0, -10);
-      ctx.bezierCurveTo(10, -24, 30, -4, 0, 16);
+    } else if (item.key === "photo") {
+      roundedRectPath(-18, -14, 36, 30, 3);
       ctx.fill();
       ctx.stroke();
+      ctx.fillStyle = "#111111";
+      ctx.fillRect(-13, -9, 26, 18);
+      const photoGradient = ctx.createLinearGradient(-13, -9, 13, 9);
+      photoGradient.addColorStop(0, "#7fc8ff");
+      photoGradient.addColorStop(0.55, "#f7f0dd");
+      photoGradient.addColorStop(1, "#ff35bc");
+      ctx.fillStyle = photoGradient;
+      ctx.fillRect(-10, -6, 20, 12);
+      ctx.fillStyle = "#111111";
+      ctx.beginPath();
+      ctx.arc(0, 0, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#f7f0dd";
+      ctx.beginPath();
+      ctx.arc(0, 0, 1.4, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     ctx.fillStyle = "#111111";
@@ -990,52 +1009,42 @@ function initWeddingGame() {
       return;
     }
 
-    ctx.fillStyle = "rgba(17, 17, 17, 0.24)";
-    ctx.fillRect(x + 6, obstacle.y + 6, obstacle.w, obstacle.h);
-    ctx.fillStyle = obstacle.color;
-    ctx.strokeStyle = "#111111";
-    ctx.lineWidth = 2;
+    ctx.save();
+    ctx.translate(x, obstacle.y);
+    const pulse = Math.sin(game.time * 6 + obstacle.x * 0.01) * 0.5 + 0.5;
+    ctx.lineJoin = "round";
+
     if (obstacle.type === "spikes") {
+      ctx.fillStyle = "rgba(17, 17, 17, 0.22)";
+      ctx.fillRect(5, 8, obstacle.w, obstacle.h);
       ctx.fillStyle = "#c3452b";
-      ctx.fillRect(x, obstacle.y + obstacle.h - 10, obstacle.w, 10);
-      ctx.strokeRect(x, obstacle.y + obstacle.h - 10, obstacle.w, 10);
-      ctx.fillStyle = "#111111";
-      for (let sx = 0; sx < obstacle.w; sx += 18) {
+      roundedRectPath(0, obstacle.h - 12, obstacle.w, 12, 3);
+      ctx.fill();
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      for (let sx = 0; sx < obstacle.w - 2; sx += 18) {
+        const spikeHeight = 24 + ((sx / 18) % 2) * 6;
+        const spikeGradient = ctx.createLinearGradient(0, 0, 0, obstacle.h);
+        spikeGradient.addColorStop(0, "#f7f0dd");
+        spikeGradient.addColorStop(0.44, "#c7ccd2");
+        spikeGradient.addColorStop(1, "#111111");
+        ctx.fillStyle = spikeGradient;
+        ctx.strokeStyle = "#111111";
         ctx.beginPath();
-        ctx.moveTo(x + sx, obstacle.y + obstacle.h);
-        ctx.lineTo(x + sx + 9, obstacle.y);
-        ctx.lineTo(x + sx + 18, obstacle.y + obstacle.h);
+        ctx.moveTo(sx, obstacle.h - 9);
+        ctx.lineTo(sx + 9, obstacle.h - spikeHeight);
+        ctx.lineTo(sx + 18, obstacle.h - 9);
         ctx.closePath();
         ctx.fill();
+        ctx.stroke();
       }
-    } else {
-      ctx.fillRect(x, obstacle.y, obstacle.w, obstacle.h);
-      ctx.strokeRect(x, obstacle.y, obstacle.w, obstacle.h);
-      ctx.fillStyle = "rgba(247, 240, 221, 0.32)";
-      for (let stripe = 6; stripe < obstacle.w - 6; stripe += 20) {
-        ctx.fillRect(x + stripe, obstacle.y + 4, 8, obstacle.h - 8);
-      }
-      ctx.strokeStyle = "#111111";
-      ctx.strokeRect(x, obstacle.y, obstacle.w, obstacle.h);
-    }
-    ctx.fillStyle = "#111111";
-    ctx.font = "900 12px Arial";
-
-    if (obstacle.type === "sync") {
-      ctx.fillStyle = "#f7f0dd";
+      ctx.strokeStyle = "#ff35bc";
+      ctx.lineWidth = 2.2;
       ctx.beginPath();
-      ctx.arc(x + obstacle.w - 18, obstacle.y + 17, 11, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-      ctx.fillStyle = "#111111";
-      ctx.fillText("!", x + obstacle.w - 21, obstacle.y + 22);
-      ctx.fillText("SYNC", x + 10, obstacle.y + 18);
-      ctx.fillText("ERROR", x + 10, obstacle.y + 33);
-    } else if (obstacle.type === "wave") {
-      ctx.beginPath();
-      for (let i = 0; i < 7; i += 1) {
-        const px = x + 12 + i * 15;
-        const py = obstacle.y + obstacle.h / 2 + Math.sin(i) * 16;
+      for (let i = 0; i <= 8; i += 1) {
+        const px = 8 + i * ((obstacle.w - 16) / 8);
+        const py = 12 + (i % 2) * 10;
         if (i === 0) {
           ctx.moveTo(px, py);
         } else {
@@ -1043,15 +1052,118 @@ function initWeddingGame() {
         }
       }
       ctx.stroke();
-    } else if (obstacle.type === "mute") {
+    } else if (obstacle.type === "sync") {
+      const cx = obstacle.w / 2;
+      const cy = obstacle.h / 2;
+      ctx.fillStyle = "rgba(17, 17, 17, 0.22)";
+      ctx.beginPath();
+      ctx.moveTo(cx + 6, 5);
+      ctx.lineTo(obstacle.w + 8, cy + 6);
+      ctx.lineTo(cx + 6, obstacle.h + 8);
+      ctx.lineTo(-2, cy + 6);
+      ctx.closePath();
+      ctx.fill();
+
+      const dangerGradient = ctx.createLinearGradient(0, 0, obstacle.w, obstacle.h);
+      dangerGradient.addColorStop(0, "#ff35bc");
+      dangerGradient.addColorStop(0.45, "#c3452b");
+      dangerGradient.addColorStop(1, "#ff6b00");
+      ctx.fillStyle = dangerGradient;
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      ctx.moveTo(cx, 0);
+      ctx.lineTo(obstacle.w, cy);
+      ctx.lineTo(cx, obstacle.h);
+      ctx.lineTo(0, cy);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.strokeStyle = "rgba(247, 240, 221, 0.88)";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 14 + pulse * 2, -0.8, 0.86);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(cx, cy, 14 + pulse * 2, Math.PI - 0.8, Math.PI + 0.86);
+      ctx.stroke();
       ctx.fillStyle = "#f7f0dd";
-      ctx.fillRect(x + 14, obstacle.y + 13, obstacle.w - 28, 10);
-      ctx.fillRect(x + 14, obstacle.y + 31, obstacle.w - 28, 10);
+      ctx.font = "900 22px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("!", cx, cy + 8);
+    } else if (obstacle.type === "mute") {
+      const cx = obstacle.w / 2;
+      const cy = obstacle.h / 2;
+      ctx.fillStyle = "rgba(17, 17, 17, 0.22)";
+      ctx.beginPath();
+      ctx.ellipse(cx + 6, cy + 7, obstacle.w * 0.5, obstacle.h * 0.42, 0, 0, Math.PI * 2);
+      ctx.fill();
+
       ctx.fillStyle = "#111111";
-      ctx.fillText("MUTE", x + 15, obstacle.y + 40);
+      ctx.strokeStyle = "#f7f0dd";
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      ctx.moveTo(cx - 27, cy - 12);
+      ctx.lineTo(cx - 14, cy - 12);
+      ctx.lineTo(cx + 4, cy - 24);
+      ctx.lineTo(cx + 4, cy + 24);
+      ctx.lineTo(cx - 14, cy + 12);
+      ctx.lineTo(cx - 27, cy + 12);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.strokeStyle = "#ff35bc";
+      ctx.lineWidth = 6;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      ctx.moveTo(cx + 18, cy - 20);
+      ctx.lineTo(cx - 24, cy + 20);
+      ctx.stroke();
+      ctx.lineCap = "butt";
+      ctx.fillStyle = "#111111";
+      ctx.font = "900 9px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("MUTE", cx, obstacle.h - 5);
     } else {
-      ctx.fillText("RED CLIP", x + 14, obstacle.y + 28);
+      ctx.fillStyle = "rgba(17, 17, 17, 0.22)";
+      roundedRectPath(6, 7, obstacle.w, obstacle.h, 6);
+      ctx.fill();
+      const clipGradient = ctx.createLinearGradient(0, 0, obstacle.w, obstacle.h);
+      clipGradient.addColorStop(0, "#ff6b00");
+      clipGradient.addColorStop(0.46, "#c3452b");
+      clipGradient.addColorStop(1, "#ff35bc");
+      ctx.fillStyle = clipGradient;
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      ctx.moveTo(0, 5);
+      ctx.lineTo(obstacle.w - 8, 0);
+      ctx.lineTo(obstacle.w, obstacle.h - 8);
+      ctx.lineTo(obstacle.w * 0.58, obstacle.h);
+      ctx.lineTo(obstacle.w * 0.5, obstacle.h - 12);
+      ctx.lineTo(8, obstacle.h);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = "rgba(247, 240, 221, 0.72)";
+      for (let stripe = 12; stripe < obstacle.w - 10; stripe += 22) {
+        ctx.fillRect(stripe, 8, 8, obstacle.h - 16);
+      }
+      ctx.fillStyle = "#f7f0dd";
+      ctx.font = "900 12px Arial";
+      ctx.textAlign = "center";
+      ctx.fillText("CLIP", obstacle.w / 2, obstacle.h / 2 + 5);
+      ctx.strokeStyle = "#111111";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(obstacle.w - 20, 6);
+      ctx.lineTo(obstacle.w - 32, 19);
+      ctx.lineTo(obstacle.w - 19, 19);
+      ctx.lineTo(obstacle.w - 32, obstacle.h - 4);
+      ctx.stroke();
     }
+    ctx.restore();
   }
 
   function drawEnemy(enemy) {
@@ -1109,18 +1221,19 @@ function initWeddingGame() {
     if (bride) {
       ctx.fillStyle = "rgba(17, 17, 17, 0.2)";
       ctx.beginPath();
-      ctx.ellipse(cx, person.h + 4, 24, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx, person.h + 4, 22, 5, 0, 0, Math.PI * 2);
       ctx.fill();
 
       const veil = ctx.createLinearGradient(0, 6, person.w, person.h);
       veil.addColorStop(0, "rgba(255, 255, 255, 0.84)");
-      veil.addColorStop(1, "rgba(247, 240, 221, 0.28)");
+      veil.addColorStop(0.64, "rgba(247, 240, 221, 0.42)");
+      veil.addColorStop(1, "rgba(247, 240, 221, 0.08)");
       ctx.fillStyle = veil;
       ctx.beginPath();
-      ctx.moveTo(cx, 4);
-      ctx.bezierCurveTo(person.w + 9, 23, person.w + 8, 56, person.w + 2, person.h);
-      ctx.lineTo(-2, person.h);
-      ctx.bezierCurveTo(-8, 54, -7, 23, cx, 4);
+      ctx.moveTo(cx, 2);
+      ctx.bezierCurveTo(cx + 24, 26, cx + 20, 54, cx + 14, person.h);
+      ctx.lineTo(cx - 14, person.h);
+      ctx.bezierCurveTo(cx - 20, 54, cx - 24, 26, cx, 2);
       ctx.closePath();
       ctx.fill();
 
@@ -1130,11 +1243,20 @@ function initWeddingGame() {
       dress.addColorStop(1, "#dfe3de");
       ctx.fillStyle = dress;
       ctx.beginPath();
-      ctx.moveTo(cx, 21);
-      ctx.bezierCurveTo(person.w - 1, 38, person.w + 8, 58, person.w + 8, person.h);
-      ctx.lineTo(-8, person.h);
-      ctx.bezierCurveTo(-8, 58, 1, 38, cx, 21);
+      ctx.moveTo(cx - 8, 25);
+      ctx.bezierCurveTo(cx + 10, 30, cx + 15, 54, cx + 18, person.h);
+      ctx.lineTo(cx - 18, person.h);
+      ctx.bezierCurveTo(cx - 15, 54, cx - 10, 30, cx + 8, 25);
+      ctx.quadraticCurveTo(cx, 20, cx - 8, 25);
       ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      const bodice = ctx.createLinearGradient(cx - 12, 23, cx + 12, 44);
+      bodice.addColorStop(0, "#ffffff");
+      bodice.addColorStop(1, "#f7f0dd");
+      ctx.fillStyle = bodice;
+      roundedRectPath(cx - 11, 25, 22, 22, 8);
       ctx.fill();
       ctx.stroke();
 
@@ -1142,34 +1264,39 @@ function initWeddingGame() {
       ctx.lineWidth = 2.2;
       ctx.lineCap = "round";
       ctx.beginPath();
-      ctx.moveTo(6, 29);
-      ctx.quadraticCurveTo(13, 37, 20, 32);
-      ctx.moveTo(person.w - 6, 29);
-      ctx.quadraticCurveTo(person.w - 13, 37, person.w - 20, 32);
+      ctx.moveTo(cx - 12, 30);
+      ctx.quadraticCurveTo(cx - 18, 42, cx - 13, 51);
+      ctx.moveTo(cx + 12, 30);
+      ctx.quadraticCurveTo(cx + 18, 42, cx + 13, 51);
       ctx.stroke();
+      ctx.fillStyle = "#f1c7aa";
+      ctx.beginPath();
+      ctx.arc(cx - 13, 51, 2.4, 0, Math.PI * 2);
+      ctx.arc(cx + 13, 51, 2.4, 0, Math.PI * 2);
+      ctx.fill();
       ctx.lineCap = "butt";
       ctx.strokeStyle = "#111111";
       ctx.lineWidth = 1.8;
 
       ctx.fillStyle = "#d6b36f";
       ctx.beginPath();
-      ctx.ellipse(cx, 13, 14, 15, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx, 13, 13, 14, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.fillStyle = "#f1c7aa";
       ctx.beginPath();
-      ctx.ellipse(cx, 13, 10, 11, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx, 14, 9, 10.5, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.stroke();
 
       ctx.fillStyle = "#d6b36f";
       ctx.beginPath();
       ctx.moveTo(cx - 12, 10);
-      ctx.bezierCurveTo(cx - 8, 0, cx + 9, 0, cx + 13, 10);
-      ctx.bezierCurveTo(cx + 4, 7, cx - 5, 8, cx - 12, 10);
+      ctx.bezierCurveTo(cx - 7, 1, cx + 9, 0, cx + 12, 10);
+      ctx.bezierCurveTo(cx + 3, 8, cx - 5, 8, cx - 12, 10);
       ctx.fill();
 
       ctx.fillStyle = "#ffffff";
-      roundedRectPath(9, 24, person.w - 18, 8, 4);
+      roundedRectPath(cx - 9, 25, 18, 7, 4);
       ctx.fill();
       ctx.stroke();
       ctx.fillStyle = "#111111";
@@ -1271,70 +1398,70 @@ function initWeddingGame() {
     ctx.translate(x, y);
     ctx.fillStyle = "rgba(17, 17, 17, 0.2)";
     ctx.beginPath();
-    ctx.ellipse(16, 34, 20, 5, 0, 0, Math.PI * 2);
+    ctx.ellipse(15, 27, 17, 4.5, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    const fur = ctx.createLinearGradient(0, 4, 34, 28);
+    const fur = ctx.createLinearGradient(0, 5, 33, 24);
     fur.addColorStop(0, "#2c2521");
     fur.addColorStop(0.5, "#100d0c");
     fur.addColorStop(1, "#050403");
     ctx.fillStyle = fur;
     ctx.strokeStyle = "#0a0807";
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1.35;
 
     ctx.beginPath();
-    ctx.ellipse(13, 17, 15, 9, -0.08, 0, Math.PI * 2);
+    ctx.ellipse(13, 15, 13, 8, -0.08, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
-    ctx.ellipse(27, 11, 8, 7, 0.12, 0, Math.PI * 2);
+    ctx.ellipse(27, 10, 7, 6, 0.12, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
     ctx.fillStyle = "#080605";
     ctx.beginPath();
-    ctx.moveTo(23, 7);
-    ctx.quadraticCurveTo(18, 1, 25, 2);
-    ctx.quadraticCurveTo(31, 0, 31, 8);
+    ctx.moveTo(23, 8);
+    ctx.quadraticCurveTo(19, 0, 27, 3);
+    ctx.quadraticCurveTo(33, 1, 32, 10);
     ctx.fill();
 
     ctx.strokeStyle = "#0b0807";
-    ctx.lineWidth = 3.2;
+    ctx.lineWidth = 3;
     ctx.lineCap = "round";
     ctx.beginPath();
-    ctx.moveTo(0, 14);
-    ctx.quadraticCurveTo(-11, 8, -7, 1 + Math.sin(game.time * 7) * 1.5);
+    ctx.moveTo(1, 14);
+    ctx.quadraticCurveTo(-8, 9, -5, 3 + Math.sin(game.time * 7) * 1.1);
     ctx.stroke();
 
     ctx.strokeStyle = "#0b0807";
-    ctx.lineWidth = 2.4;
+    ctx.lineWidth = 2.1;
     ctx.beginPath();
-    ctx.moveTo(6, 24);
-    ctx.lineTo(4, 32);
-    ctx.moveTo(14, 25);
-    ctx.lineTo(13, 33);
-    ctx.moveTo(22, 23);
-    ctx.lineTo(24, 32);
-    ctx.moveTo(29, 18);
-    ctx.lineTo(31, 29);
+    ctx.moveTo(6, 21);
+    ctx.lineTo(4, 27);
+    ctx.moveTo(13, 22);
+    ctx.lineTo(12, 28);
+    ctx.moveTo(21, 20);
+    ctx.lineTo(22, 27);
+    ctx.moveTo(28, 16);
+    ctx.lineTo(29, 25);
     ctx.stroke();
     ctx.lineCap = "butt";
 
     ctx.fillStyle = "#ff35bc";
-    roundedRectPath(21, 15, 12, 3, 2);
+    roundedRectPath(21, 14, 11, 3, 2);
     ctx.fill();
     ctx.fillStyle = "#111111";
     ctx.beginPath();
-    ctx.arc(30, 10, 1.4, 0, Math.PI * 2);
+    ctx.arc(29, 9, 1.1, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = "#f7f0dd";
+    ctx.fillStyle = "#ffffff";
     ctx.beginPath();
-    ctx.arc(34, 13, 1.4, 0, Math.PI * 2);
+    ctx.arc(33, 12, 1.2, 0, Math.PI * 2);
     ctx.fill();
     ctx.strokeStyle = "#f7f0dd";
     ctx.lineWidth = 1.1;
     ctx.beginPath();
-    ctx.arc(28, 14, 2.2, 0.1, Math.PI - 0.2);
+    ctx.arc(27, 13, 2.1, 0.05, Math.PI - 0.22);
     ctx.stroke();
     ctx.restore();
   }
@@ -1359,72 +1486,94 @@ function initWeddingGame() {
   }
 
   function drawGoalArch() {
-    const x = game.bride.x - game.cameraX - 76;
-    const y = game.floorY - 146;
+    const x = game.bride.x - game.cameraX - 86;
+    const y = game.floorY - 154;
     if (x > game.viewW + 120 || x < -220) {
       return;
     }
 
     ctx.save();
+    ctx.fillStyle = "rgba(17, 17, 17, 0.14)";
+    ctx.beginPath();
+    ctx.ellipse(x + 86, game.floorY + 4, 78, 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    const curtain = ctx.createLinearGradient(x + 20, y + 28, x + 152, game.floorY);
+    curtain.addColorStop(0, "rgba(255, 255, 255, 0.32)");
+    curtain.addColorStop(0.64, "rgba(247, 240, 221, 0.16)");
+    curtain.addColorStop(1, "rgba(255, 255, 255, 0)");
+    ctx.fillStyle = curtain;
+    ctx.beginPath();
+    ctx.moveTo(x + 28, game.floorY);
+    ctx.bezierCurveTo(x + 34, y + 72, x + 86, y + 14, x + 144, game.floorY);
+    ctx.closePath();
+    ctx.fill();
+
     ctx.lineCap = "round";
     ctx.strokeStyle = "rgba(17, 17, 17, 0.22)";
     ctx.lineWidth = 12;
     ctx.beginPath();
-    ctx.moveTo(x + 26, y + 142);
-    ctx.lineTo(x + 26, y + 68);
-    ctx.quadraticCurveTo(x + 76, y + 10, x + 126, y + 68);
-    ctx.lineTo(x + 126, y + 142);
+    ctx.moveTo(x + 31, y + 150);
+    ctx.lineTo(x + 31, y + 76);
+    ctx.quadraticCurveTo(x + 86, y + 3, x + 141, y + 76);
+    ctx.lineTo(x + 141, y + 150);
     ctx.stroke();
 
-    const archGradient = ctx.createLinearGradient(x, y, x + 152, y + 142);
+    const archGradient = ctx.createLinearGradient(x + 16, y, x + 156, y + 150);
     archGradient.addColorStop(0, "#ffffff");
     archGradient.addColorStop(0.4, "#c7ccd2");
     archGradient.addColorStop(0.7, "#f7f0dd");
     archGradient.addColorStop(1, "#777d86");
     ctx.strokeStyle = archGradient;
-    ctx.lineWidth = 8;
+    ctx.lineWidth = 8.5;
     ctx.beginPath();
-    ctx.moveTo(x + 22, y + 142);
-    ctx.lineTo(x + 22, y + 68);
-    ctx.quadraticCurveTo(x + 76, y + 4, x + 130, y + 68);
-    ctx.lineTo(x + 130, y + 142);
+    ctx.moveTo(x + 27, y + 150);
+    ctx.lineTo(x + 27, y + 76);
+    ctx.quadraticCurveTo(x + 86, y - 2, x + 145, y + 76);
+    ctx.lineTo(x + 145, y + 150);
     ctx.stroke();
 
     ctx.strokeStyle = "rgba(17, 17, 17, 0.7)";
-    ctx.lineWidth = 1.8;
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.moveTo(x + 22, y + 142);
-    ctx.lineTo(x + 22, y + 68);
-    ctx.quadraticCurveTo(x + 76, y + 4, x + 130, y + 68);
-    ctx.lineTo(x + 130, y + 142);
+    ctx.moveTo(x + 27, y + 150);
+    ctx.lineTo(x + 27, y + 76);
+    ctx.quadraticCurveTo(x + 86, y - 2, x + 145, y + 76);
+    ctx.lineTo(x + 145, y + 150);
     ctx.stroke();
 
     ctx.strokeStyle = "#ff35bc";
-    ctx.lineWidth = 2.2;
-    ctx.setLineDash([12, 8]);
+    ctx.lineWidth = 3;
+    ctx.setLineDash([16, 11]);
     ctx.beginPath();
-    ctx.moveTo(x + 30, y + 70);
-    ctx.quadraticCurveTo(x + 76, y + 28 + Math.sin(game.time * 2) * 2, x + 122, y + 70);
+    ctx.moveTo(x + 38, y + 76);
+    ctx.quadraticCurveTo(x + 86, y + 30 + Math.sin(game.time * 2) * 2, x + 134, y + 76);
     ctx.stroke();
     ctx.setLineDash([]);
 
-    for (let i = 0; i < 9; i += 1) {
-      const t = i / 8;
-      const px = x + 30 + t * 92;
-      const py = y + 68 - Math.sin(t * Math.PI) * 35 + Math.sin(game.time * 3 + i) * 3;
+    ctx.strokeStyle = "rgba(247, 240, 221, 0.82)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(x + 41, y + 88);
+    ctx.quadraticCurveTo(x + 86, y + 50, x + 131, y + 88);
+    ctx.stroke();
+
+    for (let i = 0; i < 11; i += 1) {
+      const px = x + 38 + (i / 10) * 96;
+      const py = y + 77 - Math.sin((i / 10) * Math.PI) * 42 + Math.sin(game.time * 3 + i) * 2.5;
       if (i % 2) {
-        drawSilverHeart(px, py, 5.5, i * 0.18);
+        drawSilverHeart(px, py, 4.7, i * 0.18);
       } else {
-        drawSilverStar(px, py, 6, i * 0.2);
+        drawSilverStar(px, py, 5.2, i * 0.2);
       }
     }
 
-    ctx.fillStyle = "#111111";
-    ctx.font = "900 10px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("место для клятв", x + 76, y + 126);
-    ctx.font = "900 8px Arial";
-    ctx.fillText("19.08 / 15:00", x + 76, y + 140);
+    [[x + 26, y + 128], [x + 146, y + 128]].forEach(([sx, sy], index) => {
+      drawSilverBlob(sx, sy, 7, index ? 0.4 : -0.25);
+      drawSilverStar(sx + (index ? -8 : 8), sy - 13, 5.2, index ? -0.2 : 0.2);
+      drawSilverHeart(sx + (index ? 8 : -8), sy + 11, 4.8, index ? 0.15 : -0.15);
+    });
+
     ctx.lineCap = "butt";
     ctx.restore();
   }
@@ -1453,16 +1602,14 @@ function initWeddingGame() {
     ctx.fill();
     ctx.stroke();
     ctx.fillStyle = "#ff35bc";
-    roundedRectPath(x + 12, y + 12, 52, 15, 4);
+    roundedRectPath(x + 12, y + 12, 28, 5, 3);
+    roundedRectPath(x + width - 40, y + height - 17, 28, 5, 3);
     ctx.fill();
     ctx.fillStyle = "#111111";
-    ctx.font = "900 8px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("STORY", x + 38, y + 23);
     ctx.font = "900 13px Arial";
     ctx.textAlign = "center";
     lines.forEach((line, index) => {
-      ctx.fillText(line, game.viewW / 2, y + 45 + index * 17);
+      ctx.fillText(line, game.viewW / 2, y + 36 + index * 17);
     });
     ctx.restore();
   }
