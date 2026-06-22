@@ -95,6 +95,7 @@ const gameLivesNode = document.querySelector("[data-game-lives]");
 const gameItemsNode = document.querySelector("[data-game-items]");
 const gameDistanceNode = document.querySelector("[data-game-distance]");
 const gameItemNodes = [...document.querySelectorAll("[data-game-item]")];
+const gameCloseButton = document.querySelector("[data-game-close]");
 
 function initWeddingGame() {
   if (!gameRoot || !gameCanvas) {
@@ -115,6 +116,7 @@ function initWeddingGame() {
     coyote: 0.12,
     jumpBuffer: 0.15,
   };
+  const mobileGameQuery = window.matchMedia("(max-width: 760px)");
   const itemPlan = [
     {
       key: "bouquet",
@@ -213,9 +215,10 @@ function initWeddingGame() {
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     game.floorY = game.viewH - 72;
     game.levelW = Math.max(5000, game.viewW * 7.35);
-    game.bride.x = game.levelW - Math.max(420, game.viewW * 0.48);
+    // The ceremony is deliberately beyond the final hazards, with a calm run-up to the arch.
+    game.bride.x = game.levelW - Math.max(300, game.viewW * 0.32);
     game.bride.y = game.floorY - game.bride.h;
-    game.dog.x = game.bride.x + 54;
+    game.dog.x = game.bride.x + 46;
     game.dog.y = game.floorY - game.dog.h;
     game.player.y = Math.min(game.player.y || game.floorY - game.player.h, game.floorY - game.player.h);
     buildLevel();
@@ -315,22 +318,64 @@ function initWeddingGame() {
     }
   }
 
+  function enterMobileGameMode() {
+    if (!mobileGameQuery.matches) {
+      return;
+    }
+
+    document.body.classList.add("is-game-fullscreen");
+    gameRoot.classList.add("is-mobile-fullscreen");
+    window.setTimeout(resizeGame, 40);
+  }
+
+  function exitMobileGameMode() {
+    document.body.classList.remove("is-game-fullscreen");
+    gameRoot.classList.remove("is-mobile-fullscreen");
+    keys.left = false;
+    keys.right = false;
+    input.jumpBuffer = 0;
+    game.running = false;
+    game.player.vx = 0;
+    game.player.vy = 0;
+    gameRoot.classList.remove("is-running");
+    if (!game.finished) {
+      gameRoot.classList.remove("is-finished");
+      if (gameOverlayTitle) {
+        gameOverlayTitle.textContent = "Добраться до невесты";
+      }
+      if (gameOverlayText) {
+        gameOverlayText.textContent = "Нажмите «Начать игру». Потом: стрелки — идти, пробел или ↑ — прыгать. Три жизни, препятствия можно перепрыгнуть.";
+      }
+      if (gameStartButton) {
+        gameStartButton.textContent = "Начать игру";
+      }
+    }
+    window.setTimeout(resizeGame, 40);
+  }
+
+  function startGameFromButton(event) {
+    event?.preventDefault();
+    enterMobileGameMode();
+    resetGame();
+    gameStartButton?.blur();
+  }
+
   function finishGame() {
     game.running = false;
     game.finished = true;
     game.over = false;
     game.message = "Миша, Полина и Юми у арки. Ждём гостей на свадьбе!";
     game.messageTimer = 2.4;
-    game.player.x = game.bride.x - 68;
+    game.player.x = game.bride.x - 63;
     game.player.y = game.floorY - game.player.h;
     game.player.vx = 0;
     game.player.vy = 0;
-    game.dog.x = game.bride.x + 48;
+    game.dog.x = game.bride.x + 46;
     game.dog.y = game.floorY - game.dog.h;
     game.cameraX = Math.max(0, Math.min(game.bride.x + 10 - game.viewW * 0.5, game.levelW - game.viewW));
     gameRoot.classList.add("is-finished");
     if (gameOverlayTitle) {
-      gameOverlayTitle.textContent = "Misha + Polina + Юми";
+      gameOverlayTitle.textContent = "Миша, Полина и Юми";
     }
     if (gameOverlayText) {
       gameOverlayText.textContent = "Клятвы произнесены. Ждём вас на нашей свадьбе!";
@@ -1274,199 +1319,223 @@ function initWeddingGame() {
     ctx.stroke();
   }
 
+  function drawShadow(cx, height, width = 20) {
+    ctx.fillStyle = "rgba(17, 17, 17, 0.18)";
+    ctx.beginPath();
+    ctx.ellipse(cx, height + 4, width, 5, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawHand(x, y) {
+    ctx.fillStyle = "#f1c7aa";
+    ctx.beginPath();
+    ctx.arc(x, y, 2.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawFace(cx, bride) {
+    const skin = "#f1c7aa";
+    const hair = bride ? "#cfa96b" : "#27201d";
+
+    ctx.fillStyle = hair;
+    ctx.beginPath();
+    ctx.ellipse(cx, 12, bride ? 11.5 : 10.5, bride ? 13 : 12, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = skin;
+    ctx.beginPath();
+    ctx.ellipse(cx, 13, 8.3, 9.8, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#111111";
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+
+    ctx.fillStyle = hair;
+    ctx.beginPath();
+    if (bride) {
+      ctx.moveTo(cx - 10, 9);
+      ctx.bezierCurveTo(cx - 6, 1, cx + 8, 1, cx + 11, 10);
+      ctx.bezierCurveTo(cx + 5, 7, cx + 1, 7, cx - 3, 9);
+      ctx.bezierCurveTo(cx - 4, 13, cx - 7, 16, cx - 9, 16);
+    } else {
+      ctx.moveTo(cx - 10, 9);
+      ctx.bezierCurveTo(cx - 6, 0, cx + 6, -1, cx + 10, 7);
+      ctx.lineTo(cx + 7, 10);
+      ctx.quadraticCurveTo(cx + 1, 7, cx - 3, 10);
+      ctx.lineTo(cx - 10, 12);
+    }
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = "#5d4132";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(cx - 5.5, 11);
+    ctx.lineTo(cx - 2.2, 10.5);
+    ctx.moveTo(cx + 2.2, 10.5);
+    ctx.lineTo(cx + 5.5, 11);
+    ctx.stroke();
+    ctx.fillStyle = "#111111";
+    ctx.beginPath();
+    ctx.arc(cx - 3.5, 13, 1.05, 0, Math.PI * 2);
+    ctx.arc(cx + 3.8, 13, 1.05, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#8d4f48";
+    ctx.lineWidth = 1.25;
+    ctx.beginPath();
+    ctx.arc(cx + 0.2, 17.4, 2.5, 0.28, Math.PI - 0.28);
+    ctx.stroke();
+  }
+
+  function drawGroom(cx, walk) {
+    const finalPose = game.finished;
+    const jacket = ctx.createLinearGradient(cx - 12, 25, cx + 12, 58);
+    jacket.addColorStop(0, "#2b2e31");
+    jacket.addColorStop(0.55, "#111214");
+    jacket.addColorStop(1, "#050506");
+
+    ctx.fillStyle = "#111111";
+    roundedRectPath(cx - 8 + walk * 2, 50, 6, 17, 3);
+    ctx.fill();
+    roundedRectPath(cx + 2 - walk * 2, 50, 6, 17, 3);
+    ctx.fill();
+    roundedRectPath(cx - 11 + walk * 2, 64, 13, 4, 2);
+    ctx.fill();
+    roundedRectPath(cx + 1 - walk * 2, 64, 13, 4, 2);
+    ctx.fill();
+
+    ctx.fillStyle = jacket;
+    roundedRectPath(cx - 11, 23, 22, 31, 6);
+    ctx.fill();
+    ctx.strokeStyle = "#111111";
+    ctx.lineWidth = 1.6;
+    ctx.stroke();
+    ctx.fillStyle = "#f7f0dd";
+    ctx.beginPath();
+    ctx.moveTo(cx - 5.5, 26);
+    ctx.lineTo(cx + 5.5, 26);
+    ctx.lineTo(cx + 3, 46);
+    ctx.lineTo(cx - 3, 46);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = "#111111";
+    ctx.beginPath();
+    ctx.moveTo(cx - 4, 26);
+    ctx.lineTo(cx, 31);
+    ctx.lineTo(cx + 4, 26);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = "#17181a";
+    ctx.lineWidth = 5.2;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(cx - 10, 31);
+    ctx.quadraticCurveTo(cx - 15, 38, cx - 11, 44);
+    ctx.moveTo(cx + 10, 31);
+    if (finalPose) {
+      ctx.quadraticCurveTo(cx + 15, 38, cx + 17, 44);
+    } else {
+      ctx.quadraticCurveTo(cx + 15, 39, cx + 11, 45);
+    }
+    ctx.stroke();
+    drawHand(cx - 11, 44);
+    drawHand(finalPose ? cx + 17 : cx + 11, finalPose ? 44 : 45);
+    ctx.lineCap = "butt";
+    drawFace(cx, false);
+  }
+
+  function drawBride(person, cx) {
+    const finalPose = game.finished;
+    const veil = ctx.createLinearGradient(0, 5, person.w, person.h);
+    veil.addColorStop(0, "rgba(255, 255, 255, 0.8)");
+    veil.addColorStop(0.62, "rgba(247, 240, 221, 0.38)");
+    veil.addColorStop(1, "rgba(247, 240, 221, 0.04)");
+    ctx.fillStyle = veil;
+    ctx.beginPath();
+    ctx.moveTo(cx, 4);
+    ctx.bezierCurveTo(cx + 18, 24, cx + 17, 49, cx + 12, person.h);
+    ctx.lineTo(cx - 12, person.h);
+    ctx.bezierCurveTo(cx - 17, 49, cx - 18, 24, cx, 4);
+    ctx.closePath();
+    ctx.fill();
+
+    const dress = ctx.createLinearGradient(cx - 16, 25, cx + 16, person.h);
+    dress.addColorStop(0, "#ffffff");
+    dress.addColorStop(0.58, "#f7f0dd");
+    dress.addColorStop(1, "#d9dfdd");
+    ctx.fillStyle = dress;
+    ctx.beginPath();
+    ctx.moveTo(cx - 7, 27);
+    ctx.bezierCurveTo(cx - 10, 40, cx - 14, 59, cx - 16, person.h);
+    ctx.lineTo(cx + 16, person.h);
+    ctx.bezierCurveTo(cx + 14, 59, cx + 10, 40, cx + 7, 27);
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "#111111";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.strokeStyle = "rgba(17, 17, 17, 0.14)";
+    ctx.beginPath();
+    ctx.moveTo(cx, 32);
+    ctx.lineTo(cx, person.h - 7);
+    ctx.stroke();
+
+    ctx.strokeStyle = "#f1c7aa";
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(cx - 8, 31);
+    if (finalPose) {
+      ctx.quadraticCurveTo(cx - 15, 38, cx - 21, 44);
+    } else {
+      ctx.quadraticCurveTo(cx - 13, 40, cx - 10, 49);
+    }
+    ctx.moveTo(cx + 8, 31);
+    ctx.quadraticCurveTo(cx + 13, 40, cx + 10, 49);
+    ctx.stroke();
+    drawHand(finalPose ? cx - 21 : cx - 10, finalPose ? 44 : 49);
+    drawHand(cx + 10, 49);
+    ctx.lineCap = "butt";
+    drawFace(cx, true);
+  }
+
   function drawPerson(person, bride = false) {
     const x = person.x - game.cameraX;
-    const y = person.y;
-    if (x + person.w < -80 || x > game.viewW + 80) {
-      return;
-    }
-
-    if (!bride && person.invulnerable > 0 && Math.floor(game.time * 18) % 2 === 0) {
+    if (x + person.w < -80 || x > game.viewW + 80 || (!bride && person.invulnerable > 0 && Math.floor(game.time * 18) % 2 === 0)) {
       return;
     }
 
     ctx.save();
-    ctx.translate(x, y);
-    ctx.lineWidth = 1.8;
-    ctx.strokeStyle = "#111111";
-    const speed = Math.min(1, Math.abs(person.vx || 0) / physics.maxSpeed);
-    const walk = Math.sin(game.time * 10) * speed;
+    ctx.translate(x, person.y);
     const cx = person.w / 2;
-
+    drawShadow(cx, person.h, bride ? 18 : 17);
     if (bride) {
-      ctx.fillStyle = "rgba(17, 17, 17, 0.2)";
-      ctx.beginPath();
-      ctx.ellipse(cx + 1, person.h + 4, 20, 5, 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      const veil = ctx.createLinearGradient(0, 6, person.w, person.h);
-      veil.addColorStop(0, "rgba(255, 255, 255, 0.74)");
-      veil.addColorStop(0.64, "rgba(247, 240, 221, 0.34)");
-      veil.addColorStop(1, "rgba(247, 240, 221, 0.08)");
-      ctx.fillStyle = veil;
-      ctx.beginPath();
-      ctx.moveTo(cx, 5);
-      ctx.bezierCurveTo(cx + 21, 27, cx + 18, 54, cx + 13, person.h);
-      ctx.lineTo(cx - 13, person.h);
-      ctx.bezierCurveTo(cx - 18, 54, cx - 21, 27, cx, 5);
-      ctx.closePath();
-      ctx.fill();
-
-      const dress = ctx.createLinearGradient(0, 22, person.w, person.h);
-      dress.addColorStop(0, "#ffffff");
-      dress.addColorStop(0.6, "#f7f0dd");
-      dress.addColorStop(1, "#dfe3de");
-      ctx.fillStyle = dress;
-      ctx.beginPath();
-      ctx.moveTo(cx - 7, 28);
-      ctx.bezierCurveTo(cx + 8, 34, cx + 13, 55, cx + 16, person.h);
-      ctx.lineTo(cx - 16, person.h);
-      ctx.bezierCurveTo(cx - 13, 55, cx - 8, 34, cx + 7, 28);
-      ctx.quadraticCurveTo(cx, 24, cx - 7, 28);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-
-      const bodice = ctx.createLinearGradient(cx - 12, 23, cx + 12, 44);
-      bodice.addColorStop(0, "#ffffff");
-      bodice.addColorStop(1, "#f7f0dd");
-      ctx.fillStyle = bodice;
-      ctx.beginPath();
-      ctx.moveTo(cx - 8, 27);
-      ctx.lineTo(cx + 8, 27);
-      ctx.lineTo(cx + 6, 45);
-      ctx.lineTo(cx - 6, 45);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-      ctx.strokeStyle = "rgba(17, 17, 17, 0.18)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(cx, 28);
-      ctx.lineTo(cx, person.h - 6);
-      ctx.stroke();
-
-      ctx.strokeStyle = "#f1c7aa";
-      ctx.lineWidth = 2;
-      ctx.lineCap = "round";
-      ctx.beginPath();
-      ctx.moveTo(cx - 9, 31);
-      ctx.quadraticCurveTo(cx - 14, 43, cx - 10, 51);
-      ctx.moveTo(cx + 9, 31);
-      ctx.quadraticCurveTo(cx + 14, 43, cx + 10, 51);
-      ctx.stroke();
-      ctx.fillStyle = "#f1c7aa";
-      ctx.beginPath();
-      ctx.arc(cx - 10, 51, 2.2, 0, Math.PI * 2);
-      ctx.arc(cx + 10, 51, 2.2, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.lineCap = "butt";
-      ctx.strokeStyle = "#111111";
-      ctx.lineWidth = 1.8;
-
-      ctx.fillStyle = "#d6b36f";
-      ctx.beginPath();
-      ctx.ellipse(cx, 13, 12, 14, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = "#f1c7aa";
-      ctx.beginPath();
-      ctx.ellipse(cx, 14, 8.5, 10, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = "#d6b36f";
-      ctx.beginPath();
-      ctx.moveTo(cx - 11, 10);
-      ctx.bezierCurveTo(cx - 8, 2, cx + 7, 0, cx + 11, 10);
-      ctx.bezierCurveTo(cx + 4, 8, cx - 4, 8, cx - 11, 10);
-      ctx.fill();
-
-      ctx.fillStyle = "#111111";
-      ctx.beginPath();
-      ctx.arc(cx - 4, 13, 1.3, 0, Math.PI * 2);
-      ctx.arc(cx + 5, 13, 1.3, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(cx + 1, 18, 2.6, 0.22, Math.PI - 0.22);
-      ctx.stroke();
+      drawBride(person, cx);
     } else {
-      ctx.fillStyle = "rgba(17, 17, 17, 0.2)";
-      ctx.beginPath();
-      ctx.ellipse(cx, person.h + 4, 20, 5, 0, 0, Math.PI * 2);
-      ctx.fill();
+      const speed = Math.min(1, Math.abs(person.vx || 0) / physics.maxSpeed);
+      drawGroom(cx, Math.sin(game.time * 10) * speed);
+    }
+    ctx.restore();
+  }
 
-      ctx.fillStyle = "#111111";
-      roundedRectPath(cx - 8 + walk * 2.4, 50, 6, 17, 3);
-      ctx.fill();
-      roundedRectPath(cx + 2 - walk * 2.4, 50, 6, 17, 3);
-      ctx.fill();
-      roundedRectPath(cx - 11 + walk * 2.4, 64, 13, 4, 2);
-      ctx.fill();
-      roundedRectPath(cx + 1 - walk * 2.4, 64, 13, 4, 2);
-      ctx.fill();
-
-      ctx.fillStyle = "#111111";
-      roundedRectPath(cx - 11, 22, 22, 32, 5);
-      ctx.fill();
-      ctx.stroke();
-      ctx.fillStyle = "#f7f0dd";
-      ctx.beginPath();
-      ctx.moveTo(cx - 6, 25);
-      ctx.lineTo(cx + 6, 25);
-      ctx.lineTo(cx + 3, 46);
-      ctx.lineTo(cx - 3, 46);
-      ctx.closePath();
-      ctx.fill();
-      ctx.fillStyle = "#111111";
-      ctx.beginPath();
-      ctx.moveTo(cx - 4, 26);
-      ctx.lineTo(cx, 31);
-      ctx.lineTo(cx + 4, 26);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.strokeStyle = "#111111";
-      ctx.lineWidth = 4.2;
-      ctx.lineCap = "round";
-      ctx.beginPath();
-      ctx.moveTo(cx - 11, 31);
-      ctx.quadraticCurveTo(cx - 17, 39, cx - 12, 45);
-      ctx.moveTo(cx + 11, 31);
-      ctx.quadraticCurveTo(cx + 17, 39, cx + 12, 45);
-      ctx.stroke();
-      ctx.fillStyle = "#f1c7aa";
-      ctx.beginPath();
-      ctx.arc(cx - 12, 45, 2.6, 0, Math.PI * 2);
-      ctx.arc(cx + 12, 45, 2.6, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.lineCap = "butt";
-      ctx.strokeStyle = "#111111";
-      ctx.lineWidth = 1.8;
-
-      ctx.fillStyle = "#f1c7aa";
-      ctx.beginPath();
-      ctx.ellipse(cx, 12, 8.7, 10.6, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = "#2a211d";
-      ctx.beginPath();
-      ctx.moveTo(cx - 10, 9);
-      ctx.bezierCurveTo(cx - 9, 0, cx + 5, -3, cx + 11, 5);
-      ctx.bezierCurveTo(cx + 5, 5, cx - 2, 8, cx - 10, 9);
-      ctx.bezierCurveTo(cx - 12, 12, cx - 11, 15, cx - 8, 15);
-      ctx.fill();
-
-      ctx.fillStyle = "#111111";
-      ctx.beginPath();
-      ctx.arc(cx - 4, 13, 1.3, 0, Math.PI * 2);
-      ctx.arc(cx + 5, 13, 1.3, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(cx + 1, 18, 2.6, 0.18, Math.PI - 0.18);
-      ctx.stroke();
+  function drawHeldHands() {
+    if (!game.finished) {
+      return;
     }
 
+    const groomHandX = game.player.x - game.cameraX + game.player.w / 2 + 17;
+    const brideHandX = game.bride.x - game.cameraX + game.bride.w / 2 - 21;
+    const handY = game.floorY - 25;
+    ctx.save();
+    ctx.strokeStyle = "#f1c7aa";
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(groomHandX, handY);
+    ctx.quadraticCurveTo((groomHandX + brideHandX) / 2, handY + 3, brideHandX, handY - 1);
+    ctx.stroke();
+    drawHand((groomHandX + brideHandX) / 2, handY + 1);
     ctx.restore();
   }
 
@@ -1479,85 +1548,77 @@ function initWeddingGame() {
 
     ctx.save();
     ctx.translate(x, y);
-    const wag = Math.sin(game.time * 7) * 1.4;
-    ctx.fillStyle = "rgba(17, 17, 17, 0.18)";
-    ctx.beginPath();
-    ctx.ellipse(20, 33, 15, 4.4, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    const fur = ctx.createLinearGradient(6, 3, 34, 31);
-    fur.addColorStop(0, "#3a302a");
-    fur.addColorStop(0.42, "#171211");
-    fur.addColorStop(1, "#070605");
+    const wag = Math.sin(game.time * 6) * 1.5;
+    drawShadow(20, 29, 15);
+    const fur = ctx.createLinearGradient(7, 7, 34, 31);
+    fur.addColorStop(0, "#3b3432");
+    fur.addColorStop(0.52, "#151313");
+    fur.addColorStop(1, "#050505");
     ctx.fillStyle = fur;
-    ctx.strokeStyle = "#0a0807";
+    ctx.strokeStyle = "#090808";
     ctx.lineWidth = 1.4;
 
     ctx.beginPath();
-    ctx.ellipse(17, 22, 10.5, 10.8, -0.08, 0, Math.PI * 2);
+    ctx.ellipse(17, 20, 11.5, 10.5, -0.16, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(28, 11, 8.3, 8.2, 0.1, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
+    ctx.fillStyle = "#0a0909";
     ctx.beginPath();
-    ctx.ellipse(27, 11, 8, 7.4, 0.08, 0, Math.PI * 2);
+    ctx.moveTo(22, 7);
+    ctx.quadraticCurveTo(18, 1, 19, 13);
+    ctx.closePath();
     ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = "#090706";
     ctx.beginPath();
-    ctx.ellipse(21.8, 11, 4.5, 8, -0.3, 0, Math.PI * 2);
+    ctx.moveTo(31, 5);
+    ctx.quadraticCurveTo(37, 2, 34, 14);
+    ctx.closePath();
     ctx.fill();
 
-    ctx.strokeStyle = "#0b0807";
+    ctx.strokeStyle = "#0b0a0a";
     ctx.lineWidth = 3;
     ctx.lineCap = "round";
     ctx.beginPath();
-    ctx.moveTo(9, 20);
-    ctx.quadraticCurveTo(1, 17, 4, 10 + wag);
+    ctx.moveTo(8, 19);
+    ctx.quadraticCurveTo(1, 16, 3, 9 + wag);
     ctx.stroke();
-
-    ctx.strokeStyle = "#100d0c";
+    ctx.strokeStyle = "#111111";
     ctx.lineWidth = 2.2;
     ctx.beginPath();
-    ctx.moveTo(12, 27);
-    ctx.lineTo(10, 32);
-    ctx.moveTo(18, 28);
-    ctx.lineTo(18, 33);
-    ctx.moveTo(24, 25);
-    ctx.lineTo(27, 33);
+    ctx.moveTo(12, 26);
+    ctx.lineTo(11, 31);
+    ctx.moveTo(19, 27);
+    ctx.lineTo(20, 31);
+    ctx.moveTo(25, 25);
+    ctx.lineTo(28, 31);
     ctx.stroke();
-    ctx.fillStyle = "#0a0807";
-    roundedRectPath(8, 31, 6, 2.4, 1.4);
-    ctx.fill();
-    roundedRectPath(16, 32, 6, 2.4, 1.4);
-    ctx.fill();
-    roundedRectPath(25, 32, 6, 2.4, 1.4);
-    ctx.fill();
     ctx.lineCap = "butt";
 
     ctx.fillStyle = "#c7ccd2";
-    roundedRectPath(20, 15, 12, 2.8, 2);
+    roundedRectPath(21, 16, 12, 3, 2);
     ctx.fill();
-
-    ctx.fillStyle = "#2a211d";
-    ctx.beginPath();
-    ctx.ellipse(32, 12, 4.8, 3.5, 0.02, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = "#050403";
-    ctx.beginPath();
-    ctx.arc(35.5, 11.8, 1.2, 0, Math.PI * 2);
-    ctx.fill();
-
     ctx.fillStyle = "#111111";
     ctx.beginPath();
-    ctx.arc(29, 9.7, 1.15, 0, Math.PI * 2);
+    ctx.arc(25.8, 10.5, 1.15, 0, Math.PI * 2);
+    ctx.arc(30.7, 10.5, 1.15, 0, Math.PI * 2);
     ctx.fill();
-
-    ctx.fillStyle = "rgba(247, 240, 221, 0.7)";
+    ctx.fillStyle = "rgba(247, 240, 221, 0.72)";
     ctx.beginPath();
-    ctx.arc(29.4, 9.35, 0.42, 0, Math.PI * 2);
+    ctx.arc(26.15, 10.15, 0.35, 0, Math.PI * 2);
+    ctx.arc(31.05, 10.15, 0.35, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#1a1615";
+    ctx.beginPath();
+    ctx.ellipse(35, 14.2, 4.6, 3.4, 0.02, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#050505";
+    ctx.beginPath();
+    ctx.arc(38.2, 13.6, 1.15, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
@@ -1745,7 +1806,7 @@ function initWeddingGame() {
     ctx.font = `900 16px ${UI_FONT}`;
     ctx.fillText("клятвы произнесены", game.viewW / 2, 75);
     ctx.font = `900 10px ${UI_FONT}`;
-    ctx.fillText("Misha + Polina + Юми ждут гостей", game.viewW / 2, 94);
+    ctx.fillText("Миша, Полина и Юми ждут гостей", game.viewW / 2, 94);
     ctx.restore();
   }
 
@@ -1759,6 +1820,7 @@ function initWeddingGame() {
     drawPerson(game.bride, true);
     drawDog();
     drawPerson(game.player, false);
+    drawHeldHands();
     drawSparks();
     drawGameMessage();
     drawFinalText();
@@ -1795,14 +1857,23 @@ function initWeddingGame() {
     });
   }
 
-  gameStartButton?.addEventListener("click", resetGame);
-  gameCanvas.addEventListener("pointerdown", jump);
+  gameRoot.addEventListener("contextmenu", (event) => event.preventDefault());
+  gameRoot.addEventListener("selectstart", (event) => event.preventDefault());
+  gameRoot.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
+  gameStartButton?.addEventListener("click", startGameFromButton);
+  gameCloseButton?.addEventListener("click", exitMobileGameMode);
+  gameCanvas.addEventListener("pointerdown", (event) => {
+    event.preventDefault();
+    if (game.running || !mobileGameQuery.matches) {
+      jump();
+    }
+  });
   setButtonControl(document.querySelector("[data-game-left]"), "left");
   setButtonControl(document.querySelector("[data-game-right]"), "right");
   setButtonControl(document.querySelector("[data-game-jump]"), "jump");
 
   window.addEventListener("keydown", (event) => {
-    if (isTypingTarget(event.target) || !isGameInView()) {
+    if ((!game.running && isTypingTarget(event.target)) || !isGameInView()) {
       return;
     }
 
@@ -1810,19 +1881,29 @@ function initWeddingGame() {
       event.preventDefault();
       jump();
     } else if (["ArrowLeft", "KeyA"].includes(event.code)) {
+      event.preventDefault();
       keys.left = true;
     } else if (["ArrowRight", "KeyD"].includes(event.code)) {
+      event.preventDefault();
       keys.right = true;
     }
   });
   window.addEventListener("keyup", (event) => {
     if (["ArrowLeft", "KeyA"].includes(event.code)) {
+      event.preventDefault();
       keys.left = false;
     } else if (["ArrowRight", "KeyD"].includes(event.code)) {
+      event.preventDefault();
       keys.right = false;
     }
   });
-  window.addEventListener("resize", resizeGame);
+  window.addEventListener("resize", () => {
+    if (!mobileGameQuery.matches) {
+      document.body.classList.remove("is-game-fullscreen");
+      gameRoot.classList.remove("is-mobile-fullscreen");
+    }
+    resizeGame();
+  });
 
   resizeGame();
   drawGame();

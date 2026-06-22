@@ -1389,6 +1389,10 @@ img {
   position: relative;
   overflow: hidden;
   box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.12);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .game__canvas {
@@ -1398,6 +1402,28 @@ img {
   min-height: 430px;
   background: #d5ed2b;
   image-rendering: auto;
+  touch-action: none;
+}
+
+.game__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 8;
+  display: none;
+  width: 38px;
+  height: 38px;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  background: rgba(247, 240, 221, 0.92);
+  color: currentColor;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  touch-action: manipulation;
 }
 
 .game__hud {
@@ -2153,6 +2179,75 @@ img {
   .route-card,
   .game__stage {
     min-height: 320px;
+  }
+
+  body.is-game-fullscreen {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  body.is-game-fullscreen .site-bar {
+    display: none;
+  }
+
+  body.is-game-fullscreen .game {
+    min-height: 100svh;
+    padding: 0;
+  }
+
+  body.is-game-fullscreen .game__copy,
+  body.is-game-fullscreen .game > .section__silver-marks {
+    display: none;
+  }
+
+  .game__stage.is-mobile-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+    border: 0;
+    box-shadow: none;
+    background: #d5ed2b;
+  }
+
+  .game__stage.is-mobile-fullscreen .game__close {
+    display: grid;
+    place-items: center;
+  }
+
+  .game__stage.is-mobile-fullscreen .game__canvas {
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
+  .game__stage.is-mobile-fullscreen .game__overlay {
+    padding: max(56px, env(safe-area-inset-top) + 44px) 18px max(28px, env(safe-area-inset-bottom) + 18px);
+  }
+
+  .game__stage.is-mobile-fullscreen .game__controls {
+    bottom: max(14px, env(safe-area-inset-bottom) + 10px);
+    grid-template-columns: repeat(3, minmax(62px, 72px));
+    gap: 10px;
+  }
+
+  .game__stage.is-mobile-fullscreen .game__controls button {
+    width: auto;
+    height: 54px;
+    background: rgba(247, 240, 221, 0.94);
+    font-size: 1.25rem;
+  }
+
+  .game__stage.is-mobile-fullscreen .game__hud {
+    top: max(48px, env(safe-area-inset-top) + 42px);
+    left: max(10px, env(safe-area-inset-left) + 10px);
+  }
+
+  .game__stage.is-mobile-fullscreen .game__inventory {
+    top: max(86px, env(safe-area-inset-top) + 80px);
+    left: max(10px, env(safe-area-inset-left) + 10px);
+    right: max(10px, env(safe-area-inset-right) + 10px);
   }
 
   .game__canvas {
