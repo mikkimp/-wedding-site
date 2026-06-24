@@ -1339,7 +1339,24 @@ function initWeddingGame() {
 
     ctx.fillStyle = hair;
     ctx.beginPath();
-    ctx.ellipse(cx, 12, bride ? 11.5 : 10.5, bride ? 13 : 12, 0, 0, Math.PI * 2);
+    if (bride) {
+      ctx.moveTo(cx - 9, 18);
+      ctx.bezierCurveTo(cx - 12, 12, cx - 8, 3, cx, 2);
+      ctx.bezierCurveTo(cx + 9, 2, cx + 12, 11, cx + 9, 20);
+      ctx.lineTo(cx + 6, 25);
+      ctx.lineTo(cx + 4, 14);
+      ctx.lineTo(cx - 6, 15);
+      ctx.lineTo(cx - 7, 25);
+      ctx.closePath();
+    } else {
+      ctx.moveTo(cx - 9, 11);
+      ctx.bezierCurveTo(cx - 8, 3, cx - 3, 0, cx + 3, 1);
+      ctx.bezierCurveTo(cx + 9, 2, cx + 11, 7, cx + 9, 12);
+      ctx.lineTo(cx + 4, 10);
+      ctx.quadraticCurveTo(cx, 7, cx - 4, 11);
+      ctx.lineTo(cx - 9, 14);
+      ctx.closePath();
+    }
     ctx.fill();
 
     ctx.fillStyle = skin;
@@ -1353,16 +1370,16 @@ function initWeddingGame() {
     ctx.fillStyle = hair;
     ctx.beginPath();
     if (bride) {
-      ctx.moveTo(cx - 10, 9);
-      ctx.bezierCurveTo(cx - 6, 1, cx + 8, 1, cx + 11, 10);
-      ctx.bezierCurveTo(cx + 5, 7, cx + 1, 7, cx - 3, 9);
-      ctx.bezierCurveTo(cx - 4, 13, cx - 7, 16, cx - 9, 16);
+      ctx.moveTo(cx - 8, 10);
+      ctx.bezierCurveTo(cx - 3, 4, cx + 6, 4, cx + 9, 10);
+      ctx.quadraticCurveTo(cx + 3, 8, cx - 1, 10);
+      ctx.quadraticCurveTo(cx - 4, 13, cx - 7, 15);
     } else {
-      ctx.moveTo(cx - 10, 9);
-      ctx.bezierCurveTo(cx - 6, 0, cx + 6, -1, cx + 10, 7);
-      ctx.lineTo(cx + 7, 10);
-      ctx.quadraticCurveTo(cx + 1, 7, cx - 3, 10);
-      ctx.lineTo(cx - 10, 12);
+      ctx.moveTo(cx - 8, 10);
+      ctx.bezierCurveTo(cx - 4, 4, cx + 4, 3, cx + 8, 9);
+      ctx.lineTo(cx + 4, 11);
+      ctx.quadraticCurveTo(cx, 8, cx - 3, 11);
+      ctx.lineTo(cx - 8, 13);
     }
     ctx.closePath();
     ctx.fill();
@@ -1462,19 +1479,31 @@ function initWeddingGame() {
 
     const dress = ctx.createLinearGradient(cx - 16, 25, cx + 16, person.h);
     dress.addColorStop(0, "#ffffff");
-    dress.addColorStop(0.58, "#f7f0dd");
-    dress.addColorStop(1, "#d9dfdd");
+    dress.addColorStop(0.62, "#f7f0dd");
+    dress.addColorStop(1, "#dfe3de");
     ctx.fillStyle = dress;
     ctx.beginPath();
     ctx.moveTo(cx - 7, 27);
-    ctx.bezierCurveTo(cx - 10, 40, cx - 14, 59, cx - 16, person.h);
-    ctx.lineTo(cx + 16, person.h);
-    ctx.bezierCurveTo(cx + 14, 59, cx + 10, 40, cx + 7, 27);
+    ctx.bezierCurveTo(cx + 8, 34, cx + 14, 55, cx + 16, person.h);
+    ctx.lineTo(cx - 16, person.h);
+    ctx.bezierCurveTo(cx - 14, 55, cx - 8, 34, cx + 7, 27);
+    ctx.quadraticCurveTo(cx, 24, cx - 7, 27);
     ctx.closePath();
     ctx.fill();
     ctx.strokeStyle = "#111111";
     ctx.lineWidth = 1.5;
     ctx.stroke();
+    const bodice = ctx.createLinearGradient(cx - 9, 25, cx + 9, 46);
+    bodice.addColorStop(0, "#ffffff");
+    bodice.addColorStop(1, "#f7f0dd");
+    ctx.fillStyle = bodice;
+    ctx.beginPath();
+    ctx.moveTo(cx - 8, 27);
+    ctx.lineTo(cx + 8, 27);
+    ctx.lineTo(cx + 6, 45);
+    ctx.lineTo(cx - 6, 45);
+    ctx.closePath();
+    ctx.fill();
     ctx.strokeStyle = "rgba(17, 17, 17, 0.14)";
     ctx.beginPath();
     ctx.moveTo(cx, 32);
@@ -1535,7 +1564,6 @@ function initWeddingGame() {
     ctx.moveTo(groomHandX, handY);
     ctx.quadraticCurveTo((groomHandX + brideHandX) / 2, handY + 3, brideHandX, handY - 1);
     ctx.stroke();
-    drawHand((groomHandX + brideHandX) / 2, handY + 1);
     ctx.restore();
   }
 
@@ -1598,9 +1626,6 @@ function initWeddingGame() {
     ctx.stroke();
     ctx.lineCap = "butt";
 
-    ctx.fillStyle = "#c7ccd2";
-    roundedRectPath(21, 16, 12, 3, 2);
-    ctx.fill();
     ctx.fillStyle = "#111111";
     ctx.beginPath();
     ctx.arc(25.8, 10.5, 1.15, 0, Math.PI * 2);
