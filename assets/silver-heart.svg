@@ -1,12 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 190" role="img" aria-label="Серебряное сердце">
   <defs>
     <linearGradient id="chrome" x1="20" x2="190" y1="22" y2="174" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#f8f8f8"/>
-      <stop offset=".24" stop-color="#8f9398"/>
-      <stop offset=".42" stop-color="#ffffff"/>
-      <stop offset=".62" stop-color="#5f646b"/>
-      <stop offset=".82" stop-color="#d9dde2"/>
-      <stop offset="1" stop-color="#7f858c"/>
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".12" stop-color="#f5f7fa"/>
+      <stop offset=".24" stop-color="#6f747c"/>
+      <stop offset=".38" stop-color="#ffffff"/>
+      <stop offset=".52" stop-color="#c8ced6"/>
+      <stop offset=".66" stop-color="#343941"/>
+      <stop offset=".82" stop-color="#f4f7fb"/>
+      <stop offset="1" stop-color="#8a9098"/>
     </linearGradient>
     <linearGradient id="edge" x1="36" x2="192" y1="22" y2="170" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#2d3035"/>
@@ -16,6 +18,7 @@
   </defs>
   <path fill="url(#edge)" d="M110 184C72 147 12 111 12 61 12 28 35 8 66 8c19 0 34 9 44 25 10-16 25-25 44-25 31 0 54 20 54 53 0 50-60 86-98 123Z"/>
   <path fill="url(#chrome)" d="M110 169C76 136 29 105 29 62c0-23 16-38 39-38 18 0 31 11 39 31h6c8-20 21-31 39-31 23 0 39 15 39 38 0 43-47 74-81 107Z"/>
-  <path fill="#fff" opacity=".58" d="M55 45c14-14 38-13 50 4-21-5-40-1-58 14-2-6 0-13 8-18Z"/>
+  <path fill="#fff" opacity=".72" d="M55 45c14-14 38-13 50 4-21-5-40-1-58 14-2-6 0-13 8-18Z"/>
+  <path fill="#fff" opacity=".34" d="M73 29c15-5 31 1 39 17-14-8-29-10-45-5 1-5 3-9 6-12Z"/>
   <path fill="#1f2329" opacity=".34" d="M149 35c25 8 34 31 18 55-7 11-20 24-39 39 28-11 52-35 58-58 5-20-7-35-37-36Z"/>
 </svg>

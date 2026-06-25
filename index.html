@@ -218,8 +218,8 @@
             </p>
           </div>
         </div>
-        <figure class="intro__photo">
-          <img src="assets/misha-polina-walk.jpg" alt="Миша и Полина идут вместе и держатся за руки">
+        <figure class="intro__photo intro__photo--pop">
+          <img src="assets/misha-polina-pop-pink.png" alt="Миша и Полина идут вместе и держатся за руки">
         </figure>
       </section>
 
@@ -247,12 +247,8 @@
         </div>
         <ol class="timeline" aria-label="Время">
           <li>
-            <span>Приезд гостей, которые остаются на базе</span>
+            <span>Встречаем гостей</span>
             <time datetime="2026-08-19T15:00">15:00</time>
-          </li>
-          <li>
-            <span>Сбор гостей без ночёвки</span>
-            <time datetime="2026-08-19T15:30">15:30</time>
           </li>
           <li>
             <span>Церемония</span>
@@ -271,12 +267,8 @@
             <time datetime="2026-08-19T22:00">22:00</time>
           </li>
           <li>
-            <span>Основная часть вечера</span>
-            <time datetime="2026-08-19T23:00">до 23:00</time>
-          </li>
-          <li>
-            <span>Разъезд гостей без ночёвки</span>
-            <time datetime="2026-08-20T00:00">до 00:00</time>
+            <span>Завершаем вечер</span>
+            <time datetime="2026-08-19T23:00">23:00–00:00</time>
           </li>
         </ol>
       </section>
@@ -555,8 +547,9 @@
 
           <fieldset>
             <legend>Дорога</legend>
-            <label><input type="radio" name="transport" value="Доберусь самостоятельно" required> Доберусь самостоятельно</label>
-            <label><input type="radio" name="transport" value="Нужна помощь с обратной дорогой"> Нужна помощь с обратной дорогой</label>
+            <label><input type="radio" name="transport" value="На своей машине" required> На своей машине</label>
+            <label><input type="radio" name="transport" value="На такси"> На такси</label>
+            <label><input type="radio" name="transport" value="Нужна помощь с дорогой"> Нужна помощь с дорогой</label>
           </fieldset>
 
           <label class="rsvp-form__wide">
@@ -571,10 +564,6 @@
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
 
-        <aside class="qr-block" aria-label="QR-код анкеты">
-          <img src="assets/qr-placeholder.svg" alt="Место для QR-кода анкеты">
-          <p>QR для бумажного приглашения</p>
-        </aside>
       </section>
     </main>
 

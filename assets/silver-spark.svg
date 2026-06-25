@@ -2,13 +2,16 @@
   <defs>
     <linearGradient id="sparkChrome" x1="25" x2="155" y1="25" y2="155" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ffffff"/>
-      <stop offset=".22" stop-color="#7d8288"/>
-      <stop offset=".48" stop-color="#f2f4f6"/>
-      <stop offset=".7" stop-color="#30343a"/>
-      <stop offset="1" stop-color="#cfd4d9"/>
+      <stop offset=".14" stop-color="#e8edf2"/>
+      <stop offset=".28" stop-color="#59606a"/>
+      <stop offset=".46" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#aeb6bf"/>
+      <stop offset=".78" stop-color="#23272e"/>
+      <stop offset="1" stop-color="#eef2f6"/>
     </linearGradient>
   </defs>
   <path fill="#16191d" d="M90 2c12 48 40 76 88 88-48 12-76 40-88 88-12-48-40-76-88-88 48-12 76-40 88-88Z"/>
   <path fill="url(#sparkChrome)" d="M90 22c9 37 31 59 68 68-37 9-59 31-68 68-9-37-31-59-68-68 37-9 59-31 68-68Z"/>
-  <path fill="#fff" opacity=".7" d="M90 33c4 24 15 42 34 54-20-5-36-18-48-39l14-15Z"/>
+  <path fill="#fff" opacity=".82" d="M90 33c4 24 15 42 34 54-20-5-36-18-48-39l14-15Z"/>
+  <path fill="#fff" opacity=".38" d="M79 75c21 4 41-2 62-18-12 20-29 34-55 39l-7-21Z"/>
 </svg>

@@ -29,7 +29,8 @@
   --hero-ink-muted: rgba(216, 30, 98, 0.72);
   --hero-star: #fff4f7;
   --hero-border: #d81e62;
-  --silver-shadow: rgba(20, 23, 28, 0.24);
+  --silver-shadow: rgba(20, 23, 28, 0.28);
+  --silver-glint: rgba(255, 255, 255, 0.74);
   --screen-paper: var(--paper);
   --screen-paper-soft: var(--paper-cool);
   --screen-ink: var(--ink);
@@ -380,8 +381,12 @@ img {
   position: absolute;
   width: clamp(14px, 1.8vw, 24px);
   height: auto;
-  opacity: 0.78;
-  filter: drop-shadow(3px 4px 0 var(--silver-shadow));
+  opacity: 0.9;
+  filter:
+    drop-shadow(-1px -1px 0 var(--silver-glint))
+    drop-shadow(3px 4px 0 var(--silver-shadow))
+    contrast(1.18)
+    brightness(1.08);
 }
 
 .hero__silver-marks img:nth-child(1) {
@@ -597,8 +602,12 @@ img {
   position: absolute;
   width: clamp(13px, 1.8vw, 22px);
   height: auto;
-  opacity: 0.72;
-  filter: drop-shadow(3px 4px 0 var(--silver-shadow));
+  opacity: 0.88;
+  filter:
+    drop-shadow(-1px -1px 0 var(--silver-glint))
+    drop-shadow(3px 4px 0 var(--silver-shadow))
+    contrast(1.18)
+    brightness(1.08);
 }
 
 .section__silver-marks img:nth-child(1) {
@@ -786,6 +795,16 @@ img {
   object-position: center;
   filter: grayscale(1) contrast(1.08);
   mix-blend-mode: multiply;
+}
+
+.intro__photo--pop {
+  background: #c8e000;
+}
+
+.intro__photo--pop img {
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
 }
 
 .section--grid,
@@ -1839,32 +1858,6 @@ img {
   font-size: 0.95rem;
 }
 
-.qr-block {
-  position: relative;
-  z-index: 2;
-  grid-column: 1;
-  justify-self: center;
-  align-self: start;
-  width: 164px;
-  border: var(--line);
-  background: var(--green);
-  padding: 10px;
-  transform: rotate(1deg);
-}
-
-.qr-block img {
-  width: 100%;
-  aspect-ratio: 1;
-  border: 1px solid var(--ink);
-}
-
-.qr-block p {
-  margin: 8px 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
 .footer {
   width: min(100% - 40px, var(--max));
   margin: 0 auto;
@@ -2324,12 +2317,6 @@ img {
 
   .rsvp-form {
     grid-template-columns: 1fr;
-  }
-
-  .qr-block {
-    position: static;
-    width: 150px;
-    grid-column: 1;
   }
 
   .section__silver-marks img:nth-child(1),

@@ -668,8 +668,11 @@ function initWeddingGame() {
   function createSilverGradient(x, y, size) {
     const gradient = ctx.createLinearGradient(x - size, y - size, x + size, y + size);
     gradient.addColorStop(0, "#ffffff");
-    gradient.addColorStop(0.34, "#c7ccd2");
-    gradient.addColorStop(0.62, "#6c727c");
+    gradient.addColorStop(0.18, "#e8edf2");
+    gradient.addColorStop(0.34, "#5c626c");
+    gradient.addColorStop(0.5, "#ffffff");
+    gradient.addColorStop(0.68, "#9ea6b0");
+    gradient.addColorStop(0.84, "#282c33");
     gradient.addColorStop(1, "#f7f0dd");
     return gradient;
   }
