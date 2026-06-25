@@ -1,4 +1,4 @@
-const RSVP_ENDPOINT = "";
+const RSVP_ENDPOINT = "https://formsubmit.co/ajax/mikkcift@yandex.ru";
 const EXTERNAL_FORM_URL = "";
 const LOCAL_RSVP_STORAGE_KEY = "misha-polina-rsvp-test-submissions";
 const hero = document.querySelector(".hero");
@@ -124,7 +124,7 @@ function initWeddingGame() {
       x: 0.12,
       y: 170,
       color: "#ff35bc",
-      story: "Букет собран: у арки будет живой цвет.",
+      story: "Букет собран. У церемонии появится свой цвет.",
     },
     {
       key: "vows",
@@ -132,7 +132,7 @@ function initWeddingGame() {
       x: 0.255,
       y: 248,
       color: "#f7f0dd",
-      story: "Конверт с клятвами найден: важные слова с собой.",
+      story: "Клятвы с собой. Самые важные слова не потеряются.",
     },
     {
       key: "ring",
@@ -140,7 +140,7 @@ function initWeddingGame() {
       x: 0.405,
       y: 202,
       color: "#ffea00",
-      story: "Кольца на месте: церемония стала реальнее.",
+      story: "Кольца на месте. Теперь можно идти к арке.",
     },
     {
       key: "glass",
@@ -148,7 +148,7 @@ function initWeddingGame() {
       x: 0.555,
       y: 150,
       color: "#7fc8ff",
-      story: "Бокалы взяты: будет первый тост за двоих.",
+      story: "Бокалы взяты. Первый тост будет за двоих.",
     },
     {
       key: "playlist",
@@ -156,7 +156,7 @@ function initWeddingGame() {
       x: 0.715,
       y: 220,
       color: "#6654b8",
-      story: "Плейлист включен: танцы точно начнутся.",
+      story: "Плейлист найден. Танцы начнутся вовремя.",
     },
     {
       key: "photo",
@@ -164,7 +164,7 @@ function initWeddingGame() {
       x: 0.865,
       y: 258,
       color: "#c7ccd2",
-      story: "Кадр сохранен: эту сцену точно хочется запомнить.",
+      story: "Кадр готов. Этот момент точно нужно сохранить.",
     },
   ];
 
@@ -218,7 +218,7 @@ function initWeddingGame() {
     // The ceremony is deliberately beyond the final hazards, with a calm run-up to the arch.
     game.bride.x = game.levelW - Math.max(300, game.viewW * 0.32);
     game.bride.y = game.floorY - game.bride.h;
-    game.dog.x = game.bride.x + 46;
+    game.dog.x = game.bride.x + 42;
     game.dog.y = game.floorY - game.dog.h;
     game.player.y = Math.min(game.player.y || game.floorY - game.player.h, game.floorY - game.player.h);
     buildLevel();
@@ -344,7 +344,7 @@ function initWeddingGame() {
         gameOverlayTitle.textContent = "Добраться до невесты";
       }
       if (gameOverlayText) {
-        gameOverlayText.textContent = "Нажмите «Начать игру». Потом: стрелки — идти, пробел или ↑ — прыгать. Три жизни, препятствия можно перепрыгнуть.";
+      gameOverlayText.textContent = "Нажмите «Начать игру». Дальше: стрелки — идти, пробел или ↑ — прыгать. У вас три жизни, опасные элементы можно перепрыгнуть.";
       }
       if (gameStartButton) {
         gameStartButton.textContent = "Начать игру";
@@ -364,18 +364,18 @@ function initWeddingGame() {
     game.running = false;
     game.finished = true;
     game.over = false;
-    game.message = "Миша, Полина и Юми у арки. Ждём гостей на свадьбе!";
+    game.message = "Мы у арки. Ждём вас на свадьбе!";
     game.messageTimer = 2.4;
-    game.player.x = game.bride.x - 63;
+    game.player.x = game.bride.x - 41;
     game.player.y = game.floorY - game.player.h;
     game.player.vx = 0;
     game.player.vy = 0;
-    game.dog.x = game.bride.x + 46;
+    game.dog.x = game.bride.x + 42;
     game.dog.y = game.floorY - game.dog.h;
     game.cameraX = Math.max(0, Math.min(game.bride.x + 10 - game.viewW * 0.5, game.levelW - game.viewW));
     gameRoot.classList.add("is-finished");
     if (gameOverlayTitle) {
-      gameOverlayTitle.textContent = "Миша, Полина и Юми";
+      gameOverlayTitle.textContent = "Мы добежали до свадьбы";
     }
     if (gameOverlayText) {
       gameOverlayText.textContent = "Клятвы произнесены. Ждём вас на нашей свадьбе!";
@@ -440,7 +440,7 @@ function initWeddingGame() {
     enemy.defeated = true;
     game.player.vy = -physics.jump * 0.56;
     game.player.grounded = false;
-    showGameMessage("waveform сбит", 1.1);
+    showGameMessage("Вейвформа пройдена.", 1.1);
     for (let i = 0; i < 22; i += 1) {
       spawnSpark(enemy.x + enemy.w / 2, enemy.y + enemy.h / 2);
     }
@@ -457,7 +457,7 @@ function initWeddingGame() {
 
     game.lives -= 1;
     spawnHitSparks(game.player.x + game.player.w / 2, game.player.y + game.player.h / 2);
-    showGameMessage(game.lives > 0 ? `осталось жизней: ${game.lives}` : "жизни закончились", 1.2);
+    showGameMessage(game.lives > 0 ? `Осталось жизней: ${game.lives}` : "Жизни закончились", 1.2);
     if (game.lives <= 0) {
       game.running = false;
       game.over = true;
@@ -466,7 +466,7 @@ function initWeddingGame() {
         gameOverlayTitle.textContent = "Ещё попытка";
       }
       if (gameOverlayText) {
-        gameOverlayText.textContent = "Три жизни закончились. Препятствия можно перепрыгивать, как в маленьком платформере.";
+        gameOverlayText.textContent = "Три жизни закончились. Попробуйте ещё раз: опасные элементы лучше перепрыгивать заранее.";
       }
       if (gameStartButton) {
         gameStartButton.textContent = "Заново";
@@ -623,7 +623,7 @@ function initWeddingGame() {
           player.x = game.bride.x - 58;
           player.vx = Math.min(0, player.vx);
           if (game.messageTimer <= 0.1) {
-            showGameMessage("Полина ждёт у арки: собери все вещи для церемонии.", 1.8);
+            showGameMessage("Полина ждёт у арки, но сначала нужно собрать свадебные вещи.", 1.8);
           }
         }
       }
@@ -1340,21 +1340,20 @@ function initWeddingGame() {
     ctx.fillStyle = hair;
     ctx.beginPath();
     if (bride) {
-      ctx.moveTo(cx - 9, 18);
-      ctx.bezierCurveTo(cx - 12, 12, cx - 8, 3, cx, 2);
-      ctx.bezierCurveTo(cx + 9, 2, cx + 12, 11, cx + 9, 20);
-      ctx.lineTo(cx + 6, 25);
-      ctx.lineTo(cx + 4, 14);
-      ctx.lineTo(cx - 6, 15);
-      ctx.lineTo(cx - 7, 25);
+      ctx.moveTo(cx - 11, 17);
+      ctx.bezierCurveTo(cx - 11, 8, cx - 6, 2, cx, 1);
+      ctx.bezierCurveTo(cx + 8, 1, cx + 12, 8, cx + 11, 18);
+      ctx.bezierCurveTo(cx + 10, 27, cx + 7, 34, cx + 4, 40);
+      ctx.bezierCurveTo(cx + 5, 28, cx + 5, 20, cx + 7, 13);
+      ctx.bezierCurveTo(cx + 2, 10, cx - 4, 10, cx - 7, 14);
+      ctx.bezierCurveTo(cx - 6, 22, cx - 6, 29, cx - 4, 40);
+      ctx.bezierCurveTo(cx - 8, 34, cx - 11, 27, cx - 11, 17);
       ctx.closePath();
     } else {
-      ctx.moveTo(cx - 9, 11);
-      ctx.bezierCurveTo(cx - 8, 3, cx - 3, 0, cx + 3, 1);
-      ctx.bezierCurveTo(cx + 9, 2, cx + 11, 7, cx + 9, 12);
-      ctx.lineTo(cx + 4, 10);
-      ctx.quadraticCurveTo(cx, 7, cx - 4, 11);
-      ctx.lineTo(cx - 9, 14);
+      ctx.moveTo(cx - 9, 12);
+      ctx.bezierCurveTo(cx - 9, 5, cx - 4, 1, cx + 2, 1);
+      ctx.bezierCurveTo(cx + 10, 1, cx + 12, 8, cx + 8, 15);
+      ctx.bezierCurveTo(cx + 4, 12, cx - 2, 12, cx - 8, 15);
       ctx.closePath();
     }
     ctx.fill();
@@ -1370,19 +1369,68 @@ function initWeddingGame() {
     ctx.fillStyle = hair;
     ctx.beginPath();
     if (bride) {
-      ctx.moveTo(cx - 8, 10);
-      ctx.bezierCurveTo(cx - 3, 4, cx + 6, 4, cx + 9, 10);
-      ctx.quadraticCurveTo(cx + 3, 8, cx - 1, 10);
-      ctx.quadraticCurveTo(cx - 4, 13, cx - 7, 15);
+      ctx.moveTo(cx - 8.6, 10.8);
+      ctx.bezierCurveTo(cx - 7.8, 4.8, cx - 2.4, 3.4, cx + 0.2, 3.8);
+      ctx.bezierCurveTo(cx + 5.4, 4.4, cx + 8.2, 7.8, cx + 8.6, 11);
+      ctx.bezierCurveTo(cx + 5.4, 9.6, cx + 2.3, 10.4, cx + 0.5, 12.7);
+      ctx.bezierCurveTo(cx - 1.9, 10.4, cx - 5.3, 10, cx - 8.6, 10.8);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = "rgba(126, 86, 43, 0.55)";
+      ctx.lineWidth = 0.9;
+      ctx.beginPath();
+      ctx.moveTo(cx - 1.2, 4.4);
+      ctx.quadraticCurveTo(cx - 3.2, 8.6, cx - 5.6, 13.2);
+      ctx.moveTo(cx + 3.6, 6.8);
+      ctx.quadraticCurveTo(cx + 5.8, 13, cx + 5.1, 21);
+      ctx.stroke();
+
+      ctx.fillStyle = hair;
+      ctx.beginPath();
+      ctx.moveTo(cx - 9.4, 12);
+      ctx.bezierCurveTo(cx - 12, 19, cx - 10.2, 28, cx - 6.3, 35);
+      ctx.bezierCurveTo(cx - 6.8, 24, cx - 6.4, 17, cx - 4.6, 11.6);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx + 9.2, 12);
+      ctx.bezierCurveTo(cx + 12, 20, cx + 10, 29, cx + 6.2, 35);
+      ctx.bezierCurveTo(cx + 6.8, 24, cx + 6.4, 17, cx + 4.7, 11.6);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
+      ctx.beginPath();
+      ctx.moveTo(cx - 12, 8);
+      ctx.bezierCurveTo(cx - 20, 31, cx - 15, 54, cx - 9, 68);
+      ctx.lineTo(cx - 4, 68);
+      ctx.bezierCurveTo(cx - 9, 42, cx - 8, 23, cx - 5.7, 13);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx + 11, 8);
+      ctx.bezierCurveTo(cx + 20, 31, cx + 16, 54, cx + 9, 68);
+      ctx.lineTo(cx + 4, 68);
+      ctx.bezierCurveTo(cx + 9, 42, cx + 8, 23, cx + 5.7, 13);
+      ctx.closePath();
+      ctx.fill();
     } else {
-      ctx.moveTo(cx - 8, 10);
-      ctx.bezierCurveTo(cx - 4, 4, cx + 4, 3, cx + 8, 9);
-      ctx.lineTo(cx + 4, 11);
-      ctx.quadraticCurveTo(cx, 8, cx - 3, 11);
-      ctx.lineTo(cx - 8, 13);
+      ctx.moveTo(cx - 8.8, 10.4);
+      ctx.bezierCurveTo(cx - 7.4, 4.8, cx - 2.8, 2.8, cx + 2.4, 3.3);
+      ctx.bezierCurveTo(cx + 8, 3.8, cx + 10, 7.2, cx + 8.4, 11.6);
+      ctx.bezierCurveTo(cx + 5.2, 9.4, cx + 1.6, 10.2, cx -0.3, 12.9);
+      ctx.bezierCurveTo(cx - 2.9, 10.3, cx - 5.9, 10, cx - 8.8, 10.4);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(cx - 8.2, 11.1);
+      ctx.bezierCurveTo(cx - 10.5, 15.2, cx - 9.2, 20, cx - 6.2, 22.2);
+      ctx.bezierCurveTo(cx - 6.6, 17.5, cx - 5.9, 13.8, cx - 3.8, 11.2);
+      ctx.closePath();
+      ctx.fill();
     }
-    ctx.closePath();
-    ctx.fill();
 
     ctx.strokeStyle = "#5d4132";
     ctx.lineWidth = 1;
@@ -1400,7 +1448,7 @@ function initWeddingGame() {
     ctx.strokeStyle = "#8d4f48";
     ctx.lineWidth = 1.25;
     ctx.beginPath();
-    ctx.arc(cx + 0.2, 17.4, 2.5, 0.28, Math.PI - 0.28);
+    ctx.arc(cx + 0.2, 17.6, 2, 0.32, Math.PI - 0.32);
     ctx.stroke();
   }
 
@@ -1444,20 +1492,20 @@ function initWeddingGame() {
     ctx.fill();
 
     ctx.strokeStyle = "#17181a";
-    ctx.lineWidth = 5.2;
+    ctx.lineWidth = 4.8;
     ctx.lineCap = "round";
     ctx.beginPath();
     ctx.moveTo(cx - 10, 31);
     ctx.quadraticCurveTo(cx - 15, 38, cx - 11, 44);
     ctx.moveTo(cx + 10, 31);
     if (finalPose) {
-      ctx.quadraticCurveTo(cx + 15, 38, cx + 17, 44);
+      ctx.quadraticCurveTo(cx + 14, 38, cx + 13, 44);
     } else {
       ctx.quadraticCurveTo(cx + 15, 39, cx + 11, 45);
     }
     ctx.stroke();
     drawHand(cx - 11, 44);
-    drawHand(finalPose ? cx + 17 : cx + 11, finalPose ? 44 : 45);
+    drawHand(finalPose ? cx + 13 : cx + 11, finalPose ? 44 : 45);
     ctx.lineCap = "butt";
     drawFace(cx, false);
   }
@@ -1483,11 +1531,11 @@ function initWeddingGame() {
     dress.addColorStop(1, "#dfe3de");
     ctx.fillStyle = dress;
     ctx.beginPath();
-    ctx.moveTo(cx - 7, 27);
-    ctx.bezierCurveTo(cx + 8, 34, cx + 14, 55, cx + 16, person.h);
-    ctx.lineTo(cx - 16, person.h);
-    ctx.bezierCurveTo(cx - 14, 55, cx - 8, 34, cx + 7, 27);
-    ctx.quadraticCurveTo(cx, 24, cx - 7, 27);
+    ctx.moveTo(cx - 6.5, 27);
+    ctx.bezierCurveTo(cx + 8, 35, cx + 16, 56, cx + 18, person.h);
+    ctx.lineTo(cx - 18, person.h);
+    ctx.bezierCurveTo(cx - 16, 56, cx - 8, 35, cx + 6.5, 27);
+    ctx.quadraticCurveTo(cx, 23.8, cx - 6.5, 27);
     ctx.closePath();
     ctx.fill();
     ctx.strokeStyle = "#111111";
@@ -1498,10 +1546,10 @@ function initWeddingGame() {
     bodice.addColorStop(1, "#f7f0dd");
     ctx.fillStyle = bodice;
     ctx.beginPath();
-    ctx.moveTo(cx - 8, 27);
-    ctx.lineTo(cx + 8, 27);
-    ctx.lineTo(cx + 6, 45);
-    ctx.lineTo(cx - 6, 45);
+    ctx.moveTo(cx - 7.2, 28);
+    ctx.quadraticCurveTo(cx, 31.5, cx + 7.2, 28);
+    ctx.lineTo(cx + 5.4, 44);
+    ctx.lineTo(cx - 5.4, 44);
     ctx.closePath();
     ctx.fill();
     ctx.strokeStyle = "rgba(17, 17, 17, 0.14)";
@@ -1516,14 +1564,14 @@ function initWeddingGame() {
     ctx.beginPath();
     ctx.moveTo(cx - 8, 31);
     if (finalPose) {
-      ctx.quadraticCurveTo(cx - 15, 38, cx - 21, 44);
+      ctx.quadraticCurveTo(cx - 13, 38, cx - 14, 44);
     } else {
       ctx.quadraticCurveTo(cx - 13, 40, cx - 10, 49);
     }
     ctx.moveTo(cx + 8, 31);
     ctx.quadraticCurveTo(cx + 13, 40, cx + 10, 49);
     ctx.stroke();
-    drawHand(finalPose ? cx - 21 : cx - 10, finalPose ? 44 : 49);
+    drawHand(finalPose ? cx - 14 : cx - 10, finalPose ? 44 : 49);
     drawHand(cx + 10, 49);
     ctx.lineCap = "butt";
     drawFace(cx, true);
@@ -1543,6 +1591,9 @@ function initWeddingGame() {
       drawBride(person, cx);
     } else {
       const speed = Math.min(1, Math.abs(person.vx || 0) / physics.maxSpeed);
+      ctx.translate(cx, person.h);
+      ctx.scale(1, 1.07);
+      ctx.translate(-cx, -person.h);
       drawGroom(cx, Math.sin(game.time * 10) * speed);
     }
     ctx.restore();
@@ -1553,16 +1604,16 @@ function initWeddingGame() {
       return;
     }
 
-    const groomHandX = game.player.x - game.cameraX + game.player.w / 2 + 17;
-    const brideHandX = game.bride.x - game.cameraX + game.bride.w / 2 - 21;
+    const groomHandX = game.player.x - game.cameraX + game.player.w / 2 + 13;
+    const brideHandX = game.bride.x - game.cameraX + game.bride.w / 2 - 14;
     const handY = game.floorY - 25;
     ctx.save();
     ctx.strokeStyle = "#f1c7aa";
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 2.3;
     ctx.lineCap = "round";
     ctx.beginPath();
     ctx.moveTo(groomHandX, handY);
-    ctx.quadraticCurveTo((groomHandX + brideHandX) / 2, handY + 3, brideHandX, handY - 1);
+    ctx.quadraticCurveTo((groomHandX + brideHandX) / 2, handY + 1.2, brideHandX, handY - 0.5);
     ctx.stroke();
     ctx.restore();
   }
@@ -1576,75 +1627,84 @@ function initWeddingGame() {
 
     ctx.save();
     ctx.translate(x, y);
-    const wag = Math.sin(game.time * 6) * 1.5;
-    drawShadow(20, 29, 15);
-    const fur = ctx.createLinearGradient(7, 7, 34, 31);
-    fur.addColorStop(0, "#3b3432");
-    fur.addColorStop(0.52, "#151313");
+    const wag = Math.sin(game.time * 6) * 1.25;
+    drawShadow(20, 29, 14);
+    const fur = ctx.createLinearGradient(7, 5, 34, 31);
+    fur.addColorStop(0, "#342d2b");
+    fur.addColorStop(0.48, "#171414");
     fur.addColorStop(1, "#050505");
     ctx.fillStyle = fur;
     ctx.strokeStyle = "#090808";
     ctx.lineWidth = 1.4;
 
+    ctx.strokeStyle = "#100e0d";
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
     ctx.beginPath();
-    ctx.ellipse(17, 20, 11.5, 10.5, -0.16, 0, Math.PI * 2);
+    ctx.moveTo(9, 20);
+    ctx.quadraticCurveTo(2, 17, 3, 10 + wag);
+    ctx.stroke();
+    ctx.lineCap = "butt";
+
+    ctx.beginPath();
+    ctx.ellipse(16, 21, 11.5, 9.8, -0.12, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+
     ctx.beginPath();
-    ctx.ellipse(28, 11, 8.3, 8.2, 0.1, 0, Math.PI * 2);
+    ctx.ellipse(28, 12, 8.8, 8.2, 0.08, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
     ctx.fillStyle = "#0a0909";
     ctx.beginPath();
-    ctx.moveTo(22, 7);
-    ctx.quadraticCurveTo(18, 1, 19, 13);
+    ctx.moveTo(22, 8);
+    ctx.bezierCurveTo(18, 4, 18, 12, 22, 17);
+    ctx.lineTo(25, 14);
     ctx.closePath();
     ctx.fill();
     ctx.beginPath();
-    ctx.moveTo(31, 5);
-    ctx.quadraticCurveTo(37, 2, 34, 14);
+    ctx.moveTo(32, 7);
+    ctx.bezierCurveTo(38, 5, 37, 13, 33, 17);
+    ctx.lineTo(30, 14);
     ctx.closePath();
     ctx.fill();
 
-    ctx.strokeStyle = "#0b0a0a";
-    ctx.lineWidth = 3;
-    ctx.lineCap = "round";
-    ctx.beginPath();
-    ctx.moveTo(8, 19);
-    ctx.quadraticCurveTo(1, 16, 3, 9 + wag);
-    ctx.stroke();
-    ctx.strokeStyle = "#111111";
+    ctx.strokeStyle = "#100e0d";
     ctx.lineWidth = 2.2;
     ctx.beginPath();
-    ctx.moveTo(12, 26);
-    ctx.lineTo(11, 31);
-    ctx.moveTo(19, 27);
-    ctx.lineTo(20, 31);
-    ctx.moveTo(25, 25);
-    ctx.lineTo(28, 31);
+    ctx.moveTo(11, 26);
+    ctx.lineTo(10, 31);
+    ctx.moveTo(18, 27);
+    ctx.lineTo(18, 31);
+    ctx.moveTo(24, 26);
+    ctx.lineTo(27, 31);
     ctx.stroke();
-    ctx.lineCap = "butt";
 
+    ctx.fillStyle = "#f7f0dd";
+    ctx.beginPath();
+    ctx.ellipse(25.2, 11.4, 1.9, 2.3, 0, 0, Math.PI * 2);
+    ctx.ellipse(31, 11.5, 1.9, 2.3, 0, 0, Math.PI * 2);
+    ctx.fill();
     ctx.fillStyle = "#111111";
     ctx.beginPath();
-    ctx.arc(25.8, 10.5, 1.15, 0, Math.PI * 2);
-    ctx.arc(30.7, 10.5, 1.15, 0, Math.PI * 2);
+    ctx.arc(25.5, 11.8, 0.78, 0, Math.PI * 2);
+    ctx.arc(31.3, 11.9, 0.78, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = "rgba(247, 240, 221, 0.72)";
+    ctx.fillStyle = "#171211";
     ctx.beginPath();
-    ctx.arc(26.15, 10.15, 0.35, 0, Math.PI * 2);
-    ctx.arc(31.05, 10.15, 0.35, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#1a1615";
-    ctx.beginPath();
-    ctx.ellipse(35, 14.2, 4.6, 3.4, 0.02, 0, Math.PI * 2);
+    ctx.ellipse(34.4, 15, 3.5, 2.6, 0.05, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
-    ctx.fillStyle = "#050505";
+    ctx.fillStyle = "#f7f0dd";
     ctx.beginPath();
-    ctx.arc(38.2, 13.6, 1.15, 0, Math.PI * 2);
+    ctx.arc(36.2, 14.2, 0.55, 0, Math.PI * 2);
     ctx.fill();
+    ctx.strokeStyle = "#f7f0dd";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.arc(32.5, 17.1, 3.2, 0.22, Math.PI - 0.22);
+    ctx.stroke();
     ctx.restore();
   }
 
@@ -1829,9 +1889,9 @@ function initWeddingGame() {
     ctx.fillStyle = "#111111";
     ctx.textAlign = "center";
     ctx.font = `900 16px ${UI_FONT}`;
-    ctx.fillText("клятвы произнесены", game.viewW / 2, 75);
+    ctx.fillText("Клятвы произнесены", game.viewW / 2, 75);
     ctx.font = `900 10px ${UI_FONT}`;
-    ctx.fillText("Миша, Полина и Юми ждут гостей", game.viewW / 2, 94);
+    ctx.fillText("Ждём вас на свадьбе", game.viewW / 2, 94);
     ctx.restore();
   }
 
@@ -1941,21 +2001,25 @@ function buildAnswerText(formData) {
   return [
     "Анкета свадьбы Миши и Полины",
     `Имя: ${formData.get("name") || ""}`,
+    `Контакт: ${formData.get("contact") || ""}`,
     `Участие: ${formData.get("attendance") || ""}`,
     `Еда: ${formData.get("food") || ""}`,
     `Напитки: ${formData.get("alcohol") || ""}`,
+    `Дорога: ${formData.get("transport") || ""}`,
     `Комментарий: ${formData.get("comment") || ""}`,
   ].join("\n");
 }
 
 function buildAnswerPayload(formData) {
   return {
-    name: formData.get("name") || "",
-    attendance: formData.get("attendance") || "",
-    food: formData.get("food") || "",
-    alcohol: formData.get("alcohol") || "",
-    comment: formData.get("comment") || "",
-    submittedAt: new Date().toISOString(),
+    "Имя и фамилия": formData.get("name") || "",
+    "Контакт": formData.get("contact") || "",
+    "Участие": formData.get("attendance") || "",
+    "Еда": formData.get("food") || "",
+    "Напитки": formData.get("alcohol") || "",
+    "Дорога": formData.get("transport") || "",
+    "Комментарий": formData.get("comment") || "",
+    "Отправлено": new Date().toLocaleString("ru-RU", { timeZone: "Asia/Yekaterinburg" }),
   };
 }
 
@@ -1981,14 +2045,24 @@ if (form && statusNode) {
     const formData = new FormData(form);
     const button = form.querySelector("button[type='submit']");
     button.disabled = true;
-    statusNode.textContent = "Собираем ответ...";
+    statusNode.textContent = "Отправляем ответ...";
 
     try {
       if (RSVP_ENDPOINT) {
+        const payload = buildAnswerPayload(formData);
         const response = await fetch(RSVP_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(Object.fromEntries(formData)),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            _subject: formData.get("_subject") || "Свадьба: ответ гостя",
+            _template: formData.get("_template") || "table",
+            _captcha: formData.get("_captcha") || "false",
+            _honey: formData.get("_honey") || "",
+            ...payload,
+          }),
         });
 
         if (!response.ok) {

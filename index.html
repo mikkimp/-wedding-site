@@ -247,8 +247,12 @@
         </div>
         <ol class="timeline" aria-label="Время">
           <li>
-            <span>Сбор гостей</span>
+            <span>Приезд гостей, которые остаются на базе</span>
             <time datetime="2026-08-19T15:00">15:00</time>
+          </li>
+          <li>
+            <span>Сбор гостей без ночёвки</span>
+            <time datetime="2026-08-19T15:30">15:30</time>
           </li>
           <li>
             <span>Церемония</span>
@@ -265,6 +269,14 @@
           <li>
             <span>Танцы</span>
             <time datetime="2026-08-19T22:00">22:00</time>
+          </li>
+          <li>
+            <span>Основная часть вечера</span>
+            <time datetime="2026-08-19T23:00">до 23:00</time>
+          </li>
+          <li>
+            <span>Разъезд гостей без ночёвки</span>
+            <time datetime="2026-08-20T00:00">до 00:00</time>
           </li>
         </ol>
       </section>
@@ -290,7 +302,7 @@
           </p>
           <a
             class="button-link"
-            href="https://yandex.ru/maps/?ll=60.738538%2C56.939468&z=15&pt=60.738538%2C56.939468,pm2rdm"
+            href="https://yandex.ru/maps/-/CTQwrZ~t"
             target="_blank"
             rel="noreferrer"
           >
@@ -377,9 +389,14 @@
           <article class="note note--dress">
             <h3>Одежда</h3>
             <p>
-              Дресс-кода нет. Приходите в том, в чем красиво и удобно. Если
-              хочется попасть в настроение дня: лайм, фуксия, апельсин,
-              голубой, фиолетовый, бирюза или серебристый акцент.
+              Дресс-код: образ в одном-двух любых цветах + яркая деталь.
+              Просим по возможности избегать полностью чёрных и белых образов:
+              эти цвета мы оставим за собой.
+            </p>
+            <p>
+              Ориентир по палитре — Ableton: лайм, фуксия, апельсин, голубой,
+              фиолетовый, бирюза и серебро. Подойдёт деталь: носки, платок,
+              очки, сумка, украшение или что-то своё.
             </p>
             <div class="swatches" aria-label="Цвета настроения">
               <span style="--swatch: #c8e000"></span>
@@ -395,15 +412,24 @@
           <article class="note note--road">
             <h3>Дорога</h3>
             <p>
-              На площадке есть парковка. Такси до места приезжает, а обратный
-              путь поможем организовать ближе к дате.
+              На площадке есть парковка. После основного въезда нужно ехать
+              дальше по внутренней дороге до глэмпинга с домиками.
+            </p>
+            <p>
+              Такси ориентировочно стоит 1500–2000 рублей в зависимости от
+              класса. Ближе к дате будет общий чат: там можно будет
+              скоординироваться по дороге туда и обратно.
             </p>
           </article>
           <article class="note note--weather">
-            <h3>Погода</h3>
+            <h3>Ночёвка</h3>
             <p>
-              Мы подготовим зонты и постараемся закрыть бытовые мелочи. На
-              вечер за городом лучше взять легкий слой потеплее.
+              В глэмпинге будет 33 спальных места, поэтому, к сожалению, мы не
+              сможем оставить всех гостей. Кто останется на базе, мы распределим
+              сами и напишем отдельно.
+            </p>
+            <p>
+              Тем, кто не остаётся, нужно будет разъехаться до 00:00.
             </p>
           </article>
           <article class="note note--gifts">
@@ -461,8 +487,8 @@
             <p class="eyebrow">мини-игра</p>
             <h3 data-game-overlay-title>Добраться до невесты</h3>
             <p data-game-overlay-text>
-              Нажмите «Начать игру». Потом: стрелки — идти, пробел или ↑ —
-              прыгать. Три жизни, препятствия можно перепрыгнуть.
+              Нажмите «Начать игру». Дальше: стрелки — идти, пробел или ↑ —
+              прыгать. У вас три жизни, опасные элементы можно перепрыгнуть.
             </p>
             <button class="game__button" type="button" data-game-start>Начать игру</button>
           </div>
@@ -489,14 +515,24 @@
           <p class="eyebrow">подтверждение участия</p>
           <h2 id="rsvp-title">Пожалуйста, ответьте до 15.07</h2>
           <p>
-            Анкета короткая: имя, участие, еда, напитки и комментарий.
+            Анкета короткая: имя, участие, контакт, еда, напитки и дорога.
           </p>
         </div>
 
         <form class="rsvp-form" id="rsvp-form">
+          <input type="hidden" name="_subject" value="Свадьба: ответ гостя">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
           <label>
             <span>Имя и фамилия</span>
             <input name="name" autocomplete="name" required>
+          </label>
+
+          <label>
+            <span>Контакт для связи</span>
+            <input name="contact" autocomplete="tel" placeholder="Телефон или Telegram">
           </label>
 
           <fieldset>
@@ -507,7 +543,7 @@
 
           <label>
             <span>Предпочтения по еде</span>
-            <input name="food" placeholder="Например: без мяса, аллергия, все ем">
+            <input name="food" placeholder="Например: без мяса, аллергия, всё ем">
           </label>
 
           <fieldset>
@@ -515,6 +551,12 @@
             <label><input type="radio" name="alcohol" value="Буду пить" required> Буду пить</label>
             <label><input type="radio" name="alcohol" value="1-2 бокала шампанского"> 1-2 бокала шампанского</label>
             <label><input type="radio" name="alcohol" value="Без алкоголя"> Без алкоголя</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Дорога</legend>
+            <label><input type="radio" name="transport" value="Доберусь самостоятельно" required> Доберусь самостоятельно</label>
+            <label><input type="radio" name="transport" value="Нужна помощь с обратной дорогой"> Нужна помощь с обратной дорогой</label>
           </fieldset>
 
           <label class="rsvp-form__wide">

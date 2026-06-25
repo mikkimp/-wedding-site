@@ -804,7 +804,7 @@ img {
 }
 
 .place {
-  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.68fr);
+  grid-template-columns: minmax(0, 0.86fr) minmax(300px, 0.72fr);
 }
 
 .section--grid h2 {
@@ -882,7 +882,10 @@ img {
 }
 
 .place__copy {
+  position: relative;
+  z-index: 3;
   align-self: center;
+  min-width: 0;
 }
 
 .place__copy p:not(.eyebrow) {
@@ -895,17 +898,20 @@ img {
 
 .place__copy h2 {
   font-family: var(--font-narrow);
-  font-size: clamp(1.65rem, 3.55vw, 3.85rem);
+  max-width: 100%;
+  font-size: clamp(1.45rem, 2.8vw, 3.05rem);
   line-height: 1.04;
   font-style: normal;
   text-transform: none;
-  white-space: nowrap;
+  white-space: normal;
+  text-wrap: balance;
 }
 
 .route-card {
   position: relative;
   z-index: 2;
   align-self: center;
+  min-width: 0;
   min-height: min(58svh, 470px);
   border: 2px solid currentColor;
   background: var(--screen-paper-soft);
@@ -1268,12 +1274,13 @@ img {
 }
 
 .note {
-  min-height: 160px;
+  min-height: 205px;
   border: 2px solid currentColor;
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 12px;
 }
 
 .note h3 {
@@ -1378,8 +1385,11 @@ img {
 }
 
 .game h2 {
-  font-size: clamp(2.2rem, 4.6vw, 4.8rem);
-  line-height: 0.98;
+  max-width: 420px;
+  font-size: clamp(2.15rem, 3.9vw, 3.85rem);
+  line-height: 1.02;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .game__stage {
@@ -1745,6 +1755,7 @@ img {
 }
 
 .rsvp-form {
+  position: relative;
   grid-column: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1760,6 +1771,15 @@ img {
   border: var(--line);
   background: var(--paper);
   padding: 12px;
+}
+
+.rsvp-form input[name="_honey"] {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .rsvp-form label span,
