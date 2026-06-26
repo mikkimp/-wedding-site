@@ -389,65 +389,75 @@ img {
     brightness(1.08);
 }
 
+.hero__silver-marks img[src$="silver-orbit.svg"] {
+  width: clamp(28px, 3.4vw, 44px);
+}
+
 .hero__silver-marks img:nth-child(1) {
-  left: 17%;
-  top: 27%;
+  left: 12%;
+  top: 33%;
 }
 
 .hero__silver-marks img:nth-child(2) {
-  right: 18%;
-  top: 23%;
-  transform: rotate(-7deg);
+  right: 15%;
+  top: 20%;
+  transform: rotate(-13deg);
 }
 
 .hero__silver-marks img:nth-child(3) {
-  left: 8%;
-  top: 58%;
+  left: 10%;
+  top: 57%;
   transform: rotate(14deg);
 }
 
 .hero__silver-marks img:nth-child(4) {
-  right: 9%;
+  right: 10%;
   top: 55%;
   transform: rotate(11deg);
 }
 
 .hero__silver-marks img:nth-child(5) {
-  left: 26%;
-  bottom: 24%;
-  transform: rotate(-12deg);
+  left: 16%;
+  top: 69%;
+  transform: rotate(11deg);
 }
 
 .hero__silver-marks img:nth-child(6) {
-  right: 28%;
-  bottom: 25%;
+  right: 25%;
+  top: 70%;
   transform: rotate(9deg);
 }
 
 .hero__silver-marks img:nth-child(7) {
-  left: 41%;
-  top: 18%;
+  left: 56%;
+  top: 15%;
   width: clamp(12px, 1.5vw, 20px);
 }
 
 .hero__silver-marks img:nth-child(8) {
-  right: 38%;
-  top: 67%;
+  right: 31%;
+  top: 63%;
   width: clamp(12px, 1.5vw, 20px);
-  transform: rotate(-10deg);
+  transform: rotate(-18deg);
 }
 
 .hero__silver-marks img:nth-child(9) {
-  left: 12%;
-  bottom: 14%;
+  left: 9%;
+  top: 71%;
   width: clamp(11px, 1.35vw, 18px);
 }
 
 .hero__silver-marks img:nth-child(10) {
-  right: 14%;
-  bottom: 15%;
+  right: 9%;
+  top: 72%;
   width: clamp(11px, 1.35vw, 18px);
   transform: rotate(12deg);
+}
+
+.hero__silver-marks img:nth-child(2)[src$="silver-orbit.svg"],
+.hero__silver-marks img:nth-child(5)[src$="silver-orbit.svg"],
+.hero__silver-marks img:nth-child(8)[src$="silver-orbit.svg"] {
+  width: clamp(28px, 3.4vw, 44px);
 }
 
 .hero__midi-road {
@@ -610,6 +620,10 @@ img {
     brightness(1.08);
 }
 
+.section__silver-marks img[src$="silver-orbit.svg"] {
+  width: clamp(24px, 3vw, 38px);
+}
+
 .section__silver-marks img:nth-child(1) {
   left: 12%;
   top: 18%;
@@ -658,6 +672,244 @@ img {
   bottom: 9%;
   width: clamp(10px, 1.35vw, 16px);
   transform: rotate(-8deg);
+}
+
+.section__silver-marks img:nth-child(3)[src$="silver-orbit.svg"],
+.section__silver-marks img:nth-child(6)[src$="silver-orbit.svg"] {
+  width: clamp(24px, 3vw, 38px);
+}
+
+.intro .section__silver-marks img:nth-child(1) {
+  left: 6%;
+  top: 18%;
+}
+
+.intro .section__silver-marks img:nth-child(2) {
+  right: 9%;
+  top: 21%;
+}
+
+.intro .section__silver-marks img:nth-child(3) {
+  left: 4%;
+  top: 67%;
+}
+
+.intro .section__silver-marks img:nth-child(4) {
+  right: 4%;
+  top: 69%;
+}
+
+.intro .section__silver-marks img:nth-child(5) {
+  left: 41%;
+  bottom: 7%;
+}
+
+.intro .section__silver-marks img:nth-child(6) {
+  right: 31%;
+  bottom: 10%;
+}
+
+.intro .section__silver-marks img:nth-child(7) {
+  left: 32%;
+  top: 11%;
+}
+
+.intro .section__silver-marks img:nth-child(8) {
+  right: 44%;
+  bottom: 5%;
+}
+
+#time .section__silver-marks img:nth-child(1) {
+  left: 4%;
+  top: 18%;
+}
+
+#time .section__silver-marks img:nth-child(2) {
+  right: 8%;
+  top: 15%;
+}
+
+#time .section__silver-marks img:nth-child(3) {
+  left: auto;
+  right: 5%;
+  top: 36%;
+}
+
+#time .section__silver-marks img:nth-child(4) {
+  right: 7%;
+  top: 57%;
+}
+
+#time .section__silver-marks img:nth-child(5) {
+  left: auto;
+  right: 21%;
+  bottom: 9%;
+}
+
+#time .section__silver-marks img:nth-child(6) {
+  right: 12%;
+  bottom: 14%;
+}
+
+#time .section__silver-marks img:nth-child(7) {
+  left: auto;
+  right: 28%;
+  top: 9%;
+}
+
+#time .section__silver-marks img:nth-child(8) {
+  right: 37%;
+  bottom: 6%;
+}
+
+.place .section__silver-marks img:nth-child(1) {
+  left: 6%;
+  top: 10%;
+}
+
+.place .section__silver-marks img:nth-child(2) {
+  right: 6%;
+  top: 11%;
+}
+
+.place .section__silver-marks img:nth-child(3) {
+  left: 12%;
+  top: 72%;
+}
+
+.place .section__silver-marks img:nth-child(4) {
+  right: 10%;
+  top: 76%;
+}
+
+.place .section__silver-marks img:nth-child(5) {
+  left: 40%;
+  bottom: 7%;
+}
+
+.place .section__silver-marks img:nth-child(6) {
+  right: 49%;
+  bottom: 8%;
+}
+
+.place .section__silver-marks img:nth-child(7) {
+  left: 30%;
+  top: 8%;
+}
+
+.place .section__silver-marks img:nth-child(8) {
+  right: 31%;
+  bottom: 6%;
+}
+
+.notes .section__silver-marks img:nth-child(1) {
+  left: 5%;
+  top: 16%;
+}
+
+.notes .section__silver-marks img:nth-child(2) {
+  right: 12%;
+  top: 10%;
+}
+
+.notes .section__silver-marks img:nth-child(3) {
+  left: 15%;
+  top: 72%;
+}
+
+.notes .section__silver-marks img:nth-child(4) {
+  right: 7%;
+  top: 66%;
+}
+
+.notes .section__silver-marks img:nth-child(5) {
+  left: 47%;
+  top: 8%;
+}
+
+.notes .section__silver-marks img:nth-child(6) {
+  right: 34%;
+  bottom: 7%;
+}
+
+.notes .section__silver-marks img:nth-child(7) {
+  left: 31%;
+  bottom: 8%;
+}
+
+.notes .section__silver-marks img:nth-child(8) {
+  right: 22%;
+  top: 31%;
+}
+
+.game .section__silver-marks img:nth-child(1) {
+  left: 8%;
+  top: 12%;
+}
+
+.game .section__silver-marks img:nth-child(2) {
+  right: 6%;
+  top: 18%;
+}
+
+.game .section__silver-marks img:nth-child(3) {
+  left: 6%;
+  top: 76%;
+}
+
+.game .section__silver-marks img:nth-child(4) {
+  right: 10%;
+  top: 73%;
+}
+
+.game .section__silver-marks img:nth-child(5) {
+  left: 42%;
+  top: 9%;
+}
+
+.game .section__silver-marks img:nth-child(6) {
+  right: 41%;
+  bottom: 6%;
+}
+
+.rsvp .section__silver-marks img:nth-child(1) {
+  left: 6%;
+  top: 14%;
+}
+
+.rsvp .section__silver-marks img:nth-child(2) {
+  right: 8%;
+  top: 16%;
+}
+
+.rsvp .section__silver-marks img:nth-child(3) {
+  left: 10%;
+  top: 68%;
+}
+
+.rsvp .section__silver-marks img:nth-child(4) {
+  right: 7%;
+  top: 72%;
+}
+
+.rsvp .section__silver-marks img:nth-child(5) {
+  left: 32%;
+  bottom: 7%;
+}
+
+.rsvp .section__silver-marks img:nth-child(6) {
+  right: 31%;
+  bottom: 9%;
+}
+
+.rsvp .section__silver-marks img:nth-child(7) {
+  left: 46%;
+  top: 8%;
+}
+
+.rsvp .section__silver-marks img:nth-child(8) {
+  right: 44%;
+  bottom: 6%;
 }
 
 .screen--lime {
@@ -798,10 +1050,14 @@ img {
 }
 
 .intro__photo--pop {
+  width: min(100%, 520px);
+  aspect-ratio: 666 / 647;
+  justify-self: center;
   background: #c8e000;
 }
 
 .intro__photo--pop img {
+  height: 100%;
   object-fit: contain;
   filter: none;
   mix-blend-mode: normal;
@@ -1027,12 +1283,12 @@ img {
   fill: #111111;
   font-family: var(--font-block);
   font-weight: 900;
-  text-transform: uppercase;
 }
 
 .route-map__ekad-label {
   fill: rgba(17, 17, 17, 0.58);
   font-size: 24px;
+  text-transform: uppercase;
 }
 
 .route-map__road {
@@ -1066,6 +1322,10 @@ img {
   fill: #8b5a2b;
 }
 
+.route-map__label rect {
+  paint-order: stroke;
+}
+
 .route-map__gate rect {
   fill: #ff6b00;
   stroke: #f7f0dd;
@@ -1074,9 +1334,10 @@ img {
 
 .route-map__gate text {
   fill: #f7f0dd;
-  font-size: 22px;
+  font-size: 21px;
   text-anchor: middle;
   dominant-baseline: middle;
+  text-transform: uppercase;
 }
 
 .route-map__parking rect {
@@ -1093,10 +1354,11 @@ img {
 
 .route-map__parking text {
   fill: #ffffff;
-  font-size: 18px;
+  font-size: 15px;
+  dominant-baseline: middle;
 }
 
-.route-map__parking text:first-of-type {
+.route-map__parking-p {
   fill: #6654b8;
   font-size: 30px;
   text-anchor: middle;
@@ -1112,11 +1374,20 @@ img {
 
 .route-map__glamping text {
   fill: #ff35bc;
-  font-size: 19px;
+  font-size: 18px;
+  dominant-baseline: middle;
 }
 
 .route-map__glamping text:last-child {
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.route-map__flag {
+  fill: #ff35bc;
+  font-size: 28px;
+  text-anchor: middle;
+  dominant-baseline: middle;
 }
 
 .route-map__tents path {
@@ -1347,7 +1618,7 @@ img {
 
 .swatches {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(9, 1fr);
   gap: 6px;
   margin-top: 18px;
 }
@@ -1356,6 +1627,14 @@ img {
   aspect-ratio: 1;
   border: 1px solid var(--ink);
   background: var(--swatch);
+}
+
+.swatches .swatch--silver {
+  background:
+    linear-gradient(135deg, #ffffff 0%, #b5bcc5 18%, #4f5660 34%, #f8fbff 50%, #8c949e 66%, #2e333a 80%, #e7ebef 100%);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.7),
+    inset -2px -2px 0 rgba(17, 17, 17, 0.2);
 }
 
 .rsvp {
@@ -1811,6 +2090,13 @@ img {
   text-transform: uppercase;
 }
 
+.fieldset-note {
+  margin: -2px 0 10px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
 .rsvp-form fieldset label {
   display: inline-flex;
   align-items: center;
@@ -2164,6 +2450,16 @@ img {
   .intro__photo img {
     height: min(34svh, 300px);
     object-position: center 18%;
+  }
+
+  .intro__photo--pop {
+    max-width: min(420px, 100%);
+    aspect-ratio: 666 / 647;
+  }
+
+  .intro__photo--pop img {
+    height: 100%;
+    object-position: center;
   }
 
   .timeline li {
