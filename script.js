@@ -2044,6 +2044,10 @@ async function copyAnswer(text) {
   return true;
 }
 
+function submitFormWithoutJavascriptHandler(targetForm) {
+  HTMLFormElement.prototype.submit.call(targetForm);
+}
+
 if (form && statusNode) {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -2074,6 +2078,11 @@ if (form && statusNode) {
           throw new Error("Bad response");
         }
 
+        const result = await response.json().catch(() => null);
+        if (!result || String(result.success) !== "true") {
+          throw new Error(result?.message || "FormSubmit rejected request");
+        }
+
         form.reset();
         statusNode.textContent = "Спасибо, ответ отправлен.";
         return;
@@ -2092,6 +2101,12 @@ if (form && statusNode) {
         ? `Тестовый ответ #${testNumber} сохранен в браузере и скопирован в буфер.`
         : `Тестовый ответ #${testNumber} сохранен в браузере.`;
     } catch (error) {
+      if (form.action && form.method) {
+        statusNode.textContent = "Пробуем отправить обычным способом...";
+        submitFormWithoutJavascriptHandler(form);
+        return;
+      }
+
       statusNode.textContent = "Не получилось отправить. Попробуйте еще раз или напишите нам напрямую.";
     } finally {
       button.disabled = false;
