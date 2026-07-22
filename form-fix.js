@@ -9,13 +9,15 @@
     return;
   }
 
+  const zagsField = form.querySelector("[name='upper_pyshma_ceremony']")?.closest("fieldset");
+  zagsField?.remove();
+
   function buildAnswerText(formData) {
     return [
       "Анкета свадьбы Миши и Полины",
       `Имя: ${formData.get("name") || ""}`,
       `Контакт: ${formData.get("contact") || ""}`,
       `Участие: ${formData.get("attendance") || ""}`,
-      `Церемония в ЗАГСе в Верхней Пышме 13 августа: ${formData.get("upper_pyshma_ceremony") || ""}`,
       `Еда: ${formData.get("food") || ""}`,
       `Напитки: ${formData.get("alcohol") || ""}`,
       `Дорога: ${formData.get("transport") || ""}`,
@@ -33,7 +35,6 @@
       "Имя и фамилия": formData.get("name") || "",
       "Контакт": formData.get("contact") || "",
       "Участие": formData.get("attendance") || "",
-      "Церемония в ЗАГСе в Верхней Пышме 13 августа": formData.get("upper_pyshma_ceremony") || "",
       "Еда": formData.get("food") || "",
       "Напитки": formData.get("alcohol") || "",
       "Дорога": formData.get("transport") || "",
